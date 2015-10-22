@@ -1,0 +1,6 @@
+[submodule ".dotfiles/zsh/vendor/zsh-completions"]
+	path = .dotfiles/zsh/vendor/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions.git
+[submodule ".dotfiles/zsh/vendor/zsh-colors"]
+	path = .dotfiles/zsh/vendor/zsh-colors
+	url = https://github.com/Tarrasch/zsh-colors

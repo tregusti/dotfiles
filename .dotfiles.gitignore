@@ -1,0 +1,9 @@
+*
+
+!/.dotfiles/*
+!/.dotfiles/**/*
+!/.dotfiles.gitignore
+!/.gitmodules
+!/.gitattributes
+!/.zshrc
+!/README.md
