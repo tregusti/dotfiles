@@ -22,7 +22,7 @@ setopt PROMPT_SUBST # Enable parameter expansion, command substitution, and arit
 setopt TRANSIENT_RPROMPT # only show the rprompt on the current prompt
 
 # ===== Correction
-setopt CORRECT_ALL # spelling correction for arguments
+# setopt CORRECT_ALL # spelling correction for arguments
 setopt CORRECT # spelling correction for commands
 
 
