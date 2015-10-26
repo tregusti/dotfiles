@@ -8,7 +8,9 @@ export LSCOLORS=ExFxcxdxbxegedabagacad
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='4;36'
 
-export LESS='--ignore-case --raw-control-chars'
+# http://stackoverflow.com/a/2183920
+# http://askubuntu.com/a/616615
+export LESS='--quit-if-one-screen --no-init --ignore-case --raw-control-chars'
 export PAGER='less'
 
 export EDITOR=nano
