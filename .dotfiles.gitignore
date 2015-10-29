@@ -3,7 +3,11 @@
 !/.dotfiles/*
 !/.dotfiles/**/*
 !/.dotfiles.gitignore
+
 !/.gitmodules
 !/.gitattributes
+
+!/.tmux.conf
 !/.zshrc
+
 !/README.md
