@@ -8,4 +8,4 @@ for COLOR in RED GREEN YELLOW BLUE MAGENTA CYAN BLACK WHITE; do
   eval export PR_BOLD_$COLOR
 done
 
-eval RESET='$reset_color'
+eval PR_RESET='%{$reset_color%}'

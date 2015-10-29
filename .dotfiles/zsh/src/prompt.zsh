@@ -25,7 +25,7 @@ echo
 # PROMPT PARTS
 
 last_exit_code() {
-  print -n "%(?;;$PR_RED%?$RESET by )"
+  print -n "%(?;;$PR_RED%?$PR_RESET by )"
 }
 
 git_prompt() {
@@ -41,15 +41,15 @@ git_prompt() {
     ref=$(command git rev-parse --short HEAD 2> /dev/null) || return
 
   print -n ' on '
-  print -n $PR_RED$ref$RESET
+  print -n $PR_RED$ref$PR_RESET
 }
 
 current_time() {
-  print -n $PR_YELLOW$(date '+%H:%M:%S')$RESET
+  print -n $PR_YELLOW$(date '+%H:%M:%S')$PR_RESET
 }
 
 current_user() {
-  print -n $PR_GREEN$(id -un)$RESET
+  print -n $PR_GREEN$(id -un)$PR_RESET
 }
 
 current_dir() {
@@ -78,7 +78,7 @@ current_dir() {
   [ ! -z $PART2 ] && DIR="$(short $PART2)/$DIR"
   [ ! -z $PART3 ] && DIR="$(short $PART3)/$DIR"
 
-  print -n "$PR_BLUE$DIR$RESET"
+  print -n "$PR_BLUE$DIR$PR_RESET"
 }
 
 # PROMPT DEFINITION
