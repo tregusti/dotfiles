@@ -1,11 +1,3 @@
-# export PROMPT='%F{blue}$(pwd)%f: '
-
-# Correct commands.
-setopt CORRECT
-# the prompt string is first subjected to parameter expansion,
-# command substitution and arithmetic expansion.
-setopt PROMPT_SUBST
-
 # UTILS
 
 short() {
