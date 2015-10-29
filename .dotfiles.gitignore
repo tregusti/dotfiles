@@ -1,9 +1,8 @@
-*
+/*
 
-!/.dotfiles/*
-!/.dotfiles/**/*
+!/.dotfiles
+
 !/.dotfiles.gitignore
-
 !/.gitmodules
 !/.gitattributes
 
