@@ -5,8 +5,8 @@ export LSCOLORS=ExFxcxdxbxegedabagacad
 
 # Enable color in grep
 # http://www.gnu.org/software/grep/manual/html_node/Environment-Variables.html
-export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='4;36'
+alias grep='grep --color=auto'
 
 # http://stackoverflow.com/a/2183920
 # http://askubuntu.com/a/616615
