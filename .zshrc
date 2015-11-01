@@ -8,6 +8,7 @@ source $HOME/.dotfiles/zsh/src/plugins.zsh
 source $HOME/.dotfiles/zsh/src/aliases.zsh
 source $HOME/.dotfiles/zsh/src/prompt.zsh
 
-source $HOME/.dotfiles/git/config.zsh
+source $HOME/.dotfiles/git/init.zsh
+source $HOME/.dotfiles/nvm/init.zsh
 
 test -f $HOME/.localrc && source $HOME/.localrc
