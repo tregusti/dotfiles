@@ -1,3 +1,5 @@
+alias git='LC_ALL=en_GB git'
+
 # Config
 git config --global rerere.enabled true
 git config --global pull.rebase true
