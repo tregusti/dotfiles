@@ -44,3 +44,4 @@ setopt HIST_VERIFY # don't execute, just expand history
 
 # ===== Scripts and Functions
 # setopt MULTIOS # perform implicit tees or cats when multiple redirections are attempted
+unsetopt CASE_MATCH # Force all regex matches to be case insensitive
