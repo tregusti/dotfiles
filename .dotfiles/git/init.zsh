@@ -50,3 +50,15 @@ if [[ ! -f "$LOCK_FILE" ]]; then
 fi
 
 unset LOCK_FILE
+
+gitworklog() {
+  local since=$1
+  local author=${2:=glenn}
+
+  if [[ -z "$since" ]]; then
+    echo "Usage: $0 <from-iso-date> [<author-name>:glenn]"
+    return
+  fi
+
+  git log --pretty=format:"%C(yellow)%ad%Creset %s%C(yellow)%d%Creset %C(red)(%an, commit: %cd)%Creset" --all --date=short --author="$author" --since="$since" | sort -g -r | less
+}
