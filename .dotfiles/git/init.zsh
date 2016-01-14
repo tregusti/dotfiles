@@ -17,6 +17,10 @@ if [[ ! -f "$LOCK_FILE" ]]; then
   git config --global color.status auto
   git config --global color.interactive auto
   git config --global color.branch auto
+  # For cygwin issues with singleKey
+  # 1. https://github.com/transcode-open/apt-cyg
+  # 2. apt-cyg install perl-TermReadKey
+  git config --global interactive.singleKey true
 
   # Command defaults
   git config --global alias.log 'log --topo-order'
@@ -51,7 +55,18 @@ fi
 
 unset LOCK_FILE
 
-gitworklog() {
+git-massage() {
+  echo "Unstable. Seems to pop stash even when it didn't stash. Or something..."
+  exit 1
+  local stashed=$(test -z "$(git status --short --porcelain)")
+  if $stashed; then
+    git stash save --quiet --include-untracked 'autostash' && git rebase -i `git merge-base head master` && git stash pop
+  else
+    git rebase -i `git merge-base head master`
+  fi
+}
+
+git-worklog() {
   local since=$1
   local author=${2:=glenn}
 
