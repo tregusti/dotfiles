@@ -44,7 +44,7 @@ if [[ ! -f "$LOCK_FILE" ]]; then
   git config --global alias.d    'diff'
   git config --global alias.ds   'diff --staged'
   git config --global alias.f    'fetch -p'
-  git config --global alias.h    'log --pretty=format:"%C(yellow)%h%Creset %cd | %s%C(yellow)%d%Creset %C(red)(%an, %cr)%Creset" --graph --date=short'
+  git config --global alias.h    'log --pretty=format:"%C(yellow)%h%Creset %C(red)%cd%Creset %s%C(yellow)%d%Creset %C(red)(%an, %cr)%Creset" --graph --date=short'
   git config --global alias.hb   '! git h `git merge-base head master`..HEAD'
   git config --global alias.r    'rebase'
   git config --global alias.s    'status -s'
