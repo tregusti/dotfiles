@@ -9,4 +9,12 @@
 !/.tmux.conf
 !/.zshrc
 
+# Manage all files in .vim
+!/.vim
+# except the installed bundles
+/.vim/bundle
+# Manage vimrc
+!/.vimrc
+
 !/README.md
+
