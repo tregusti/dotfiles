@@ -10,7 +10,7 @@ alias grep='grep --color=auto'
 
 # http://stackoverflow.com/a/2183920
 # http://askubuntu.com/a/616615
-export LESS='--quit-if-one-screen --no-init --ignore-case --raw-control-chars'
+export LESS='--quit-if-one-screen --no-init --ignore-case --chop-long-lines --raw-control-chars'
 export PAGER='less'
 
 export EDITOR=nano

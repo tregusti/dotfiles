@@ -13,6 +13,7 @@ if [[ ! -f "$LOCK_FILE" ]]; then
   git config --global pull.rebase true
   git config --global pull.ff only
   git config --global merge.conflictstyle diff3
+  git config --global core.pager 'less -RFX'
   git config --global color.diff auto
   git config --global color.status auto
   git config --global color.interactive auto
@@ -26,29 +27,35 @@ if [[ ! -f "$LOCK_FILE" ]]; then
   git config --global alias.log 'log --topo-order'
   git config --global alias.pull 'pull -p'
 
+  # Pretty formats
+  git config --global pretty.log '%C(yellow)%h%Creset %C(red)%cd%Creset %s%C(yellow)%d%Creset %C(red)(%an, %cr)%Creset'
+
   # Aliases
-  git config --global alias.a    'add'
-  git config --global alias.ap   'add -p'
-  git config --global alias.b    'branch'
-  git config --global alias.ba   'branch --all'
-  git config --global alias.br   'branch --remote'
-  git config --global alias.brmm '! git branch --merged=master | cut -c3- | grep -v master | xargs git branch -d'
-  git config --global alias.c    'commit -v'
-  git config --global alias.ca   'commit -v -a'
-  git config --global alias.cm   'commit -m'
-  git config --global alias.cam  'commit -a -m'
-  git config --global alias.co   'checkout'
-  git config --global alias.cb   'checkout -b'
-  git config --global alias.cp   'cherry-pick'
-  git config --global alias.cpx  'cherry-pick -x'
-  git config --global alias.d    'diff'
-  git config --global alias.ds   'diff --staged'
-  git config --global alias.f    'fetch -p'
-  git config --global alias.h    'log --pretty=format:"%C(yellow)%h%Creset %C(red)%cd%Creset %s%C(yellow)%d%Creset %C(red)(%an, %cr)%Creset" --graph --date=short'
-  git config --global alias.hb   '! git h `git merge-base head master`..HEAD'
-  git config --global alias.r    'rebase'
-  git config --global alias.s    'status -s'
-  git config --global alias.m    'merge'
+  git config --global alias.a     'add'
+  git config --global alias.ap    'add -p'
+  git config --global alias.b     'branch'
+  git config --global alias.ba    'branch --all'
+  git config --global alias.br    'branch --remote'
+  git config --global alias.brmm  '! git branch --merged=master | cut -c3- | grep -v master | xargs git branch -d'
+  git config --global alias.c     'commit -v'
+  git config --global alias.ca    'commit -v -a'
+  git config --global alias.cm    'commit -m'
+  git config --global alias.cam   'commit -a -m'
+  git config --global alias.co    'checkout'
+  git config --global alias.cb    'checkout -b'
+  git config --global alias.cp    'cherry-pick'
+  git config --global alias.cpx   'cherry-pick -x'
+  git config --global alias.d     'diff --color'
+  git config --global alias.dw    'diff --color --color-words'
+  git config --global alias.ds    'diff --color --staged'
+  git config --global alias.dsw   'diff --color --staged --color-words'
+  git config --global alias.f     'fetch -p'
+  git config --global alias.h     'log --pretty=log --graph --date=short'
+  git config --global alias.hb    '! git h `git merge-base head master`..HEAD'
+  git config --global alias.r     'rebase'
+  git config --global alias.s     'status -s'
+  git config --global alias.showw 'show --color-words'
+  git config --global alias.m     'merge'
 
   rm -rf "$LOCK_FILE"
 fi
