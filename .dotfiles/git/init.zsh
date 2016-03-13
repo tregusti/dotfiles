@@ -53,9 +53,12 @@ if [[ ! -f "$LOCK_FILE" ]]; then
   git config --global alias.h     'log --pretty=log --graph --date=short'
   git config --global alias.hb    '! git h `git merge-base head master`..HEAD'
   git config --global alias.r     'rebase'
+  git config --global alias.root  'rev-parse --show-toplevel'
   git config --global alias.s     'status -s'
+  git config --global alias.serve '! git daemon --reuseaddr --verbose  --base-path=. --export-all ./.git'
   git config --global alias.showw 'show --color-words'
   git config --global alias.m     'merge'
+  git config --global alias.whois '! sh -c "git log -i -1 --pretty=\"format:%an <%ae>\" --author=\"$1\"" -'
 
   rm -rf "$LOCK_FILE"
 fi
