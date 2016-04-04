@@ -1,0 +1,92 @@
+snippet f "Anonymous function" w
+function($2) {${3:
+	$0
+}}${1:;}
+endsnippet
+
+snippet fun "Named function" w
+function ${1:name}($2) {
+	$0
+}
+endsnippet
+
+snippet iife "IIFE"
+(function() {
+	${1:'use strict';
+	}$0
+}());
+endsnippet
+
+snippet /** "JSDoc comment"
+/**
+ * $0
+ */
+endsnippet
+
+snippet .then "Promise .then handler" i
+.then(${1:function($3) {
+	$4
+}})${2:;}$0
+endsnippet
+
+snippet cl "console.log"
+console.log($1);$0
+endsnippet
+
+snippet cd "console.dir"
+console.dir($1);$0
+endsnippet
+
+snippet it "Mocha spec" b
+it('$1', function(${2:done}) {
+	$0
+});
+endsnippet
+
+snippet be "Mocha beforeEach" b
+beforeEach(function(${1:done}) {
+	$0
+});
+endsnippet
+
+snippet ae "Mocha afterEach" b
+afterEach(function() {
+	$0
+});
+endsnippet
+
+snippet des "Mocha describe" b
+describe('$1', function() {
+	$0
+});
+endsnippet
+
+snippet con "Mocha context" b
+context('$1', function() {
+	$0
+});
+endsnippet
+
+snippet when "Mocha 'when' context" b
+context('when $1', function() {
+	$0
+});
+endsnippet
+
+snippet with "Mocha 'with' context" b
+context('with $1', function() {
+	$0
+});
+endsnippet
+
+snippet ex "chai base expectation" b
+expect($1).to${2:.eventually}${3:.not}.${4:equal($5)};$0
+endsnippet
+
+snippet exc "chai expect invokation" b
+expect($1).to.have.been.called${2:Once};$0
+endsnippet
+
+snippet exp "chai expect property" b
+expect($1).to${2:.not}.have${3:.deep}.property('$4'${5:, $6});$0
+endsnippet

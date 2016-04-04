@@ -23,11 +23,18 @@ Plugin 'ctrlpvim/ctrlp.vim'
 " }}}
 " Completion {{{
 Plugin 'SirVer/ultisnips'
-Plugin 'Valloric/YouCompleteMe'
 " For YCM don't forget to compile on first install and some more times:
 " https://github.com/Valloric/YouCompleteMe#mac-os-x
 " }}}
+" Javascript {{{
+" https://davidosomething.com/blog/vim-for-javascript/
+Plugin 'othree/yajs.vim'
+Plugin 'gavocanov/vim-js-indent'
+" }}}
+Plugin 'terryma/vim-multiple-cursors'
 
+Plugin 'embear/vim-localvimrc'
+Plugin 'scrooloose/nerdcommenter'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 

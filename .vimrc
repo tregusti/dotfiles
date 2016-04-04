@@ -18,9 +18,10 @@ source ~/.vim/vundles.vim
 syntax enable           " enable syntax processing
 " }}}
 " Whitespace {{{
-set tabstop=2       " number of visual spaces per TAB
-set softtabstop=2   " number of spaces in tab when editing
 set expandtab       " tabs are spaces
+set softtabstop=2   " number of spaces in tab when editing
+set shiftwidth=2    " number of spaces in indentation with <<, >> and ==.
+
 " http://vim.wikia.com/wiki/Erasing_previously_entered_characters_in_insert_mode
 set backspace=indent,eol,start
 " }}}
@@ -52,8 +53,14 @@ set foldmethod=syntax   " fold based on code syntax
 " move vertically by visual line
 nnoremap j gj
 nnoremap k gk
-" }}}
 
+" Exit INSERT mode with quick `jk`
+imap jk <Esc>
+" }}}
+" File handling {{{
+set noswapfile
+nnoremap <f3> :Explore %:p:h<cr>
+" }}}
 runtime ~/.vim/settings/*.vim
 
 
