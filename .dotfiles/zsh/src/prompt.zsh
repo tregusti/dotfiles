@@ -83,6 +83,7 @@ current_dir() {
 
 # PROMPT DEFINITION
 
-export PROMPT='$(last_exit_code)$(current_user) at $(current_time) in $(current_dir)$(git_prompt) %# '
+export PROMPT='$(last_exit_code)$(current_user) in $(current_dir)$(git_prompt) %# '
 # export PROMPT='$(current_user)$(last_exit_code) at $(current_time) in $(current_dir) %# '
 export SPROMPT='zsh: Correct %F{red}%R%f to %F{green}%r%f [nyae]? '
+
