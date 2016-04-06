@@ -32,7 +32,7 @@ Plugin 'othree/yajs.vim'
 Plugin 'gavocanov/vim-js-indent'
 " }}}
 Plugin 'terryma/vim-multiple-cursors'
-
+Plugin 'editorconfig/editorconfig-vim'
 Plugin 'embear/vim-localvimrc'
 Plugin 'scrooloose/nerdcommenter'
 " All of your Plugins must be added before the following line
