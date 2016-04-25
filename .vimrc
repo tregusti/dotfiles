@@ -7,7 +7,7 @@ filetype off                  " required for Vundle
 
 " Change leader to a comma because the backslash is too far away
 " That means all \x commands turn into ,x
-" The mapleader has to be set before vundle starts loading all 
+" The mapleader has to be set before vundle starts loading all
 " the plugins.
 let mapleader=","       " leader is comma
 
@@ -16,6 +16,8 @@ source ~/.vim/vundles.vim
 " }}}
 " Colors {{{
 syntax enable           " enable syntax processing
+" https://upload.wikimedia.org/wikipedia/en/1/15/Xterm_256color_chart.svg
+highlight Folded ctermfg=Black ctermbg=Grey
 " }}}
 " Whitespace {{{
 set expandtab       " tabs are spaces
