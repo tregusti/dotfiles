@@ -3,7 +3,6 @@
 " https://github.com/skwp/dotfiles
 
 set nocompatible              " be iMproved, required
-filetype off                  " required for Vundle
 
 " Change leader to a comma because the backslash is too far away
 " That means all \x commands turn into ,x
@@ -11,8 +10,30 @@ filetype off                  " required for Vundle
 " the plugins.
 let mapleader=","       " leader is comma
 
-" Vundle {{{
-source ~/.vim/vundles.vim
+" Plugs {{{
+" https://github.com/junegunn/vim-plug#example
+call plug#begin('~/.vim/plugged')
+
+" Sensible defaults
+Plug 'tpope/vim-sensible'
+" Fast fuzzy file finder
+Plug 'ctrlpvim/ctrlp.vim'
+" Snippets for vim
+Plug 'SirVer/ultisnips'
+" https://davidosomething.com/blog/vim-for-javascript/
+Plug 'othree/yajs.vim'
+Plug 'gavocanov/vim-js-indent'
+" Mimic multiple cursors in Atom and Sublime
+Plug 'terryma/vim-multiple-cursors'
+" Configure indent and whitespaace rules per project
+Plug 'editorconfig/editorconfig-vim'
+" Allow per project configuration with .lvimrc files
+Plug 'embear/vim-localvimrc'
+" Quick commenting with <leader>c<space> and some more
+Plug 'scrooloose/nerdcommenter'
+
+" Add plugins to &runtimepath
+call plug#end()
 " }}}
 " Colors {{{
 syntax enable           " enable syntax processing

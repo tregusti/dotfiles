@@ -14,7 +14,7 @@
 # Manage all files in .vim
 !/.vim
 # except the installed bundles
-/.vim/bundle
+/.vim/plugged/
 # Manage vimrc
 !/.vimrc
 
