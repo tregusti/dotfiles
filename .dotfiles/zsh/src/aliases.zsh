@@ -11,5 +11,7 @@ alias ff='find . -type f -name'
 
 alias r!="echo Reloading... && source $HOME/.zshrc"
 
+alias bup='brew update && brew upgrade'
+
 # https://github.com/chalk/supports-color/blob/711d47f3835c7297142e92ef5c71862394009c24/index.js#L68
 [[ $IS_CYGWIN ]] && alias gulp="FORCE_COLOR=on gulp"
