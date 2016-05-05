@@ -88,7 +88,13 @@ expect($1).to${2:.eventually}${3:.not}.${4:equal($5)};$0
 endsnippet
 
 snippet exc "chai expect invokation" b
-expect($1).to.have.been.called${2:Once};$0
+expect($1).to.${2:not.}have.been.called${3:Once};$0
+endsnippet
+
+snippet ext "chai expect throw" b
+expect(${1:function() {
+  $0
+}}).to.${2:not.}throw($3);
 endsnippet
 
 snippet exp "chai expect property" b
