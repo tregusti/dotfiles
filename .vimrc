@@ -31,12 +31,28 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'embear/vim-localvimrc'
 " Quick commenting with <leader>c<space> and some more
 Plug 'scrooloose/nerdcommenter'
+" git integration
+Plug 'tpope/vim-fugitive'
+
+" Status bar theming
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'bling/vim-bufferline'
+Plug 'jmcantrell/vim-virtualenv'
+Plug 'edkolev/tmuxline.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
 " }}}
-" Colors {{{
+" Theming {{{
 syntax enable           " enable syntax processing
+let g:airline_theme = 'solarized'
+let g:airline_solarized_bg = 'light'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#branch#format = 2
+let g:airline#extensions#tmuxline#enabled = 1
+let g:airline#extensions#tmuxline#snapshot_file = "~/.tmux-statusline-colors.conf"
+
 " https://upload.wikimedia.org/wikipedia/en/1/15/Xterm_256color_chart.svg
 highlight Folded ctermfg=Black ctermbg=Grey
 " }}}
