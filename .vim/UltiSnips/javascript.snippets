@@ -4,6 +4,12 @@ function($2) {${3:
 }}${1:;}
 endsnippet
 
+snippet = "Arrow function" i
+${1:($2)} => ${3:{
+  $0
+}}${4:;}
+endsnippet
+
 snippet fun "Named function" w
 function ${1:name}($2) {
 	$0
@@ -25,6 +31,12 @@ snippet /** "JSDoc comment"
 /**
  * $0
  */
+endsnippet
+
+snippet prom "new Promise" w
+new Promise(function(resolve, reject) {
+	$0
+})${1:;}
 endsnippet
 
 snippet .then "Promise .then handler" i
@@ -83,20 +95,20 @@ context('with $1', function() {
 });
 endsnippet
 
-snippet ex "chai base expectation" b
+snippet ex "chai base expectation" w
 expect($1).to${2:.eventually}${3:.not}.${4:equal($5)};$0
 endsnippet
 
-snippet exc "chai expect invokation" b
+snippet exc "chai expect invokation" w
 expect($1).to.${2:not.}have.been.called${3:Once};$0
 endsnippet
 
-snippet ext "chai expect throw" b
+snippet ext "chai expect throw" w
 expect(${1:function() {
   $0
 }}).to.${2:not.}throw($3);
 endsnippet
 
-snippet exp "chai expect property" b
+snippet exp "chai expect property" w
 expect($1).to${2:.not}.have${3:.deep}.property('$4'${5:, $6});$0
 endsnippet
