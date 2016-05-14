@@ -102,6 +102,8 @@ nnoremap <f3> :Explore %:p:h<cr>
 " }}}
 runtime ~/.vim/settings/*.vim
 
+" Delete current buffer and go to previous buffer
+nnoremap <leader>bk :bp\|:bd #<cr>
 
 " highlight last inserted text
 nnoremap gV `[v`]
