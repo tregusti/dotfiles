@@ -52,6 +52,10 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#branch#format = 2
 let g:airline#extensions#tmuxline#enabled = 1
 let g:airline#extensions#tmuxline#snapshot_file = "~/.tmux-statusline-colors.conf"
+" Based on the original value from airline, remove the file scroll
+" percentage.
+let g:airline_section_z = '%#__accent_bold#%{g:airline_symbols.linenr}%#__accent_bold#%4l%#__restore__#%#__restore__#%#__accent_bold#%#__accent_bold#/%L%{g:airline_symbols.maxlinenr}%#__restore__#%#__restore__# :%3v'
+" original:          %3p%% %#__accent_bold#%{g:airline_symbols.linenr}%#__accent_bold#%4l%#__restore__#%#__restore__#%#__accent_bold#%#__accent_bold#/%L%{g:airline_symbols.maxlinenr}%#__restore__#%#__restore__# :%3v
 
 " https://upload.wikimedia.org/wikipedia/en/1/15/Xterm_256color_chart.svg
 highlight Folded ctermfg=Black ctermbg=Grey
