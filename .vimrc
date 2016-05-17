@@ -33,6 +33,8 @@ Plug 'embear/vim-localvimrc'
 Plug 'scrooloose/nerdcommenter'
 " git integration
 Plug 'tpope/vim-fugitive'
+" git syntax
+Plug 'tpope/vim-git'
 
 " Status bar theming
 Plug 'vim-airline/vim-airline'
