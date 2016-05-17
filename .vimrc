@@ -106,7 +106,9 @@ imap jk <Esc>
 set noswapfile
 nnoremap <f3> :Explore %:p:h<cr>
 " }}}
-runtime ~/.vim/settings/*.vim
+for rcfile in split(globpath("~/.vim/settings", "*.vim"), '\n')
+  execute('source '.rcfile)
+endfor
 
 " Delete current buffer and go to previous buffer
 nnoremap <leader>bk :bp\|:bd #<cr>
