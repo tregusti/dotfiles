@@ -4,10 +4,6 @@
 
 set nocompatible              " be iMproved, required
 
-" Change leader to a comma because the backslash is too far away
-" That means all \x commands turn into ,x
-" The mapleader has to be set before vundle starts loading all
-" the plugins.
 let mapleader=" "       " leader is space
 
 " Plugs {{{
@@ -91,8 +87,10 @@ nnoremap <leader><space> :nohlsearch<CR>
 set foldenable          " enable folding
 set foldlevelstart=10   " open most folds by default
 set foldnestmax=10      " 10 nested fold max
-" space open/closes folds
-nnoremap , za
+" open/closes folds
+nnoremap <leader>f za
+nnoremap <leader>F zA
+
 set foldmethod=syntax   " fold based on code syntax
 " }}}
 " Movement {{{
