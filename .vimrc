@@ -8,7 +8,7 @@ set nocompatible              " be iMproved, required
 " That means all \x commands turn into ,x
 " The mapleader has to be set before vundle starts loading all
 " the plugins.
-let mapleader=","       " leader is comma
+let mapleader=" "       " leader is space
 
 " Plugs {{{
 " https://github.com/junegunn/vim-plug#example
@@ -35,6 +35,8 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 " git syntax
 Plug 'tpope/vim-git'
+" custom fold text with indentation
+Plug 'tregusti/FoldText'
 
 " Status bar theming
 Plug 'vim-airline/vim-airline'
@@ -90,7 +92,7 @@ set foldenable          " enable folding
 set foldlevelstart=10   " open most folds by default
 set foldnestmax=10      " 10 nested fold max
 " space open/closes folds
-nnoremap <space> za
+nnoremap , za
 set foldmethod=syntax   " fold based on code syntax
 " }}}
 " Movement {{{
@@ -110,8 +112,14 @@ for rcfile in split(globpath("~/.vim/settings", "*.vim"), '\n')
   execute('source '.rcfile)
 endfor
 
+" Make yanked stuff be exposed to OS clipboard.
+" If this is not set, you can always yank to register + manually.
+set clipboard=unnamed
+
 " Delete current buffer and go to previous buffer
 nnoremap <leader>bk :bp\|:bd #<cr>
+
+nnoremap <leader>r :so ~/.vimrc<cr>
 
 " highlight last inserted text
 nnoremap gV `[v`]
