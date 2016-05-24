@@ -6,7 +6,7 @@ endsnippet
 
 snippet = "Arrow function" i
 ${1:($2)} => ${3:{
-  $0
+	$0
 }}${4:;}
 endsnippet
 
@@ -100,7 +100,7 @@ context('with $1', function() {
 endsnippet
 
 snippet ex "chai base expectation" w
-expect($1).to${2:.eventually}${3:.not}.${4:equal($5)};$0
+expect($1).to${2:.eventually}${3:.not}${4:.deep}.${5:equal($6)};$0
 endsnippet
 
 snippet exc "chai expect invokation" w
