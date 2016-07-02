@@ -31,13 +31,22 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 " git syntax
 Plug 'tpope/vim-git'
+" git gutter info
+Plug 'airblade/vim-gitgutter'
+" Repeat plugin commands with . too
+Plug 'tpope/vim-repeat'
+" Pairwise commands with [ and ]
+Plug 'tpope/vim-unimpaired'
 " custom fold text with indentation
-Plug 'tregusti/FoldText'
+Plug 'Konfekt/FoldText'
+" Syntax checker
+" Plug 'scrooloose/syntastic'
+" Python folding
+Plug 'tmhedberg/SimpylFold'
 
 " Status bar theming
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'bling/vim-bufferline'
 Plug 'jmcantrell/vim-virtualenv'
 Plug 'edkolev/tmuxline.vim'
 
@@ -58,7 +67,7 @@ let g:airline_section_z = '%#__accent_bold#%{g:airline_symbols.linenr}%#__accent
 " original:          %3p%% %#__accent_bold#%{g:airline_symbols.linenr}%#__accent_bold#%4l%#__restore__#%#__restore__#%#__accent_bold#%#__accent_bold#/%L%{g:airline_symbols.maxlinenr}%#__restore__#%#__restore__# :%3v
 
 " https://upload.wikimedia.org/wikipedia/en/1/15/Xterm_256color_chart.svg
-highlight Folded ctermfg=Black ctermbg=Grey
+highlight Folded ctermfg=0 ctermbg=36
 " }}}
 " Whitespace {{{
 set expandtab       " tabs are spaces
@@ -70,6 +79,7 @@ set backspace=indent,eol,start
 " }}}
 " UI config {{{
 set number              " show line numbers
+set relativenumber      " show number relative to current line
 set showcmd             " show command in bottom bar
 set cursorline          " highlight current line
 filetype indent on      " load filetype-specific indent files
@@ -81,17 +91,21 @@ set showmatch           " highlight matching [{()}]
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
 " turn off search highlight
-nnoremap <leader><space> :nohlsearch<CR>
+nnoremap <silent> <leader><space> :nohlsearch<CR>
 " }}}
 " Folding  {{{
 set foldenable          " enable folding
-set foldlevelstart=10   " open most folds by default
+set foldlevelstart=0    " close all folds by default
 set foldnestmax=10      " 10 nested fold max
 " open/closes folds
 nnoremap <leader>f za
 nnoremap <leader>F zA
 
 set foldmethod=syntax   " fold based on code syntax
+
+" https://github.com/tmhedberg/SimpylFold#configuration
+autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
+autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
 " }}}
 " Movement {{{
 
@@ -104,6 +118,7 @@ imap jk <Esc>
 " }}}
 " File handling {{{
 set noswapfile
+set autowrite   " Autosave buffers
 nnoremap <f3> :Explore %:p:h<cr>
 " }}}
 for rcfile in split(globpath("~/.vim/settings", "*.vim"), '\n')
