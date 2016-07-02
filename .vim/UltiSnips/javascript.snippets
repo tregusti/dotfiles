@@ -43,6 +43,14 @@ new Promise(function(resolve, reject) {
 })${1:;}
 endsnippet
 
+snippet cla "class" w
+class $1 ${2:extends ${3:Super }}{
+	${4:constructor($5) {
+		$0
+	}}
+}
+endsnippet
+
 snippet .then "Promise .then handler" i
 .then(${1:function($3) {
 	$4
