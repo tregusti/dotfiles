@@ -7,7 +7,7 @@ endsnippet
 snippet = "Arrow function" i
 ${1:($2)} => ${3:{
 	$0
-}}${4:;}
+}${4:;}}
 endsnippet
 
 snippet fun "Named function" w
@@ -66,13 +66,13 @@ console.dir($1);$0
 endsnippet
 
 snippet it "Mocha spec" b
-it('$1', function(${2:done}) {
+it('$1', function($2) {
 	$0
 });
 endsnippet
 
 snippet be "Mocha beforeEach" b
-beforeEach(function(${1:done}) {
+beforeEach(function($1) {
 	$0
 });
 endsnippet
