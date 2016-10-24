@@ -29,6 +29,9 @@ Plug 'embear/vim-localvimrc'
 Plug 'scrooloose/nerdcommenter'
 " git integration
 Plug 'tpope/vim-fugitive'
+
+map <leader>g :Gstatus<cr>
+
 " git syntax
 Plug 'tpope/vim-git'
 " git gutter info
