@@ -53,6 +53,15 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'jmcantrell/vim-virtualenv'
 Plug 'edkolev/tmuxline.vim'
 
+" Better searches with silver searcher
+Plug 'mileszs/ack.vim'
+let g:ackprg = 'ag --vimgrep --smart-case'
+cnoreabbrev ag Ack
+cnoreabbrev aG Ack
+cnoreabbrev Ag Ack
+cnoreabbrev AG Ack
+
+
 " Add plugins to &runtimepath
 call plug#end()
 " }}}
