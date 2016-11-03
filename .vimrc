@@ -142,7 +142,7 @@ endfor
 set clipboard=unnamed
 
 " Delete current buffer and go to previous buffer
-nnoremap <leader>bk :bp\|:bd #<cr>
+nnoremap <leader>bk :b #\|:bd #<cr>
 
 nnoremap <leader>r :so ~/.vimrc<cr>
 
