@@ -61,6 +61,9 @@ cnoreabbrev aG Ack
 cnoreabbrev Ag Ack
 cnoreabbrev AG Ack
 
+Plug 'moll/vim-node', { 'for': 'javascript' }
+
+Plug 'groenewege/vim-less', { 'for': 'less' }
 
 " Add plugins to &runtimepath
 call plug#end()
