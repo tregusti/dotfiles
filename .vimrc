@@ -65,6 +65,8 @@ Plug 'moll/vim-node', { 'for': 'javascript' }
 
 Plug 'groenewege/vim-less', { 'for': 'less' }
 
+Plug 'rhysd/vim-gfm-syntax', { 'for': 'markdown' }
+
 " Add plugins to &runtimepath
 call plug#end()
 " }}}
@@ -83,6 +85,10 @@ let g:airline_section_z = '%#__accent_bold#%{g:airline_symbols.linenr}%#__accent
 
 " https://upload.wikimedia.org/wikipedia/en/1/15/Xterm_256color_chart.svg
 highlight Folded ctermfg=0 ctermbg=36
+
+" Hightlight code blocks in markdown files
+let g:markdown_fenced_languages = ['html', 'javascript', 'js=javascript', 'json=javascript']
+
 " }}}
 " Whitespace {{{
 set expandtab       " tabs are spaces
