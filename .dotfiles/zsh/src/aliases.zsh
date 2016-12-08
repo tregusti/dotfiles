@@ -14,4 +14,5 @@ alias r!="echo Reloading... && source $HOME/.zshrc"
 alias bup='brew update && brew upgrade'
 
 # https://github.com/chalk/supports-color/blob/711d47f3835c7297142e92ef5c71862394009c24/index.js#L68
-[[ $IS_CYGWIN ]] && alias gulp="FORCE_COLOR=on gulp"
+# https://github.com/Marak/colors.js/blob/9f3ace44700b8e705cb15be4767845c311b3ae11/lib/system/supports-colors.js#L34
+[[ $IS_CYGWIN ]] && alias gulp="FORCE_COLOR=on gulp --color=true"
