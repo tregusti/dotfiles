@@ -10,15 +10,18 @@ let mapleader=" "       " leader is space
 " https://github.com/junegunn/vim-plug#example
 call plug#begin('~/.vim/plugged')
 
+""" GENERIC
+
 " Sensible defaults
 Plug 'tpope/vim-sensible'
-" Fast fuzzy file finder
-Plug 'ctrlpvim/ctrlp.vim'
+" Surround stuff
+Plug 'tpope/vim-surround'
 " Snippets for vim
 Plug 'SirVer/ultisnips'
-" https://davidosomething.com/blog/vim-for-javascript/
-Plug 'othree/yajs.vim'
-Plug 'gavocanov/vim-js-indent'
+" Repeat plugin commands with . too
+Plug 'tpope/vim-repeat'
+" Pairwise commands with [ and ]
+Plug 'tpope/vim-unimpaired'
 " Mimic multiple cursors in Atom and Sublime
 Plug 'terryma/vim-multiple-cursors'
 " Configure indent and whitespaace rules per project
@@ -27,6 +30,26 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'embear/vim-localvimrc'
 " Quick commenting with <leader>c<space> and some more
 Plug 'scrooloose/nerdcommenter'
+
+""" JAVASCRIPT
+
+" https://davidosomething.com/blog/vim-for-javascript/
+Plug 'othree/yajs.vim', { 'for': 'javascript' }
+Plug 'gavocanov/vim-js-indent'
+Plug 'othree/es.next.syntax.vim', { 'for': 'javascript' }
+Plug 'mxw/vim-jsx', { 'for': 'javascript' }
+Plug 'moll/vim-node', { 'for': 'javascript' }
+
+""" CSS
+
+Plug 'groenewege/vim-less', { 'for': 'less' }
+
+""" MARKDOWN
+
+Plug 'rhysd/vim-gfm-syntax', { 'for': 'markdown' }
+
+""" GIT
+
 " git integration
 Plug 'tpope/vim-fugitive'
 
@@ -36,22 +59,21 @@ map <leader>g :Gstatus<cr>
 Plug 'tpope/vim-git'
 " git gutter info
 Plug 'airblade/vim-gitgutter'
-" Repeat plugin commands with . too
-Plug 'tpope/vim-repeat'
-" Pairwise commands with [ and ]
-Plug 'tpope/vim-unimpaired'
+
+""" FOLDING
+
 " custom fold text with indentation
 Plug 'Konfekt/FoldText'
-" Syntax checker
-" Plug 'scrooloose/syntastic'
 " Python folding
 Plug 'tmhedberg/SimpylFold'
 
-" Status bar theming
+""" THEMING
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'jmcantrell/vim-virtualenv'
 Plug 'edkolev/tmuxline.vim'
+
+""" FILES
 
 " Better searches with silver searcher
 Plug 'mileszs/ack.vim'
@@ -61,11 +83,8 @@ cnoreabbrev aG Ack
 cnoreabbrev Ag Ack
 cnoreabbrev AG Ack
 
-Plug 'moll/vim-node', { 'for': 'javascript' }
-
-Plug 'groenewege/vim-less', { 'for': 'less' }
-
-Plug 'rhysd/vim-gfm-syntax', { 'for': 'markdown' }
+" Fast fuzzy file finder
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
