@@ -30,6 +30,8 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'embear/vim-localvimrc'
 " Quick commenting with <leader>c<space> and some more
 Plug 'scrooloose/nerdcommenter'
+" Support * search in visual mode
+Plug 'thinca/vim-visualstar'
 
 """ JAVASCRIPT
 
