@@ -45,6 +45,9 @@ Plug 'moll/vim-node', { 'for': 'javascript' }
 """ HTML
 
 Plug 'othree/html5.vim'
+" Zen coding
+" https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL
+Plug 'mattn/emmet-vim', { 'for': 'html' }
 
 """ CSS
 
