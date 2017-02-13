@@ -57,6 +57,12 @@ snippet .then "Promise .then handler" i
 }})${2:;}$0
 endsnippet
 
+snippet .catch "Promise .catch handler" i
+.catch(${1:function($3) {
+	$4
+}})${2:;}$0
+endsnippet
+
 snippet cl "console.log"
 console.log($1);$0
 endsnippet
@@ -66,9 +72,9 @@ console.dir($1);$0
 endsnippet
 
 snippet it "Mocha spec" b
-it('$1', function($2) {
+it('$1'${2:, function($3) {
 	$0
-});
+}});
 endsnippet
 
 snippet be "Mocha beforeEach" b
