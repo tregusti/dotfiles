@@ -42,6 +42,10 @@ Plug 'othree/es.next.syntax.vim', { 'for': 'javascript' }
 Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'moll/vim-node', { 'for': 'javascript' }
 
+""" HTML
+
+Plug 'othree/html5.vim'
+
 """ CSS
 
 Plug 'groenewege/vim-less', { 'for': 'less' }
