@@ -62,6 +62,8 @@ if [[ ! -f "$LOCK_FILE" ]]; then
   git config --global alias.showw 'show --color-words'
   git config --global alias.m     'merge'
   git config --global alias.whois '! sh -c "git log -i -1 --pretty=\"format:%an <%ae>\" --author=\"$1\"" -'
+  git config --global alias.find-merge '! git show-branch "$1" | cut -c 2-8'
+  git config --global alias.show-merge '! git show `git find-merge $1`'
 
   rm -rf "$LOCK_FILE"
 fi
