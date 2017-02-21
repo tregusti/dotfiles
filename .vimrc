@@ -135,6 +135,14 @@ filetype indent on      " load filetype-specific indent files
 set wildmenu            " visual autocomplete for command menu
 set lazyredraw          " redraw only when we need to.
 set showmatch           " highlight matching [{()}]
+
+" Block cursor in NORMAL
+" Line cursor in INSERT
+" https://github.com/mintty/mintty/wiki/Tips#mode-dependent-cursor-in-vim
+let &t_ti.="\e[1 q"
+let &t_SI.="\e[5 q"
+let &t_EI.="\e[1 q"
+let &t_te.="\e[0 q"
 " }}}
 " Searching {{{
 set incsearch           " search as characters are entered
@@ -186,17 +194,6 @@ nnoremap <leader>r :so ~/.vimrc<cr>
 " highlight last inserted text
 nnoremap gV `[v`]
 
-" Tmux {{{
-
-" allows cursor change in tmux mode
-if exists('$TMUX')
-    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-else
-    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-endif
-" }}}
 " Custom functions {{{
 
 " toggle between number and relativenumber
