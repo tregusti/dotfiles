@@ -3,6 +3,7 @@
 !/.editorconfig
 
 !/.dotfiles
+!/.config
 
 !/.dotfiles.gitignore
 !/.gitmodules
