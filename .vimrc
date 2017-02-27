@@ -125,6 +125,9 @@ set shiftwidth=2    " number of spaces in indentation with <<, >> and ==.
 
 " http://vim.wikia.com/wiki/Erasing_previously_entered_characters_in_insert_mode
 set backspace=indent,eol,start
+
+" toggle white spaces
+nnoremap <leader>w :set list!<cr>
 " }}}
 " UI config {{{
 set number              " show line numbers
