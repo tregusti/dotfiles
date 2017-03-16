@@ -95,6 +95,12 @@ cnoreabbrev AG Ack
 " Fast fuzzy file finder
 Plug 'ctrlpvim/ctrlp.vim'
 
+Plug 'scrooloose/nerdtree'
+
+map <C-e> :NERDTreeFind<cr>
+
+let NERDTreeWinSize = 40
+
 " Add plugins to &runtimepath
 call plug#end()
 " }}}
