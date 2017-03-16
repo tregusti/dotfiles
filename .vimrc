@@ -117,8 +117,9 @@ let g:airline#extensions#tmuxline#snapshot_file = "~/.tmux-statusline-colors.con
 let g:airline_section_z = '%#__accent_bold#%{g:airline_symbols.linenr}%#__accent_bold#%4l%#__restore__#%#__restore__#%#__accent_bold#%#__accent_bold#/%L%{g:airline_symbols.maxlinenr}%#__restore__#%#__restore__# :%3v'
 " original:          %3p%% %#__accent_bold#%{g:airline_symbols.linenr}%#__accent_bold#%4l%#__restore__#%#__restore__#%#__accent_bold#%#__accent_bold#/%L%{g:airline_symbols.maxlinenr}%#__restore__#%#__restore__# :%3v
 
-" https://upload.wikimedia.org/wikipedia/en/1/15/Xterm_256color_chart.svg
-highlight Folded ctermfg=0 ctermbg=36
+" https://commons.wikimedia.org/wiki/File:Xterm_256color_chart.svg
+highlight Folded ctermfg=0 ctermbg=39
+highlight Search ctermfg=15 ctermbg=57
 
 " Hightlight code blocks in markdown files
 let g:markdown_fenced_languages = ['html', 'javascript', 'js=javascript', 'json=javascript']
@@ -158,6 +159,12 @@ set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
 " turn off search highlight
 nnoremap <silent> <leader><space> :nohlsearch<CR>
+
+" http://stackoverflow.com/a/2288438 and read comments too
+" Really good for searching, might be bad for replacing though.
+set ignorecase
+set smartcase
+
 " }}}
 " Folding  {{{
 set foldenable          " enable folding
@@ -181,11 +188,23 @@ nnoremap k gk
 
 " Exit INSERT mode with quick `jk`
 imap jk <Esc>
+
+" https://robots.thoughtbot.com/vim-splits-move-faster-and-more-naturally#easier-split-navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" More natural split directions
+set splitbelow
+set splitright
 " }}}
 " File handling {{{
 set noswapfile
 set autowrite   " Autosave buffers
 nnoremap <f3> :Explore %:p:h<cr>
+
+autocmd BufWritePre *.py,*.js,*.json,*.cs,*.xml,*.html,*.less,*.css :call <SID>StripTrailingWhitespaces()
 " }}}
 for rcfile in split(globpath("~/.vim/settings", "*.vim"), '\n')
   execute('source '.rcfile)
