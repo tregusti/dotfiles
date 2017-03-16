@@ -39,7 +39,7 @@ if [[ ! -f "$LOCK_FILE" ]]; then
   git config --global alias.b     'branch'
   git config --global alias.ba    'branch --all'
   git config --global alias.br    'branch --remote'
-  git config --global alias.brmm  '! git branch --merged=master | cut -c3- | grep -v master | xargs git branch -d'
+  git config --global alias.brmm  '! BRMM_BRANCH=$(git config --get custom.defaultBranch || echo master) && git branch --merged=$BRMM_BRANCH | cut -c3- | grep -v $BRMM_BRANCH | xargs git branch -d'
   git config --global alias.c     'commit -v'
   git config --global alias.ca    'commit -v -a'
   git config --global alias.cm    'commit -m'
