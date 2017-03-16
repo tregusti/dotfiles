@@ -56,6 +56,7 @@ if [[ ! -f "$LOCK_FILE" ]]; then
   git config --global alias.h     'log --pretty=log --graph --date=short'
   git config --global alias.hb    '! git h $(git merge-base head $(git config --get custom.defaultBranch || echo master))..HEAD'
   git config --global alias.r     'rebase'
+  git config --global alias.puff  'push --force-with-lease'
   git config --global alias.root  'rev-parse --show-toplevel'
   git config --global alias.s     'status -s'
   git config --global alias.serve '! git daemon --enable=receive-pack --reuseaddr --informative-errors --verbose  --base-path=. --export-all ./.git'
