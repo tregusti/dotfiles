@@ -37,18 +37,34 @@ snippet /** "JSDoc comment"
  */
 endsnippet
 
-snippet prom "new Promise" w
-new Promise(function(resolve, reject) {
-	$0
-})${1:;}
-endsnippet
-
 snippet cla "class" w
 class $1 ${2:extends ${3:Super }}{
 	${4:constructor($5) {
 		$0
 	}}
 }
+endsnippet
+
+snippet	req "require CommonJS module" w
+const ${2:`!p
+import re
+
+updash = lambda m: m.group(1).upper()
+
+out = t[1]
+out = re.sub(r'gulp-(\S)', r'\1', out)
+out = re.sub(r'-([a-z])', updash, out)
+
+snip.rv = out
+`} = require('$1');
+endsnippet
+
+# PROMISES
+
+snippet prom "new Promise" w
+new Promise(function(resolve, reject) {
+	$0
+})${1:;}
 endsnippet
 
 snippet .then "Promise .then handler" i
@@ -63,6 +79,8 @@ snippet .catch "Promise .catch handler" i
 }})${2:;}$0
 endsnippet
 
+# CONSOLE
+
 snippet cl "console.log"
 console.log($1);$0
 endsnippet
@@ -70,6 +88,8 @@ endsnippet
 snippet cd "console.dir"
 console.dir($1);$0
 endsnippet
+
+# MOCHA
 
 snippet it "Mocha spec" b
 it('$1'${2:, function($3) {
@@ -113,6 +133,8 @@ context('with $1', function() {
 });
 endsnippet
 
+# CHAI and pals
+
 snippet ex "chai base expectation" w
 expect($1).to${2:.eventually}${3:.not}${4:.deep}.${5:equal($6)};$0
 endsnippet
@@ -140,4 +162,8 @@ endsnippet
 
 snippet exi "chai expect instance" w
 expect($1).to${2:.eventually}${3:.not}.be.an.instanceof($4);$0
+endsnippet
+
+snippet exd "chai-dom expectation" b
+expect($1${2:.querySelector${3:All}('$4')}).to${5:.not}.${6:exist};$0
 endsnippet
