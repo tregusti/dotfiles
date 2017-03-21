@@ -97,6 +97,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'scrooloose/nerdtree'
 
+let NERDTreeQuitOnOpen=1
 map <C-e> :NERDTreeFind<cr>
 
 let NERDTreeWinSize = 40
