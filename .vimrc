@@ -135,7 +135,7 @@ set shiftwidth=2    " number of spaces in indentation with <<, >> and ==.
 set backspace=indent,eol,start
 
 " toggle white spaces
-nnoremap <leader>w :set list!<cr>
+nnoremap <silent> <leader>w :set list!<cr>
 " }}}
 " UI config {{{
 set number              " show line numbers
