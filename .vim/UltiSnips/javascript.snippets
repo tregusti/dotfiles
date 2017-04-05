@@ -23,6 +23,24 @@ snippet iife "IIFE"
 }());
 endsnippet
 
+snippet if "if clause" b
+if ($1) {
+	$2
+}$0
+endsnippet
+
+snippet else "else clause" w
+else {
+	$1
+}$0
+endsnippet
+
+snippet elif "else if clause" w
+else if ($1) {
+	$2
+}$0
+endsnippet
+
 snippet us "use strict" b
 'use strict';$0
 endsnippet
