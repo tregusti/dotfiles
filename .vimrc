@@ -213,7 +213,9 @@ endfor
 
 " Make yanked stuff be exposed to OS clipboard.
 " If this is not set, you can always yank to register + manually.
-set clipboard=unnamed
+if $TMUX == ''
+  set clipboard=unnamed
+endif
 
 " Delete current buffer and go to previous buffer
 nnoremap <leader>bk :b #\|:bd #<cr>
