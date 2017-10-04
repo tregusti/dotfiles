@@ -57,6 +57,10 @@ Plug 'groenewege/vim-less', { 'for': 'less' }
 
 Plug 'rhysd/vim-gfm-syntax', { 'for': 'markdown' }
 
+""" CS/RAZOR
+
+Plug 'OrangeT/vim-csharp'
+
 """ GIT
 
 " git integration
