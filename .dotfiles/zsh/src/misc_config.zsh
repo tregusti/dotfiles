@@ -2,6 +2,8 @@
 export TERM=xterm-256color
 export CLICOLOR=1
 export LSCOLORS=ExFxcxdxbxegedabagacad
+# Needed for X server (rel to xclip for tmux)
+export DISPLAY=:0
 
 # set vim mode in zsh
 # https://reza.jelveh.me/2011/09/18/zsh-tmux-vi-mode-cursor
