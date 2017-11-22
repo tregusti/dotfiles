@@ -50,6 +50,7 @@ if [[ ! -f "$LOCK_FILE" ]]; then
   git config --global alias.cp    'cherry-pick'
   git config --global alias.cpx   'cherry-pick -x'
   git config --global alias.d     'diff --color --ws-error-highlight=all'
+  git config --global alias.db    '! git d $(git merge-base head $(git config --get custom.defaultBranch || echo master))'
   git config --global alias.dw    'diff --color --ws-error-highlight=all --color-words'
   git config --global alias.ds    'diff --color --ws-error-highlight=all --staged'
   git config --global alias.dsw   'diff --color --ws-error-highlight=all --staged --color-words'
