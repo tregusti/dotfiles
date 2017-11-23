@@ -184,6 +184,8 @@ set foldmethod=syntax   " fold based on code syntax
 " https://github.com/tmhedberg/SimpylFold#configuration
 autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
 autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
+
+nnoremap <silent> <f8> :call MochaFolds()<cr>
 " }}}
 " Movement {{{
 
@@ -251,6 +253,27 @@ function! <SID>StripTrailingWhitespaces()
   %s/\s\+$//e
   let @/=_s
   call cursor(l, c)
+endfunction
+
+function! MochaFolds()
+  let originalline = line(".")
+  set foldlevel=0
+  call feedkeys("gg", 'tx')
+  call feedkeys("zX", 'tx')
+  let curr = 0
+  let prev = -1
+  while curr != prev
+    echom "line " . curr
+    if getline(".") =~ "^\\s*\\(describe\\|context\\)"
+      call feedkeys("zo", 'tx')
+      echom "match"
+    endif
+    call feedkeys("zj", 'tx')
+    let prev = curr
+    let curr = line(".")
+  endwhile
+  set nohlsearch
+  call cursor(originalline, 0)
 endfunction
 
 " }}}
