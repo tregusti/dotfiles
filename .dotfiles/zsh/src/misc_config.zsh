@@ -5,6 +5,9 @@ export LSCOLORS=ExFxcxdxbxegedabagacad
 # Needed for X server (rel to xclip for tmux)
 export DISPLAY=:0
 
+# Use 4 spaced for tabs in CLI
+tabs 4
+
 # set vim mode in zsh
 # https://reza.jelveh.me/2011/09/18/zsh-tmux-vi-mode-cursor
 bindkey -v

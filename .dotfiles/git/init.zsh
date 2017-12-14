@@ -14,7 +14,7 @@ if [[ ! -f "$LOCK_FILE" ]]; then
   git config --global pull.ff only
   git config --global merge.conflictstyle diff3
   git config --global core.editor vim
-  git config --global core.pager 'less -RFX'
+  git config --global core.pager 'less -RFX -x1,5k'
   git config --global color.diff auto
   git config --global color.status auto
   git config --global color.interactive auto
