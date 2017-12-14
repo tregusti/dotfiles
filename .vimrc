@@ -134,12 +134,6 @@ let g:markdown_fenced_languages = ['html', 'javascript', 'js=javascript', 'json=
 set expandtab       " tabs are spaces
 set softtabstop=2   " number of spaces in tab when editing
 set shiftwidth=2    " number of spaces in indentation with <<, >> and ==.
-
-" http://vim.wikia.com/wiki/Erasing_previously_entered_characters_in_insert_mode
-set backspace=indent,eol,start
-
-" toggle white spaces
-nnoremap <silent> <leader>w :set list!<cr>
 " }}}
 " UI config {{{
 set number              " show line numbers
@@ -160,7 +154,6 @@ let &t_EI.="\e[1 q"
 let &t_te.="\e[0 q"
 " }}}
 " Searching {{{
-set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
 " turn off search highlight
 nnoremap <silent> <leader><space> :nohlsearch<CR>
