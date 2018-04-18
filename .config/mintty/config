@@ -24,4 +24,4 @@ BoldWhite=253,246,227
 # https://github.com/runsisi/consolas-font-for-powerline
 BoldAsFont=-1
 Font=Powerline Consolas
-FontHeight=8
+FontHeight=9
