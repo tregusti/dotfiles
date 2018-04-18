@@ -121,6 +121,12 @@ it('$1'${2:, function($3) {
 }});
 endsnippet
 
+snippet ait "Async mocha spec" b
+it('$1'${2:, masync(async function() {
+	$0
+})});
+endsnippet
+
 snippet be "Mocha beforeEach" b
 beforeEach(function($1) {
 	$0
