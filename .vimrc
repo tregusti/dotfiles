@@ -137,7 +137,6 @@ set shiftwidth=2    " number of spaces in indentation with <<, >> and ==.
 " }}}
 " UI config {{{
 set number              " show line numbers
-set relativenumber      " show number relative to current line
 set showcmd             " show command in bottom bar
 set cursorline          " highlight current line
 filetype indent on      " load filetype-specific indent files
