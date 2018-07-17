@@ -42,6 +42,9 @@ Plug 'othree/es.next.syntax.vim', { 'for': 'javascript' }
 Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'moll/vim-node', { 'for': 'javascript' }
 
+Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+Plug 'Quramy/vim-js-pretty-template'
+
 """ HTML
 
 Plug 'othree/html5.vim'
@@ -49,9 +52,13 @@ Plug 'othree/html5.vim'
 " https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL
 Plug 'mattn/emmet-vim', { 'for': 'html' }
 
+" Handlebars templating
+Plug 'mustache/vim-mustache-handlebars'
+
 """ CSS
 
 Plug 'groenewege/vim-less', { 'for': 'less' }
+Plug 'iloginow/vim-stylus'
 
 """ MARKDOWN
 
