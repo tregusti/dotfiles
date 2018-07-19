@@ -218,8 +218,11 @@ endfor
 
 " Make yanked stuff be exposed to OS clipboard.
 " If this is not set, you can always yank to register + manually.
-if $TMUX == ''
-  set clipboard=unnamed
+if has('nvim')
+  " See :h clipboard-provider
+  set clipboard+=unnamedplus
+else
+  set clipboard+=unnamed
 endif
 
 " Delete current buffer and go to previous buffer
