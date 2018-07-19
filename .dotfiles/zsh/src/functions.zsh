@@ -11,3 +11,8 @@ function syntax() {
 
   highlight -S $1 -O ansi $2
 }
+
+
+function flushdns() {
+  sudo killall -HUP mDNSResponder
+}
