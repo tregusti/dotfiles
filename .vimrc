@@ -6,6 +6,11 @@ set nocompatible              " be iMproved, required
 
 let mapleader=" "       " leader is space
 
+" https://medium.com/@dnrvs/per-project-settings-in-nvim-fc8c8877d970
+" Allow per project .n?vimrv files to be loaded.
+set exrc
+set secure
+
 " Plugs {{{
 " https://github.com/junegunn/vim-plug#example
 call plug#begin('~/.vim/plugged')
