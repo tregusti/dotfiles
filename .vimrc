@@ -38,6 +38,12 @@ Plug 'scrooloose/nerdcommenter'
 " Support * search in visual mode
 Plug 'thinca/vim-visualstar'
 
+" Async linting of code
+Plug 'w0rp/ale'
+" https://github.com/w0rp/ale#5xi-how-can-i-use-the-quickfix-list-instead-of-the-loclist
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+
 """ JAVASCRIPT
 
 " https://davidosomething.com/blog/vim-for-javascript/
