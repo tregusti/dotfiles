@@ -50,7 +50,7 @@ let g:ale_set_quickfix = 1
 Plug 'othree/yajs.vim', { 'for': 'javascript' }
 Plug 'gavocanov/vim-js-indent'
 Plug 'othree/es.next.syntax.vim', { 'for': 'javascript' }
-Plug 'mxw/vim-jsx', { 'for': 'javascript' }
+" Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'moll/vim-node', { 'for': 'javascript' }
 
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
