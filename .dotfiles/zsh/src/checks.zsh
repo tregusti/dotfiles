@@ -4,6 +4,10 @@ if [[ $(uname) =~ linux ]]; then
   export IS_LINUX=0
 fi
 
+if [[ $IS_LINUX && $(uname -a) =~ Microsoft ]]; then
+  export IS_WSL=0
+fi
+
 if [[ $(uname) =~ darwin ]]; then
   export IS_MAC=0
 fi
