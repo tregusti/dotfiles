@@ -27,6 +27,8 @@ if [[ ! -f "$LOCK_FILE" ]]; then
   # For cygwin issues with singleKey
   # 1. https://github.com/transcode-open/apt-cyg
   # 2. apt-cyg install perl-TermReadKey
+  # For linux issues:
+  # sudo apt cyg install libterm-readkey-perl
   git config --global interactive.singleKey true
 
   # Command defaults
