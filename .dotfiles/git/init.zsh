@@ -21,7 +21,9 @@ if [[ ! -f "$LOCK_FILE" ]]; then
   git config --global color.branch auto
   # Better diff algorithm
   # https://github.com/blog/2188-git-2-9-has-been-released
-  git config --global diff.compactionHeuristic=true
+  # https://blog.github.com/2016-11-29-git-2-11-has-been-released/#sundries
+  # git config --global diff.indentHeuristic=true
+
   # For cygwin issues with singleKey
   # 1. https://github.com/transcode-open/apt-cyg
   # 2. apt-cyg install perl-TermReadKey
