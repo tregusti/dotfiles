@@ -37,7 +37,8 @@ zle -N zle-line-init
 # 10 ms timeout instead of the default 400
 export KEYTIMEOUT=1
 
-
+# Expose bins in dofiles
+export PATH=$PATH:~/.dotfiles/bin
 
 # Enable color in grep
 # http://www.gnu.org/software/grep/manual/html_node/Environment-Variables.html
