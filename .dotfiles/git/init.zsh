@@ -1,5 +1,3 @@
-alias git='LC_ALL=en_GB git'
-
 [[ `git config --get user.name` ]]  || echo 'No user name set for git.'
 [[ `git config --get user.email` ]] || echo 'No user email set for git.'
 
