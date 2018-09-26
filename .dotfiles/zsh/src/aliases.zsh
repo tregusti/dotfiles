@@ -9,6 +9,9 @@ alias fd='find . -type d -name'
 alias ff='find . -type f -name'
 
 
+alias d='docker'
+alias dc='docker-compose'
+
 alias r!="echo Reloading... && source $HOME/.zshrc"
 
 alias bup='brew update && brew upgrade'
