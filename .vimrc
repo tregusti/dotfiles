@@ -114,6 +114,9 @@ cnoreabbrev aG Ack
 cnoreabbrev Ag Ack
 cnoreabbrev AG Ack
 
+""" TMUX SPLITS
+Plug 'christoomey/vim-tmux-navigator'
+
 " Fast fuzzy file finder
 Plug 'ctrlpvim/ctrlp.vim'
 
