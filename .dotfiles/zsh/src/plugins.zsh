@@ -14,11 +14,9 @@ bindkey "$terminfo[kcud1]" history-substring-search-down
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
-# bind P and N for EMACS mode
-bindkey -M emacs '^P' history-substring-search-up
-bindkey -M emacs '^N' history-substring-search-down
+# bind k and j for navigating hostory
+# k and j conflicts with tmux/vim pane nav, so use p and n.
+bindkey '^p' history-substring-search-up
+bindkey '^n' history-substring-search-down
 
-# bind k and j for VI mode
-# conflicts with tmux/vim split config...
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
+bindkey '^r' history-incremental-search-backward

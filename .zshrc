@@ -8,7 +8,6 @@ source $HOME/.dotfiles/zsh/src/plugins.zsh
 source $HOME/.dotfiles/zsh/src/aliases.zsh
 source $HOME/.dotfiles/zsh/src/functions.zsh
 source $HOME/.dotfiles/zsh/src/prompt.zsh
-source $HOME/.dotfiles/zsh/src/vi-mode.zsh
 
 source $HOME/.dotfiles/go/init.zsh
 source $HOME/.dotfiles/git/init.zsh
