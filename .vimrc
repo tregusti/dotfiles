@@ -37,6 +37,8 @@ Plug 'embear/vim-localvimrc'
 Plug 'scrooloose/nerdcommenter'
 " Support * search in visual mode
 Plug 'thinca/vim-visualstar'
+" Highlight yanked text
+Plug 'machakann/vim-highlightedyank'
 
 " Async linting of code
 Plug 'w0rp/ale'
