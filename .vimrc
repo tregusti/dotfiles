@@ -185,6 +185,9 @@ nnoremap <silent> <leader><space> :nohlsearch<CR>
 set ignorecase
 set smartcase
 
+" Live preview of replace result
+:set inccommand=split
+
 " }}}
 " Folding  {{{
 set foldenable          " enable folding
