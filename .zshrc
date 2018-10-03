@@ -13,4 +13,14 @@ source $HOME/.dotfiles/go/init.zsh
 source $HOME/.dotfiles/git/init.zsh
 source $HOME/.dotfiles/nvm/init.zsh
 
+#### FUZZY FINDER
+# https://github.com/junegunn/fzf#using-homebrew-or-linuxbrew
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# https://github.com/sharkdp/fd#on-macos
+export FZF_COMPLETION_TRIGGER='..'
+test ! -z "$(whence fd)" && export FZF_DEFAULT_COMMAND='fd'
+
+# FZF_DEFAULT_OPTS=''
+
+
 test -f $HOME/.localrc && source $HOME/.localrc

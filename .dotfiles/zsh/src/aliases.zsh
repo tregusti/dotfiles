@@ -5,10 +5,6 @@ alias la='ll -A'   # long list, show almost all
 alias lt='ll -t'   # long list, sorted by date, show type, human readable
 
 
-alias fd='find . -type d -name'
-alias ff='find . -type f -name'
-
-
 alias d='docker'
 alias dc='docker-compose'
 
