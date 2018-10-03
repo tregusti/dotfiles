@@ -39,6 +39,10 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'thinca/vim-visualstar'
 " Highlight yanked text
 Plug 'machakann/vim-highlightedyank'
+" Quick navigation: https://vimawesome.com/plugin/easymotion
+Plug 'easymotion/vim-easymotion'
+" Align text around something: https://vimawesome.com/plugin/vim-easy-align
+Plug 'junegunn/vim-easy-align'
 
 " Async linting of code
 Plug 'w0rp/ale'
