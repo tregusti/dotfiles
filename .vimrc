@@ -44,6 +44,20 @@ Plug 'easymotion/vim-easymotion'
 " Align text around something: https://vimawesome.com/plugin/vim-easy-align
 Plug 'junegunn/vim-easy-align'
 
+
+""" AUTOCOMPLETE
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+" Use deoplete
+let g:deoplete#enable_at_startup = 1
+
+
+
 " Async linting of code
 Plug 'w0rp/ale'
 " https://github.com/w0rp/ale#5xi-how-can-i-use-the-quickfix-list-instead-of-the-loclist
@@ -54,8 +68,8 @@ let g:ale_set_quickfix = 1
 
 " https://davidosomething.com/blog/vim-for-javascript/
 Plug 'othree/yajs.vim', { 'for': 'javascript' }
-Plug 'gavocanov/vim-js-indent'
 Plug 'othree/es.next.syntax.vim', { 'for': 'javascript' }
+Plug 'gavocanov/vim-js-indent'
 " Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'moll/vim-node', { 'for': 'javascript' }
 
