@@ -8,7 +8,7 @@ alias lt='ll -t'   # long list, sorted by date, show type, human readable
 alias d='docker'
 alias dc='docker-compose'
 
-alias r!="echo Reloading... && source $HOME/.zshrc"
+alias reload="echo Reloading... && source $HOME/.zshrc"
 
 alias bup='brew update && brew upgrade'
 
