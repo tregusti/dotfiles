@@ -126,19 +126,37 @@ Plug 'edkolev/tmuxline.vim'
 
 """ FILES
 
+" Fast fuzzy file finder
+Plug 'ctrlpvim/ctrlp.vim'
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files --exclude-standard -co |& egrep -v "\.(png|jpg|jpeg|gif)$|node_modules"']
+
+
 " Better searches with silver searcher
-Plug 'mileszs/ack.vim'
-let g:ackprg = 'ag --vimgrep --smart-case'
-cnoreabbrev ag Ack
-cnoreabbrev aG Ack
-cnoreabbrev Ag Ack
-cnoreabbrev AG Ack
+" https://robots.thoughtbot.com/faster-grepping-in-vim
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+
+  " create command :Ag to search like grep but with custom args.
+  command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+  nnoremap \ :Ag<SPACE>
+
+endif
+
 
 """ TMUX SPLITS
 Plug 'christoomey/vim-tmux-navigator'
-
-" Fast fuzzy file finder
-Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'scrooloose/nerdtree'
 
@@ -196,7 +214,10 @@ let &t_te.="\e[0 q"
 " Searching {{{
 set hlsearch            " highlight matches
 " turn off search highlight
-nnoremap <silent> <leader><space> :nohlsearch<CR>
+nnoremap <silent> <leader>h :nohlsearch<CR>
+
+" Map to search for current word in PWD
+nnoremap <silent> <leader>* :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " http://stackoverflow.com/a/2288438 and read comments too
 " Really good for searching, might be bad for replacing though.
