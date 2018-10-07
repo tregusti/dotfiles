@@ -6,6 +6,16 @@ Install by doing this:
 zsh -c "$(curl -fsSL https://raw.githubusercontent.com/tregusti/dotfiles/master/.dotfiles/bin/install)"
 ```
 
+## TouchBar
+
+Due to this incredibly stupid thing, I have learned off with using the REAL Escape key,
+and instead using Ctrl-C in combination with single touch of [Ctrl that is remapped to
+Escape with Karabiner](https://www.codeography.com/2017/07/16/the-next-era-of-remapping-caps-lock.html).
+
+## Cygwin
+
+Should work ok.
+
 ## Using WSL in Ubuntu on Windows
 
 To get the colors correct (solarized), read more on [reddit](https://www.reddit.com/r/bashonubuntuonwindows/comments/60da1u/solarized_colors_for_vim_in_bash_on_windows_works/).
