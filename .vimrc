@@ -170,8 +170,9 @@ call plug#end()
 " }}}
 " Theming {{{
 syntax enable           " enable syntax processing
+" https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized
 let g:airline_theme = 'solarized'
-let g:airline_solarized_bg = 'light'
+let g:airline_solarized_bg = 'dark'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#branch#format = 2
 let g:airline#extensions#tmuxline#enabled = 1
@@ -181,9 +182,14 @@ let g:airline#extensions#tmuxline#snapshot_file = "~/.tmux-statusline-colors.con
 let g:airline_section_z = '%#__accent_bold#%{g:airline_symbols.linenr}%#__accent_bold#%4l%#__restore__#%#__restore__#%#__accent_bold#%#__accent_bold#/%L%{g:airline_symbols.maxlinenr}%#__restore__#%#__restore__# :%3v'
 " original:          %3p%% %#__accent_bold#%{g:airline_symbols.linenr}%#__accent_bold#%4l%#__restore__#%#__restore__#%#__accent_bold#%#__accent_bold#/%L%{g:airline_symbols.maxlinenr}%#__restore__#%#__restore__# :%3v
 
+" Custom coloring
 " https://commons.wikimedia.org/wiki/File:Xterm_256color_chart.svg
-highlight Folded ctermfg=0 ctermbg=39
 highlight Search ctermfg=15 ctermbg=57
+if g:airline_solarized_bg == 'dark'
+  highlight Folded ctermfg=136 ctermbg=25
+else
+  highlight Folded ctermfg=0 ctermbg=39
+endif
 
 " Hightlight code blocks in markdown files
 let g:markdown_fenced_languages = ['html', 'javascript', 'js=javascript', 'json=javascript']
