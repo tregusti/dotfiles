@@ -1,0 +1,77 @@
+# Colouring and the wip thing is taken partly from:
+# http://jordi.inversethought.com/blog/customising-mercurial-like-a-pro/
+
+# More info:
+# https://gregoryszorc.com/blog/2013/05/12/thoughts-on-mercurial-%28and-git%29/
+
+[extensions]
+pager=
+progress=
+histedit=
+purge=
+shelve=
+# https://www.mercurial-scm.org/wiki/FsMonitorExtension
+# requites watchman installed
+# https://facebook.github.io/watchman/docs/install.html
+fsmonitor=
+
+[pager]
+pager=LESS='FRX' less
+
+[ui]
+username=Glenn Jorde <glenn@tregusti.com>
+
+[revsetalias]
+wip = (parents(not public()) or not public() or . or head()) and not closed()
+
+[templates]
+oneline = '{xcset} {xnode} {xdate} {xdesc}{xrefs} {xuser} {xage}'
+wip = '{xbranch} {xcset} {xuser} {xtags} {xbook}\n{xdesc}'
+
+[alias]
+wip = log --graph --rev=wip --template=wip
+h = log --graph --template=oneline
+
+[templatealias]
+xbranch = '{label("log.branch",
+                 ifeq(branch, "default",
+                      "",
+                      branch))}'
+xrefs = '{strip(" {xtags} {xbook}")}'
+xnode = '{label("changeset.{phase}", shortest(node, 6))}'
+xdate = '{label("darkred", date|shortdate)}'
+xage =  '{label("red", date|age)}'
+xcset = '{label("changeset.{phase}", rev)}'
+xuser = '{label("grep.user", author|user)}'
+xtags = '{label("log.tag", if(tags," {tags}"))}'
+xbook = '{bookmarks % "{ifeq(bookmark, currentbookmark,
+                             label('log.activebookmark', bookmark),
+                             label('log.bookmark', bookmark))} "}'
+xdesc = '{label(ifcontains(rev, revset('parents()'), 'desc.here'), desc|firstline)}'
+
+[color]
+mode=terminfo
+
+# Custom colours
+# https://commons.wikimedia.org/wiki/File:Xterm_256color_chart.svg
+color.orange=202
+color.lightyellow=191
+color.darkorange=220
+color.darkred=124
+color.brightyellow=226
+
+# Colours for each label
+log.branch=cyan
+log.bookmark=green
+log.tag=darkorange
+log.user=magenta
+log.activebookmark = green bold underline
+
+changeset.public=orange bold
+changeset.secret=blue bold
+changeset.draft=yellow
+
+desc.here=bold underline
+
+[experimental]
+graphshorten = true
