@@ -83,6 +83,10 @@ snip.rv = out
 `} = require('$1');
 endsnippet
 
+snippet imp "ES6 import module" w
+import ${1:${2:{ $3 }} from }'$4';
+endsnippet
+
 # PROMISES
 
 snippet prom "new Promise" w
@@ -196,4 +200,49 @@ endsnippet
 
 snippet exd "chai-dom expectation" b
 expect($1${2:.querySelector${3:All}('$4')}).to${5:.not}.${6:exist};$0
+endsnippet
+
+# REACT
+
+snippet rc "React Component" b
+class $1 extends React.Component {
+	render() {
+		return (
+			<React.Fragment>
+				$0
+			</React.Fragment>
+		);
+	}
+}
+endsnippet
+
+snippet rcd "React Component (full document)" b
+import compose from 'lodash/flowRight';
+import React from 'react';
+import { observer, inject } from "mobx-react"
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+});
+
+class ${1:`!p
+import os
+snip.rv = os.path.splitext(fn)[0]
+`} extends React.Component {
+	render() {
+		const { classes, ui } = this.props;
+
+		return (
+			<React.Fragment>
+				$0
+			</React.Fragment>
+		);
+	}
+}
+
+export default compose(
+	withStyles(styles),
+	inject('ui'),
+	observer,
+)($1);
 endsnippet
