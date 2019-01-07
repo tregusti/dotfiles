@@ -9,6 +9,8 @@ pager=
 progress=
 histedit=
 purge=
+rebase=
+strip=
 shelve=
 # https://www.mercurial-scm.org/wiki/FsMonitorExtension
 # requites watchman installed
@@ -31,6 +33,7 @@ wip = '{xbranch} {xcset} {xuser} {xtags} {xbook}\n{xdesc}'
 [alias]
 wip = log --graph --rev=wip --template=wip
 h = log --graph --template=oneline
+hb = h -b .
 
 [templatealias]
 xbranch = '{label("log.branch",
