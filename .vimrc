@@ -31,8 +31,9 @@ Plug 'tpope/vim-unimpaired'
 Plug 'terryma/vim-multiple-cursors'
 " Configure indent and whitespaace rules per project
 Plug 'editorconfig/editorconfig-vim'
+let g:EditorConfig_max_line_indicator='exceeding'
 " Allow per project configuration with .lvimrc files
-Plug 'embear/vim-localvimrc'
+" Plug 'embear/vim-localvimrc'
 " Quick commenting with <leader>c<space> and some more
 Plug 'scrooloose/nerdcommenter'
 " Support * search in visual mode
@@ -64,13 +65,21 @@ Plug 'w0rp/ale'
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 
+
+" Pretty code is nice!
+" Plug 'prettier/vim-prettier', {
+"   \ 'do': 'yarn install',
+"   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml'] }
+
+""" JENKINS / GROOVY
+Plug 'martinda/Jenkinsfile-vim-syntax'
 """ JAVASCRIPT
 
 " https://davidosomething.com/blog/vim-for-javascript/
 Plug 'othree/yajs.vim', { 'for': 'javascript' }
 Plug 'othree/es.next.syntax.vim', { 'for': 'javascript' }
 Plug 'gavocanov/vim-js-indent'
-" Plug 'mxw/vim-jsx', { 'for': 'javascript' }
+Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'moll/vim-node', { 'for': 'javascript' }
 
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
@@ -89,7 +98,7 @@ Plug 'mustache/vim-mustache-handlebars'
 """ CSS
 
 Plug 'groenewege/vim-less', { 'for': 'less' }
-Plug 'iloginow/vim-stylus'
+Plug 'iloginow/vim-stylus', { 'for': 'stylus' }
 
 """ MARKDOWN
 
@@ -102,9 +111,7 @@ Plug 'OrangeT/vim-csharp'
 """ GIT
 
 " git integration
-Plug 'tpope/vim-fugitive'
-
-map <leader>g :Gstatus<cr>
+" Plug 'tpope/vim-fugitive'
 
 " git syntax
 Plug 'tpope/vim-git'
@@ -116,12 +123,12 @@ Plug 'airblade/vim-gitgutter'
 " custom fold text with indentation
 Plug 'Konfekt/FoldText'
 " Python folding
-Plug 'tmhedberg/SimpylFold'
+Plug 'tmhedberg/SimpylFold', { 'for': 'python' }
 
 """ THEMING
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'jmcantrell/vim-virtualenv'
+" Plug 'jmcantrell/vim-virtualenv'
 Plug 'edkolev/tmuxline.vim'
 
 """ FILES
@@ -134,7 +141,6 @@ let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files --exclude-standard -co |& egrep -v "\.(png|jpg|jpeg|gif)$|node_modules"']
-
 
 " Better searches with silver searcher
 " https://robots.thoughtbot.com/faster-grepping-in-vim
