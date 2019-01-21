@@ -237,7 +237,10 @@ set ignorecase
 set smartcase
 
 " Live preview of replace result
-:set inccommand=split
+if exists('&inccommand')
+  " Only in neovim so far
+  set inccommand=split
+endif
 
 " }}}
 " Folding  {{{
