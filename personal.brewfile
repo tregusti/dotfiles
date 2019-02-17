@@ -3,11 +3,12 @@ brew 'svtplay-dl'
 brew 'libdvdcss' # If you would ever rip drm disks in handbrake
 
 # Apps
+# cask 'sophos-anti-virus-home-edition' # Not a cask anymore
 cask 'backblaze'
 cask 'drobo-dashboard'
 cask 'handbrake'
+cask 'istat-menus'
 cask 'private-internet-access'
-# cask 'sophos-anti-virus-home-edition' # Not a cask anymore
 cask 'spotify'
 cask 'steam'
 cask 'transmission'
