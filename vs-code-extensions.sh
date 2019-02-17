@@ -6,6 +6,7 @@ code --install-extension dsznajder.es7-react-js-snippets
 code --install-extension esbenp.prettier-vscode
 code --install-extension flowtype.flow-for-vscode
 code --install-extension joelday.docthis
+code --install-extension mechatroner.rainbow-csv
 code --install-extension mrcrowl.hg
 code --install-extension ms-python.python
 code --install-extension ms-vscode.vscode-typescript-tslint-plugin
