@@ -1,0 +1,20 @@
+# Core
+brew 'svtplay-dl'
+brew 'libdvdcss' # If you would ever rip drm disks in handbrake
+
+# Apps
+cask 'backblaze'
+cask 'drobo-dashboard'
+cask 'handbrake'
+cask 'private-internet-access'
+# cask 'sophos-anti-virus-home-edition' # Not a cask anymore
+cask 'spotify'
+cask 'steam'
+cask 'transmission'
+cask 'vlc'
+
+# MAS
+mas 'Keynote', id: 409183694
+mas 'Numbers', id: 409203825
+mas 'Pages', id: 409201541
+mas 'Pixelmator', id: 407963104
