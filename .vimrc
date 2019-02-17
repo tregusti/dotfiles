@@ -85,6 +85,8 @@ Plug 'moll/vim-node', { 'for': 'javascript' }
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'Quramy/vim-js-pretty-template'
 
+Plug 'galooshi/vim-import-js', { 'do': 'test `which importjsd` \|\| npm install -g import-js' }
+
 """ HTML
 
 Plug 'othree/html5.vim'
