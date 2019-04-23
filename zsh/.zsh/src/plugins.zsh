@@ -1,8 +1,8 @@
-source $HOME/.dotfiles/zsh/vendor/zsh-completions/zsh-completions.plugin.zsh
+source $HOME/.dotfiles/zsh/.zsh/vendor/zsh-completions/zsh-completions.plugin.zsh
 autoload -U compinit && compinit
 
 ### History search
-source $HOME/.dotfiles/zsh/vendor/zsh-history-substring-search/zsh-history-substring-search.plugin.zsh
+source $HOME/.dotfiles/zsh/.zsh/vendor/zsh-history-substring-search/zsh-history-substring-search.plugin.zsh
 
 # bind UP and DOWN arrow keys
 zmodload zsh/terminfo
