@@ -27,6 +27,21 @@ stow */
 stow git
 ```
 
+## Installing brews
+
+Install `brew` as per: https://brew.sh/
+
+Then:
+
+```sh
+brew bundle
+
+# core packages
+brew bundle --file core.brewfile
+# optionally for my primary machine (or something, this needs to be structured better)
+brew bundle --file personal.brewfile
+```
+
 ## TouchBar
 
 Due to this incredibly stupid thing, I have learned off with using the REAL Escape key,
