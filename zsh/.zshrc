@@ -1,6 +1,7 @@
 # Inspired by http://zanshin.net/2013/02/02/zsh-configuration-from-the-ground-up/
 
 # Plugs via zplugs
+export ZPLUG_HOME=~/.zplug
 if [[ ! -d ~/.zplug ]]; then
   git clone https://github.com/zplug/zplug ~/.zplug
 fi
@@ -30,18 +31,14 @@ fi
 
 zplug load
 
-source $HOME/.dotfiles/zsh/src/checks.zsh
-source $HOME/.dotfiles/zsh/src/colors.zsh
-source $HOME/.dotfiles/zsh/src/setopt.zsh
-source $HOME/.dotfiles/zsh/src/misc_config.zsh
-source $HOME/.dotfiles/zsh/src/plugins.zsh
-source $HOME/.dotfiles/zsh/src/aliases.zsh
-source $HOME/.dotfiles/zsh/src/functions.zsh
-# source $HOME/.dotfiles/zsh/src/prompt.zsh
-
-source $HOME/.dotfiles/go/init.zsh
-source $HOME/.dotfiles/git/init.zsh
-source $HOME/.dotfiles/nvm/init.zsh
+source $HOME/.zsh/src/checks.zsh
+source $HOME/.zsh/src/colors.zsh
+source $HOME/.zsh/src/setopt.zsh
+source $HOME/.zsh/src/misc_config.zsh
+source $HOME/.zsh/src/plugins.zsh
+source $HOME/.zsh/src/aliases.zsh
+source $HOME/.zsh/src/functions.zsh
+# source $HOME/.zsh/src/prompt.zsh
 
 #### FUZZY FINDER
 # https://github.com/junegunn/fzf#using-homebrew-or-linuxbrew

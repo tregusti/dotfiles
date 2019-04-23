@@ -1,6 +1,6 @@
-[submodule ".dotfiles/zsh/vendor/zsh-completions"]
-	path = .dotfiles/zsh/vendor/zsh-completions
+[submodule "zsh/.zsh/vendor/zsh-completions"]
+	path = zsh/.zsh/vendor/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
-[submodule ".dotfiles/zsh/vendor/zsh-history-substring-search"]
-	path = .dotfiles/zsh/vendor/zsh-history-substring-search
+[submodule "zsh/zsh/vendor/zsh-history-substring-search"]
+	path = zsh/zsh/vendor/zsh-history-substring-search
 	url = https://github.com/zsh-users/zsh-history-substring-search.git

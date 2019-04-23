@@ -1,9 +1,30 @@
 # My dotfiles
 
-Install by doing this:
+## Prerequisites
+
+```
+git
+stow
+```
+
+Install with `brew` or `apt-get` or something similar.
+
+## Install
 
 ```sh
-zsh -c "$(curl -fsSL https://raw.githubusercontent.com/tregusti/dotfiles/master/.dotfiles/bin/install)"
+git clone https://github.com/tregusti/dotfiles ~/.dotfiles
+```
+
+`.dotfiles` location is mandatory for now.
+
+Then to enable the dotties, use [`stow`](https://alexpearce.me/2016/02/managing-dotfiles-with-stow/) like this:
+
+```sh
+cd ~/.dotfiles
+# All configs, last slash is important to only target directories
+stow */
+# Some specific config
+stow git
 ```
 
 ## TouchBar
@@ -63,6 +84,7 @@ From: http://tipsonubuntu.com/2016/09/13/vim-8-0-released-install-ubuntu-16-04/
 
 Inspiration for this dotfiles repo has been taken from:
 
+- https://github.com/alexpearce/dotfiles
 - https://github.com/zanshin/dotfiles
 - http://zanshin.net/2013/02/02/zsh-configuration-from-the-ground-up/
 - https://github.com/joakimkarlsson/dotfiles
