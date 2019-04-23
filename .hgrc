@@ -18,7 +18,7 @@ shelve=
 fsmonitor=
 
 [pager]
-pager=LESS='FRX' less
+pager=LESS='FRX' less -d
 
 [ui]
 username=Glenn Jorde <glenn@tregusti.com>
@@ -31,9 +31,11 @@ oneline = '{xcset} {xnode} {xdate} {xdesc}{xrefs} {xuser} {xage}'
 wip = '{xbranch} {xcset} {xuser} {xtags} {xbook}\n{xdesc}'
 
 [alias]
-wip = log --graph --rev=wip --template=wip
-h = log --graph --template=oneline
+log = log -f
+wip = log -f --graph --rev=wip --template=wip
+h = log -f --graph --template=oneline --pager=on
 hb = h -b .
+diff = diff --git
 
 [templatealias]
 xbranch = '{label("log.branch",
