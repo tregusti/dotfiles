@@ -42,7 +42,8 @@ source $HOME/.zsh/src/functions.zsh
 
 #### FUZZY FINDER
 # https://github.com/junegunn/fzf#using-homebrew-or-linuxbrew
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# but also check if fzf is available, since it might now due to not stowed
+test -f ~/.fzf.zsh && test ! -z `command -v fzf` && source ~/.fzf.zsh
 # https://github.com/sharkdp/fd#on-macos
 export FZF_COMPLETION_TRIGGER='..'
 test ! -z "$(whence fd)" && export FZF_DEFAULT_COMMAND='fd'
