@@ -16,6 +16,11 @@ fi
 
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
+# nvm as a zsh plugin
+export NVM_DIR="$HOME/.config/nvm"
+zplug 'lukechilds/zsh-nvm'
+
+
 # cool prompt:
 zplug denysdovhan/spaceship-prompt, use:spaceship.zsh, from:github, as:theme
 export SPACESHIP_BATTERY_THRESHOLD=30
@@ -35,6 +40,7 @@ source $HOME/.zsh/src/checks.zsh
 source $HOME/.zsh/src/colors.zsh
 source $HOME/.zsh/src/setopt.zsh
 source $HOME/.zsh/src/misc_config.zsh
+source $HOME/.zsh/src/nvm-autoload.zsh
 source $HOME/.zsh/src/plugins.zsh
 source $HOME/.zsh/src/aliases.zsh
 source $HOME/.zsh/src/functions.zsh
@@ -49,6 +55,5 @@ export FZF_COMPLETION_TRIGGER='..'
 test ! -z "$(whence fd)" && export FZF_DEFAULT_COMMAND='fd'
 
 # FZF_DEFAULT_OPTS=''
-
 
 test -f $HOME/.localrc && source $HOME/.localrc
