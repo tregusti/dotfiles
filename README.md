@@ -37,9 +37,9 @@ Then:
 brew bundle
 
 # core packages
-brew bundle --file core.brewfile
+brew bundle --file=core.brewfile
 # optionally for my primary machine (or something, this needs to be structured better)
-brew bundle --file personal.brewfile
+brew bundle --file=personal.brewfile
 ```
 
 ## TouchBar
