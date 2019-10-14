@@ -11,3 +11,4 @@ code --install-extension ms-python.python
 code --install-extension ms-vscode.vscode-typescript-tslint-plugin
 code --install-extension msjsdiag.debugger-for-chrome
 code --install-extension vscodevim.vim
+code --install-extension dunstontc.viml
