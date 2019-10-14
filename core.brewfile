@@ -59,9 +59,8 @@ cask 'font-source-sans-pro'
 cask 'font-source-serif-pro'
 
 # MAS
-# This might fail, then take a look at https://github.com/mas-cli/mas#-install
-tap mas-cli/tap
-tap-pin mas-cli/tap
+# Potentially this needs to be installed before supporting the mas command.
+# Then manually install mas first.
 brew mas
 
 mas 'Divvy', id: 413857545
