@@ -8,7 +8,6 @@ brew 'alfred'
 # Apps
 # cask 'sophos-anti-virus-home-edition' # Not a cask anymore
 cask 'backblaze'
-cask 'drobo-dashboard'
 cask 'handbrake'
 cask 'istat-menus'
 cask 'private-internet-access'
@@ -16,6 +15,9 @@ cask 'spotify'
 cask 'steam'
 cask 'transmission'
 cask 'vlc'
+
+tap 'homebrew/cask-drivers'
+cask 'drobo-dashboard'
 
 # MAS
 mas 'Airmail', id: 918858936
