@@ -1,6 +1,9 @@
+# See this list as an inspiration
+
 # Core
 brew 'svtplay-dl'
 brew 'libdvdcss' # If you would ever rip drm disks in handbrake
+brew 'alfred'
 
 # Apps
 # cask 'sophos-anti-virus-home-edition' # Not a cask anymore
