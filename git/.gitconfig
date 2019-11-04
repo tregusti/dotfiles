@@ -6,10 +6,9 @@
 	dump = cat-file -p
 	h = log --pretty=log --graph --date=short
 	log = log --topo-order
-
-	# Always preserve merges!
-	rebase = rebase --preserve-merges
-
+	# Use cousins or not? https://stackoverflow.com/a/56533595/299958
+	rebase = rebase --rebase-merges
+	
 	s = status -s
 	m = merge
 	c = commit -v
