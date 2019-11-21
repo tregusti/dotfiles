@@ -17,6 +17,9 @@ brew 'zsh-completions'
 brew 'git'
 brew 'hg'
 brew 'node'
+brew 'vim'
+brew 'neovim'
+brew 'python3'
 
 # Apps
 cask '1password'
