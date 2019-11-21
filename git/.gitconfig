@@ -45,11 +45,20 @@
 	find-merge = ! git show-branch \"$1\" | cut -c 2-8
 	show-merge = ! git show `git find-merge $1`
 
+# Color values and config info:
+# https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-config
 [color]
 	diff = auto
 	status = auto
 	interactive = auto
-	branch = auto
+  ui = auto
+  branch = auto
+[color "decorate"]
+  head = white
+  branch = yellow
+  remoteBranch = magenta
+  stash = blue
+  tag = green
 [core]
 	editor = vim
 	autocrlf = input
@@ -78,4 +87,4 @@
 [interactive]
 	singleKey = true
 [pretty]
-	log = %C(yellow)%h%Creset %C(red)%cd%Creset %s%C(yellow)%d%Creset %C(red)(%an, %cr)%Creset
+	log = %C(yellow)%h%Creset %C(red)%cd%Creset %s%C(auto)%d%Creset %C(red)(%an, %cr)%Creset
