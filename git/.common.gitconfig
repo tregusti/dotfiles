@@ -91,3 +91,5 @@
 	singleKey = true
 [pretty]
 	log = %C(yellow)%h%Creset %C(red)%cd%Creset %s%C(auto)%d%Creset %C(red)(%an, %cr)%Creset
+[init]
+  defaultBranch = main
