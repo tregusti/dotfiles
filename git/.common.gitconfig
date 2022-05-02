@@ -1,0 +1,93 @@
+[user]
+	name = Glenn Jorde
+	email = glenn@tregusti.com
+[alias]
+	type = cat-file -t
+	dump = cat-file -p
+	h = log --pretty=log --graph --date=short
+	log = log --topo-order
+	# Use cousins or not? https://stackoverflow.com/a/56533595/299958
+	rebase = rebase --rebase-merges
+
+	s = status -s
+	m = merge
+	c = commit -v
+	ca = commit -v -a
+	cm = commit -m
+	cam = commit -a -m
+	co = checkout
+	cb = checkout -b
+	f = fetch
+	b = branch
+	cp = cherry-pick
+	cpx = cherry-pick -x
+	a = add
+	ap = add -p
+	d = diff --color --ws-error-highlight=all
+	ds = diff --color --ws-error-highlight=all --staged
+	r = rebase
+	rc = rebase --continue
+	fp = fetch -p
+	hb = ! git h $(git merge-base head $(git config --get custom.defaultBranch || echo master))..HEAD
+	sw = switch
+	ba = branch --all
+	br = branch --remote
+	brmm = ! BRMM_BRANCH=$(git config --get custom.defaultBranch || echo master) && git branch --merged=$BRMM_BRANCH | cut -c3- | grep -v $BRMM_BRANCH | xargs git branch -d
+	dw = diff --color --ws-error-highlight=all --color-words
+	dsw = diff --color --ws-error-highlight=all --staged --color-words
+	root = rev-parse --show-toplevel
+	serve = ! git daemon --enable=receive-pack --reuseaddr --informative-errors --verbose  --base-path=. --export-all ./.git
+	showw = show --color-words
+	whois = ! sh -c \"git log -i -1 --pretty=\\\"format:%an <%ae>\\\" --author=\\\"$1\\\"\" -
+	puff = push --force-with-lease
+	db = ! git d $(git merge-base head $(git config --get custom.defaultBranch || echo master))
+	find-merge = ! git show-branch \"$1\" | cut -c 2-8
+	show-merge = ! git show `git find-merge $1`
+
+# Color values and config info:
+# https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-config
+[color]
+	diff = auto
+	status = auto
+	interactive = auto
+	ui = auto
+	branch = auto
+[color "decorate"]
+	head = white
+	branch = yellow
+	remoteBranch = magenta
+	stash = blue
+	tag = green
+[core]
+	editor = vim
+	autocrlf = input
+	safecrlf = true
+	pager = less -RFX -x1,5
+	untrackedCache = true
+[merge]
+	tool = opendiff
+	conflictstyle = diff3
+[apply]
+	whitespace = nowarn
+[github]
+	user = tregusti
+	token =
+[credential]
+	helper = osxkeychain
+[push]
+	default = simple
+[mergetool]
+	keepBackup = true
+[rerere]
+	enabled = true
+[diff]
+	colorMoved = zebra
+[fetch]
+	prune = true
+[pull]
+	rebase = true
+	ff = only
+[interactive]
+	singleKey = true
+[pretty]
+	log = %C(yellow)%h%Creset %C(red)%cd%Creset %s%C(auto)%d%Creset %C(red)(%an, %cr)%Creset
