@@ -16,11 +16,6 @@ fi
 
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
-# nvm as a zsh plugin
-export NVM_DIR="$HOME/.config/nvm"
-zplug 'lukechilds/zsh-nvm'
-
-
 # cool prompt:
 zplug denysdovhan/spaceship-prompt, use:spaceship.zsh, from:github, as:theme
 export SPACESHIP_BATTERY_THRESHOLD=30
@@ -40,20 +35,8 @@ source $HOME/.zsh/src/checks.zsh
 source $HOME/.zsh/src/colors.zsh
 source $HOME/.zsh/src/setopt.zsh
 source $HOME/.zsh/src/misc_config.zsh
-source $HOME/.zsh/src/nvm-autoload.zsh
+# source $HOME/.zsh/src/nvm-autoload.zsh
 source $HOME/.zsh/src/plugins.zsh
 source $HOME/.zsh/src/aliases.zsh
 source $HOME/.zsh/src/functions.zsh
 # source $HOME/.zsh/src/prompt.zsh
-
-#### FUZZY FINDER
-# https://github.com/junegunn/fzf#using-homebrew-or-linuxbrew
-# but also check if fzf is available, since it might now due to not stowed
-test -f ~/.fzf.zsh && test ! -z `command -v fzf` && source ~/.fzf.zsh
-# https://github.com/sharkdp/fd#on-macos
-export FZF_COMPLETION_TRIGGER='..'
-test ! -z "$(whence fd)" && export FZF_DEFAULT_COMMAND='fd'
-
-# FZF_DEFAULT_OPTS=''
-
-test -f $HOME/.localrc && source $HOME/.localrc

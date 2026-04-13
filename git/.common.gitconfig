@@ -8,6 +8,7 @@
 	h5 = h -n 5
 	h0 = h -n 10
 	hh = h0
+	ha = h --all
 	log = log --topo-order
 	# Use cousins or not? https://stackoverflow.com/a/56533595/299958
 	rebase = rebase --rebase-merges
@@ -31,11 +32,11 @@
 	r = rebase
 	rc = rebase --continue
 	fp = fetch -p
-	hb = ! git h $(git merge-base head $(git config --get custom.defaultBranch || echo master))..HEAD
+	hb = ! git h $(git merge-base head $(git config --get custom.defaultBranch || echo main))..HEAD
 	sw = switch
 	ba = branch --all
 	br = branch --remote
-	brmm = ! BRMM_BRANCH=$(git config --get custom.defaultBranch || echo master) && git branch --merged=$BRMM_BRANCH | cut -c3- | grep -v $BRMM_BRANCH | xargs git branch -d
+	brmm = ! BRMM_BRANCH=$(git config --get custom.defaultBranch || echo main) && git branch --merged=$BRMM_BRANCH | cut -c3- | grep -v $BRMM_BRANCH | xargs git branch -d
 	dw = diff --color --ws-error-highlight=all --color-words
 	dsw = diff --color --ws-error-highlight=all --staged --color-words
 	root = rev-parse --show-toplevel
@@ -43,7 +44,7 @@
 	showw = show --color-words
 	whois = ! sh -c \"git log -i -1 --pretty=\\\"format:%an <%ae>\\\" --author=\\\"$1\\\"\" -
 	puff = push --force-with-lease
-	db = ! git d $(git merge-base head $(git config --get custom.defaultBranch || echo master))
+	db = ! git d $(git merge-base head $(git config --get custom.defaultBranch || echo main))
 	find-merge = ! git show-branch \"$1\" | cut -c 2-8
 	show-merge = ! git show `git find-merge $1`
 
