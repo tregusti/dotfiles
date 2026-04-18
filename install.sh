@@ -9,13 +9,13 @@ link() {
   ln -s "$file" "$target" && echo "Linked '$file' to '$target'" || echo "Failed to link '$file' to '$target'"
 }
 
-link ~/.dotfiles/vim/.vim
-link ~/.dotfiles/vim/.vimrc
+link ~/.dotfiles/dots/.vim
+link ~/.dotfiles/dots/.vimrc
 
-link ~/.dotfiles/git/.gitconfig
-link ~/.dotfiles/git/.gitignore
+link ~/.dotfiles/dots/.gitconfig
+link ~/.dotfiles/dots/.gitignore
 
-link ~/.dotfiles/zsh/.zshrc
-link ~/.dotfiles/zsh/.zsh
+link ~/.dotfiles/dots/.zshrc
+link ~/.dotfiles/dots/.zsh
 
 echo "Installation complete! Please restart your terminal to apply the changes."

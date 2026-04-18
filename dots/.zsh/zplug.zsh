@@ -22,7 +22,6 @@ source ~/.zplug/init.zsh
 
 # ========= Add cool prompt
 zplug denysdovhan/spaceship-prompt, use:spaceship.zsh, from:github, as:theme
-export SPACESHIP_BATTERY_THRESHOLD=30
 
 # ========= Add syntax highlighting
 zplug "zsh-users/zsh-syntax-highlighting", as:plugin
