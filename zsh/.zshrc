@@ -6,7 +6,6 @@ source $HOME/.zsh/src/colors.zsh
 source $HOME/.zsh/src/setopt.zsh
 source $HOME/.zsh/src/misc_config.zsh
 # source $HOME/.zsh/src/nvm-autoload.zsh
-source $HOME/.zsh/src/plugins.zsh
 source $HOME/.zsh/src/aliases.zsh
 source $HOME/.zsh/src/functions.zsh
 # source $HOME/.zsh/src/prompt.zsh

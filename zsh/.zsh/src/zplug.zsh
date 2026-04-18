@@ -19,8 +19,21 @@ fi
 zplug denysdovhan/spaceship-prompt, use:spaceship.zsh, from:github, as:theme
 export SPACESHIP_BATTERY_THRESHOLD=30
 
+# ========= Add syntax highlighting
+zplug "zsh-users/zsh-syntax-highlighting", as:plugin
+
+# ========= Add autosuggestions
+zplug "zsh-users/zsh-autosuggestions", as:plugin
+
+# ========= Add tzf-tab
+# https://github.com/aloxaf/fzf-tab#install
+zplug "Aloxaf/fzf-tab", as:plugin
+
+# Ensure colors match by using FZF_DEFAULT_OPTS
+zstyle ":fzf-tab:*" use-fzf-default-opts yes
+
 # ========= History search with UP and DOWN arrow keys and Ctrl+r
-zplug "zsh-users/zsh-history-substring-search", as: plugin
+zplug "zsh-users/zsh-history-substring-search", as:plugin
 
 # bind UP and DOWN arrow keys
 zmodload zsh/terminfo

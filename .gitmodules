@@ -1,5 +1,0 @@
-
-[submodule "zsh/.zsh/vendor/zsh-completions"]
-	path = zsh/.zsh/vendor/zsh-completions
-	url = https://github.com/zsh-users/zsh-completions.git
-
