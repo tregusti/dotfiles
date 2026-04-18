@@ -6,7 +6,7 @@ link() {
     echo "Warning: '$target' already exists. Skipping '$file'."
     return
   fi
-  ln -s "$file" "$target" || echo "Failed to link '$file' to '$target'"
+  ln -s "$file" "$target" && echo "Linked '$file' to '$target'" || echo "Failed to link '$file' to '$target'"
 }
 
 link ~/.dotfiles/vim/.vim
