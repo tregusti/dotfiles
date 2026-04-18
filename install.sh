@@ -18,4 +18,6 @@ link ~/.dotfiles/dots/.gitignore
 link ~/.dotfiles/dots/.zshrc
 link ~/.dotfiles/dots/.zsh
 
+link ~/.dotfiles/dots/.spaceshiprc.zsh
+
 echo "Installation complete! Please restart your terminal to apply the changes."
