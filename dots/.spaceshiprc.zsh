@@ -11,5 +11,6 @@ fi
 
 # Add a custom vi-mode section to the prompt
 # See: https://github.com/spaceship-prompt/spaceship-vi-mode
+spaceship remove vi_mode # Remove it if it's already there
 spaceship add --before char vi_mode
 spaceship_vi_mode_enable
