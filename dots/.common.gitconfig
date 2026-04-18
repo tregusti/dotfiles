@@ -4,11 +4,9 @@
 [alias]
 	type = cat-file -t
 	dump = cat-file -p
-	h = log --pretty=log --graph --date=short
-	h5 = h -n 5
-	h0 = h -n 10
-	hh = h0
-	ha = h --all
+	h = log --pretty=log --graph --date=short -n 10
+	hl = h -n -1
+	ha = hl --all
 	log = log --topo-order
 	# Use cousins or not? https://stackoverflow.com/a/56533595/299958
 	rebase = rebase --rebase-merges
