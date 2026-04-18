@@ -21,7 +21,8 @@ source ~/.zplug/init.zsh
 ( cd ~/.zplug && git pull origin main > /dev/null 2>&1 )
 
 # ========= Add cool prompt
-zplug denysdovhan/spaceship-prompt, use:spaceship.zsh, from:github, as:theme
+zplug "spaceship-prompt/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
+zplug "spaceship-prompt/spaceship-vi-mode"
 
 # ========= Add syntax highlighting
 zplug "zsh-users/zsh-syntax-highlighting", as:plugin
