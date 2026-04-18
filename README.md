@@ -14,7 +14,7 @@ Install with `brew` or `apt-get` or something similar.
 git clone https://github.com/tregusti/dotfiles ~/.dotfiles
 ```
 
-`.dotfiles` location is mandatory for now.
+`~/.dotfiles` location is mandatory for now.
 
 ```sh
 cd ~/.dotfiles
