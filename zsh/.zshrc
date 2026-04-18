@@ -1,5 +1,6 @@
 # Inspired by http://zanshin.net/2013/02/02/zsh-configuration-from-the-ground-up/
 
+source $HOME/.zsh/completions.zsh
 source $HOME/.zsh/zplug.zsh
 source $HOME/.zsh/checks.zsh
 source $HOME/.zsh/colors.zsh
