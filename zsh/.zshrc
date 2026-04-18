@@ -1,11 +1,11 @@
 # Inspired by http://zanshin.net/2013/02/02/zsh-configuration-from-the-ground-up/
 
-source $HOME/.zsh/src/zplug.zsh
-source $HOME/.zsh/src/checks.zsh
-source $HOME/.zsh/src/colors.zsh
-source $HOME/.zsh/src/setopt.zsh
-source $HOME/.zsh/src/misc_config.zsh
-# source $HOME/.zsh/src/nvm-autoload.zsh
-source $HOME/.zsh/src/aliases.zsh
-source $HOME/.zsh/src/functions.zsh
-# source $HOME/.zsh/src/prompt.zsh
+source $HOME/.zsh/zplug.zsh
+source $HOME/.zsh/checks.zsh
+source $HOME/.zsh/colors.zsh
+source $HOME/.zsh/setopt.zsh
+source $HOME/.zsh/misc_config.zsh
+# source $HOME/.zsh/nvm-autoload.zsh
+source $HOME/.zsh/aliases.zsh
+source $HOME/.zsh/functions.zsh
+# source $HOME/.zsh/prompt.zsh

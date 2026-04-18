@@ -1,19 +1,24 @@
+# Plugs via zplugs
+
 if [ ! -f ~/.zplug/init.zsh ]; then
-  # Plugs via zplugs
   # https://github.com/zplug/zplug/blob/main/README.md#installation
-  curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-  echo "Awaiting zplug installation..."
-  sleep 1
+  export ZPLUG_HOME=~/.zplug
+  git clone https://github.com/zplug/zplug $ZPLUG_HOME
 fi
 
 source ~/.zplug/init.zsh
 
-# zplug check returns true if all packages are installed
-# Therefore, when it returns false, run zplug install
-if ! zplug check; then
-  zplug install
-fi
 ########### PLUGINS START ###########
+
+# ========= Add zplug itself (for handling updates)
+# For now, comment this out, due to: https://github.com/zplug/zplug/issues/467
+# zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+
+# Update zplug with git commands manually
+# Subshell to avoid affecting the current shell's working directory
+# Silence stdout 1 (e.g. "Updating 1234567..89abcde")
+# Silence stderr 2 (e.g. "Already up to date.")
+( cd ~/.zplug && git pull origin main > /dev/null 2>&1 )
 
 # ========= Add cool prompt
 zplug denysdovhan/spaceship-prompt, use:spaceship.zsh, from:github, as:theme
@@ -52,11 +57,10 @@ bindkey '^n' history-substring-search-down
 
 bindkey '^r' history-incremental-search-backward
 
-
 ########### PLUGINS END ###########
 
 # Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
+if ! zplug check; then
   printf "Install? [y/N]: "
   if read -q; then
     echo; zplug install
