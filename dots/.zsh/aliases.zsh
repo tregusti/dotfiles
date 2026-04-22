@@ -4,9 +4,7 @@ alias l='ll -h'    # long list, human size
 alias la='ll -A'   # long list, show almost all
 alias lt='ll -t'   # long list, sorted by date, show type, human readable
 
-
-alias d='docker'
-alias dc='docker-compose'
+alias cdc='cd ~/Dropbox/code/personal'
 
 alias reload="echo Reloading... && source $HOME/.zshrc"
 
