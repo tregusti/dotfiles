@@ -6,6 +6,7 @@ source $HOME/.zsh/completions.zsh
 source $HOME/.zsh/zplug.zsh
 source $HOME/.zsh/checks.zsh
 source $HOME/.zsh/colors.zsh
+source $HOME/.zsh/locals.zsh
 source $HOME/.zsh/setopt.zsh
 # source $HOME/.zsh/nvm-autoload.zsh
 source $HOME/.zsh/aliases.zsh
