@@ -164,3 +164,18 @@ MSGTYPE=stop "You wrest .*"
 # Don't miss the vibrating square
 MSGTYPE=stop "You feel a strange vibration under your *."
 MSGTYPE=stop "You feel a strange vibration beneath you."
+
+
+
+
+
+
+
+#######################################
+#            HIGHSCORE                #
+#######################################
+
+2026-04-24:
+  1     111573  Lenn-Val-Hum-Fem-Law died in The Dungeons of Doom on
+                level 19 [max 20].  Killed by strangulation, while
+                disrobing.                                              -  [91]
