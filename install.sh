@@ -20,4 +20,6 @@ link ~/.dotfiles/dots/.zsh
 
 link ~/.dotfiles/dots/.spaceshiprc.zsh
 
+link ~/.dotfiles/dots/.nethackrc
+
 echo "Installation complete! Please restart your terminal to apply the changes."
