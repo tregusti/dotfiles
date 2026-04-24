@@ -2,6 +2,7 @@
 # brew install nethack --HEAD
 # brew upgrade nethack --fetch-HEAD
 
+# Gemini Chat: https://gemini.google.com/app/24cbeb2f73f96806
 
 # Needed om macOS
 OPTIONS=altmeta
