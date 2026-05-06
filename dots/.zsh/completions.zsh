@@ -5,6 +5,12 @@ if [[ ! -f ~/.zsh/completions/_docker ]]; then
   fi
 fi
 
+if [[ ! -f ~/.zsh/completions/_pnpm ]]; then
+  if [[ $(command -v pnpm) && $(pnpm --version) ]]; then
+    pnpm completion zsh > ~/.zsh/completions/_pnpm
+  fi
+fi
+
 fpath=(~/.zsh/completions $fpath)
 
 # compinit should be run after generating the completions.
