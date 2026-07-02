@@ -1,3 +1,16 @@
 
 [include]
   path = ~/.dotfiles/dots/.common.gitconfig
+
+# Machine-local overrides (untracked; git ignores it if missing). Included after
+# common so anything here — e.g. a per-machine user.email — wins over common's defaults.
+[include]
+  path = ~/.gitconfig.local
+
+# Personal-tree override: repos under this dir use personal identity/settings.
+[includeIf "gitdir:~/Dropbox/code/personal/"]
+  path = ~/.gitconfig.personal
+
+# Work-tree override: repos under this dir use work identity/settings.
+[includeIf "gitdir:~/Dropbox/code/work/"]
+  path = ~/.gitconfig.work
