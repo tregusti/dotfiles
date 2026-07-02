@@ -1,0 +1,24 @@
+# Example ~/.gitconfig.local — copy to ~/.gitconfig.local and edit per machine.
+#
+# This file is machine-local (untracked). It's included after .common.gitconfig, so
+# anything here overrides common. Keep machine/app-specific settings HERE, not in
+# .common.gitconfig, which also runs on headless agents and servers without 1Password.
+
+# --- Per-machine identity override (optional) ---
+[user]
+  email = glenn@example.com
+
+# --- SSH commit signing via 1Password (macOS) ---
+[user]
+  # This machine's SSH PUBLIC key (paste the ssh-ed25519 AAAA... literal, or a path
+  # to the .pub file). Differs per machine — one key per machine.
+  signingKey = ssh-ed25519 AAAA...
+[gpg]
+  format = ssh             ; sign with an SSH key instead of GPG (Git 2.34+)
+[gpg "ssh"]
+  # Let 1Password sign: it holds the private key and prompts (Touch ID) per signature.
+  program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[commit]
+  gpgsign = true           ; sign every commit
+[tag]
+  gpgSign = true           ; sign annotated tags too

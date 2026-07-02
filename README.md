@@ -32,6 +32,8 @@ includes:
 
 See [`.gitconfig`](dots/.gitconfig) for details.
 
+For signing commits, see [example config](dots/.gitconfig.local.example).
+
 ## SSH
 
 SSH keys are solely managed by 1Password. Setup `~/.ssh/config` to point at the
@@ -47,3 +49,4 @@ On a new machine:
 1. Enable the 1Password SSH agent (Settings → Developer → SSH Agent).
 2. Create a new per-machine key **in** 1Password (one key per machine, clearly named).
 3. Add its public key to GitHub as an Authentication key (and a Signing key, if signing).
+
