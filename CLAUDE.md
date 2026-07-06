@@ -11,3 +11,7 @@ Five canonical triage roles, using the default strings (`needs-triage`, `needs-i
 ### Domain docs
 
 Single-context layout: one `CONTEXT.md` + `docs/adr/` at the repo root. See `docs/agents/domain.md`.
+
+### Teach sessions
+
+`/teach` sessions use `teach/<topic>/` as their workspace root, not the repo root (e.g. `teach/nvim/`).
