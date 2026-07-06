@@ -2,16 +2,14 @@ function take() {
   mkdir -p $1 && cd $1
 }
 
-
 function syntax() {
-  if [[ -z `which highlight` ]]; then
+  if [[ -z $(which highlight) ]]; then
     echo 'Maybe do a "brew install highlight"?'
     return
   fi
 
   highlight -S $1 -O ansi $2
 }
-
 
 function flushdns() {
   sudo killall -HUP mDNSResponder
@@ -25,3 +23,8 @@ if [[ $IS_WSL ]]; then
     powershell.exe -noninteractive -noprofile -command 'echo $input | Set-Clipboard'
   }
 fi
+
+function gwt() {
+  local path=$(git worktree list | fzf | awk '{print $1}')
+  [ -n "$path" ] && cd "$path"
+}
