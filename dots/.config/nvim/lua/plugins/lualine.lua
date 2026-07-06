@@ -1,7 +1,7 @@
 -- Statusline: lualine (replaces the old vim-airline).
 --
--- Decision: docs/adr/ (appearance). lualine themes itself from the active
--- colorscheme, so it tracks tokyonight day/night automatically.
+-- lualine themes itself from the active colorscheme (theme = 'auto'), so it tracks
+-- the active colorscheme's dark/light automatically.
 --
 -- Docs: https://github.com/nvim-lualine/lualine.nvim
 

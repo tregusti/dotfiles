@@ -1,39 +1,38 @@
--- Colorscheme: tokyonight, following the OS light/dark setting.
+-- Colorscheme: Solarized, following the OS light/dark setting.
 --
--- Decision: docs/adr/ (appearance) — tokyonight-day ≈ light Solarized,
--- tokyonight-night ≈ dark Solarized, which keeps continuity with the old config.
+-- Chosen for the warm Solarized feel (tokyonight's dark palette read as too cold/
+-- blue). maxmx03/solarized.nvim is a modern Lua port with Treesitter + LSP semantic
+-- highlighting and a lualine integration. It switches on `vim.o.background`, so the
+-- auto-dark-mode plugin below flips it between Solarized dark and Solarized light.
 --
--- tokyonight docs: https://github.com/folke/tokyonight.nvim
+-- solarized.nvim docs: https://github.com/maxmx03/solarized.nvim
 -- auto-dark-mode docs: https://github.com/f-person/auto-dark-mode.nvim
 
 return {
   {
-    'folke/tokyonight.nvim',
+    'maxmx03/solarized.nvim',
     lazy = false,      -- load during startup (it's the UI). :help lazy.nvim-uiplugins
     priority = 1000,   -- load before other plugins so highlights exist first.
-    config = function()
-      require('tokyonight').setup({
-        -- 'day' when background=light, 'night'/'storm'/'moon' when dark.
-        -- auto-dark-mode (below) flips vim.o.background; tokyonight reacts to it.
-        style = 'night',       -- dark variant to use. :help tokyonight
-        light_style = 'day',   -- variant used when background = 'light'.
-      })
-      vim.cmd.colorscheme('tokyonight')
+    ---@type solarized.config
+    opts = {},         -- defaults; palette follows vim.o.background. :help solarized.nvim
+    config = function(_, opts)
+      require('solarized').setup(opts)
+      vim.cmd.colorscheme('solarized')
     end,
   },
   {
     -- Watches the macOS appearance setting and flips background light/dark, which
-    -- makes tokyonight switch day/night automatically. Follows OS-level only.
+    -- makes Solarized switch automatically. Follows OS-level only.
     'f-person/auto-dark-mode.nvim',
     lazy = false,
     priority = 999,    -- after the colorscheme is registered.
     opts = {
       update_interval = 3000,  -- ms between checks of the OS setting.
       set_dark_mode = function()
-        vim.o.background = 'dark'  -- tokyonight -> night. :help 'background'
+        vim.o.background = 'dark'  -- Solarized dark. :help 'background'
       end,
       set_light_mode = function()
-        vim.o.background = 'light' -- tokyonight -> day.
+        vim.o.background = 'light' -- Solarized light.
       end,
     },
   },

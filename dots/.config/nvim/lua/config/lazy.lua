@@ -26,7 +26,7 @@ require('lazy').setup({
     { import = 'plugins' },
   },
   -- Use the chosen colorscheme while plugins install on first run.
-  install = { colorscheme = { 'tokyonight' } },
+  install = { colorscheme = { 'solarized' } },
   -- Notify when a plugin has an update available (check manually with :Lazy).
   checker = { enabled = true, notify = false },
   ui = {

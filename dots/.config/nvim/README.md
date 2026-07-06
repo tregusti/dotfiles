@@ -18,7 +18,7 @@ lua/config/
   keymaps.lua                Non-plugin keymaps (minimal — see "Provisional" below).
   lazy.lua                   Bootstraps the lazy.nvim plugin manager.
 lua/plugins/                 One file per concern; each returns a lazy.nvim spec.
-  colorscheme.lua            tokyonight + auto-dark-mode (follows macOS light/dark).
+  colorscheme.lua            Solarized + auto-dark-mode (follows macOS light/dark).
   lualine.lua                Statusline.
   telescope.lua              Fuzzy finder (files, grep, symbols, ...).
   treesitter.lua             Syntax parsing for highlight + indent.
