@@ -17,7 +17,19 @@
 return {
   'coder/claudecode.nvim',
   dependencies = { 'folke/snacks.nvim' }, -- used for the terminal split UI.
-  opts = {},                              -- defaults: auto-starts the WebSocket server.
+  opts = {
+    terminal = {
+      split_width_percentage = 0.45, -- wider than the 0.30 default.
+      snacks_win_opts = {
+        keys = {
+          -- <leader>ac only works in Normal mode; inside the terminal every
+          -- keystroke goes to the Claude process instead (Terminal mode), so
+          -- give it a dedicated terminal-mode hide key too.
+          claude_hide = { '<C-,>', function(self) self:hide() end, mode = 't', desc = 'Hide Claude' },
+        },
+      },
+    },
+  },
   keys = {
     { '<leader>ac', '<cmd>ClaudeCode<cr>', desc = 'Toggle Claude Code terminal' },
     { '<leader>af', '<cmd>ClaudeCodeFocus<cr>', desc = 'Focus Claude Code' },
