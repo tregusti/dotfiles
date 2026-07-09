@@ -34,6 +34,13 @@ opt.inccommand = 'split'     -- live preview of :substitute in a split. :help 'i
 
 -- UI -----------------------------------------------------------------------------
 opt.termguicolors = true     -- 24-bit colour (required by modern colorschemes). :help 'termguicolors'
+opt.guicursor = 'n-v-c-sm:block-Cursor/lCursor,i-ci-ve:ver25-Cursor/lCursor,'
+  .. 'r-cr-o:hor20-Cursor/lCursor,t:block-blinkon500-blinkoff500-TermCursor'
+  -- Named the terminal-mode cursor. Default guicursor omits a highlight group
+  -- for the other modes, so Neovim never sends the OSC 12 escape sequence that
+  -- tells the terminal (Ghostty) to color the cursor from the colorscheme's
+  -- 'Cursor' highlight — it falls back to the terminal's own default (often a
+  -- plain white block, wrong on a light background). :help 'guicursor'
 opt.cursorline = true        -- highlight the line the cursor is on. :help 'cursorline'
 opt.signcolumn = 'yes'       -- always show the sign column so text doesn't jump when
                              -- diagnostics/git signs appear. :help 'signcolumn'
@@ -49,6 +56,8 @@ opt.splitright = true        -- vertical splits open to the right. :help 'splitr
 opt.splitbelow = true        -- horizontal splits open below. :help 'splitbelow'
 
 -- Files & undo -------------------------------------------------------------------
+opt.autoread = true          -- reload a buffer if its file changed on disk and the
+                             -- buffer has no unsaved changes. :help 'autoread'
 opt.swapfile = false         -- no .swp files (matches old config). :help 'swapfile'
 opt.undofile = true          -- persist undo history across sessions to disk. :help 'undofile'
 opt.confirm = true           -- on :q with unsaved changes, prompt instead of hard-erroring.
