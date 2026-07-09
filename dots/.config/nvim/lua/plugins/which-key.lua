@@ -21,6 +21,7 @@ return {
       { '<leader>s', group = '[S]earch' },
       { '<leader>h', group = 'Git [H]unk' },
       { '<leader>a', group = '[A]gent (Claude Code)' },
+      { '<leader>b', group = '[B]uffer' },
     },
   },
 }
