@@ -33,6 +33,9 @@ return {
   keys = {
     { '<leader>ac', '<cmd>ClaudeCode<cr>', desc = 'Toggle Claude Code terminal' },
     { '<leader>af', '<cmd>ClaudeCodeFocus<cr>', desc = 'Focus Claude Code' },
+    -- Same key as the Terminal-mode hide below, so <C-,> reads as one toggle
+    -- even though it's two separate mappings in two different modes.
+    { '<C-,>', '<cmd>ClaudeCodeFocus<cr>', mode = { 'n', 'x' }, desc = 'Focus Claude Code' },
     { '<leader>as', '<cmd>ClaudeCodeSend<cr>', mode = 'v', desc = 'Send selection to Claude' },
     -- Diff review of a proposed edit:
     { '<leader>aa', '<cmd>ClaudeCodeDiffAccept<cr>', desc = 'Accept proposed diff' },
