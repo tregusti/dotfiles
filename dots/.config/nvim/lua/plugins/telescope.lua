@@ -28,6 +28,9 @@ return {
   },
   config = function()
     require('telescope').setup({
+      defaults = {
+        file_ignore_patterns = { '%.git/' },
+      },
       extensions = {
         ['ui-select'] = { require('telescope.themes').get_dropdown() },
       },
@@ -39,7 +42,16 @@ return {
 
     local builtin = require('telescope.builtin')
     -- :help telescope.builtin for the full list of pickers.
-    vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
+    -- hidden = true: fd (Telescope's finder) excludes dotfiles by default.
+    -- :help telescope.builtin.find_files
+    vim.keymap.set('n', '<leader>sf', function()
+      builtin.find_files({ hidden = true })
+    end, { desc = '[S]earch [F]iles' })
+    -- no_ignore = true: fd (Telescope's finder) normally excludes gitignored files. Include them.
+    vim.keymap.set('n', '<leader>si', function()
+      builtin.find_files({ hidden = true, no_ignore = true })
+    end, { desc = '[S]earch [I]gnored files' })
+
     vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
     vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
     vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
