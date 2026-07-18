@@ -18,6 +18,10 @@ return {
   'coder/claudecode.nvim',
   dependencies = { 'folke/snacks.nvim' }, -- used for the terminal split UI.
   opts = {
+    -- Resume the project's last conversation on launch instead of starting
+    -- blank. Falls back to a new conversation when there is no history.
+    -- Session picking is done inside Claude Code itself (/resume).
+    terminal_cmd = 'claude --continue',
     terminal = {
       split_width_percentage = 0.45, -- wider than the 0.30 default.
       snacks_win_opts = {
