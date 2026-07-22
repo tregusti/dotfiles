@@ -24,6 +24,11 @@ return {
       numhl = true,
       -- highlight the changed word itself, on the line (see colorscheme.lua).
       word_diff = true,
+      -- border on the hunk-preview/blame popups, so they're visually
+      -- distinct from the code behind them. :help gitsigns-config-preview_config
+      preview_config = {
+        border = 'rounded',
+      },
       -- PROVISIONAL keymaps (kickstart's ]c / [c hunk navigation + <leader>h* hunk
       -- ops) — revisit after /teach vim. :help gitsigns-functions
       on_attach = function(bufnr)
