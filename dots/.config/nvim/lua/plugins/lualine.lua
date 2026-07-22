@@ -78,7 +78,7 @@ return {
     -- components live there instead. :help lualine-Default-configuration
     sections = {
       lualine_b = { 'branch' },
-      lualine_c = { uncommitted, 'diff', 'diagnostics', 'filename' },
+      lualine_c = { uncommitted, 'diff', 'diagnostics', { 'filename', path = 1 } },
     },
   },
 }
