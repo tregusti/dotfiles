@@ -44,8 +44,13 @@ return {
           score_offset = 100,
         },
         -- VS Code-format snippets under ~/.config/nvim/snippets (see
-        -- code-snippets/ at the repo root, symlinked in).
-        snippets = { opts = { friendly_snippets = false } },
+        -- code-snippets/ at the repo root, symlinked in). Moderate ranking
+        -- boost: usually wins over LSP matches without permanently burying
+        -- them when a trigger prefix overlaps a real identifier/keyword.
+        snippets = {
+          opts = { friendly_snippets = false },
+          score_offset = 50,
+        },
       },
     },
   },
