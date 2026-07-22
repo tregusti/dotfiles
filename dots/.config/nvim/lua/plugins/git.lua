@@ -19,6 +19,16 @@ return {
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
       },
+      linehl = true,
+      -- color the number column per change type (bg + fg; see colorscheme.lua).
+      numhl = true,
+      -- highlight the changed word itself, on the line (see colorscheme.lua).
+      word_diff = true,
+      -- border on the hunk-preview/blame popups, so they're visually
+      -- distinct from the code behind them. :help gitsigns-config-preview_config
+      preview_config = {
+        border = 'rounded',
+      },
       -- PROVISIONAL keymaps (kickstart's ]c / [c hunk navigation + <leader>h* hunk
       -- ops) — revisit after /teach vim. :help gitsigns-functions
       on_attach = function(bufnr)
@@ -38,30 +48,5 @@ return {
         map('n', '<leader>hb', gs.blame_line, 'Git: [B]lame line')
       end,
     },
-  },
-  {
-    'NeogitOrg/neogit',
-    dependencies = {
-      'sindrets/diffview.nvim', -- richer diff popup (`d` inside neogit)
-      'nvim-telescope/telescope.nvim', -- already installed; neogit auto-detects it
-    },
-    cmd = 'Neogit',
-    keys = {
-      { '<leader>gg', '<cmd>Neogit<cr>', desc = 'Git: [G]it status (neogit)' },
-    },
-    -- PROVISIONAL keymaps (kickstart's ]c / [c hunk navigation + <leader>h* hunk
-    -- ops) — revisit after /teach vim. :help gitsigns-functions
-    on_attach = function(bufnr)
-      local gs = require('gitsigns')
-      local function map(mode, l, r, desc)
-        vim.keymap.set(mode, l, r, { buffer = bufnr, desc = desc })
-      end
-      map('n', ']c', function() gs.nav_hunk('next') end, 'Next git hunk')
-      map('n', '[c', function() gs.nav_hunk('prev') end, 'Previous git hunk')
-      map('n', '<leader>hp', gs.preview_hunk, 'Git: [P]review hunk')
-      map('n', '<leader>hs', gs.stage_hunk, 'Git: [S]tage hunk')
-      map('n', '<leader>hr', gs.reset_hunk, 'Git: [R]eset hunk')
-      map('n', '<leader>hb', gs.blame_line, 'Git: [B]lame line')
-    end,
   },
 }
