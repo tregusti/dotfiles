@@ -23,13 +23,20 @@ return {
     -- Session picking is done inside Claude Code itself (/resume).
     terminal_cmd = 'claude --continue',
     terminal = {
-      split_width_percentage = 0.45, -- wider than the 0.30 default.
+      split_width_percentage = 0.40, -- wider than the 0.30 default.
       snacks_win_opts = {
         keys = {
           -- <leader>ac only works in Normal mode; inside the terminal every
           -- keystroke goes to the Claude process instead (Terminal mode), so
           -- give it a dedicated terminal-mode hide key too.
-          claude_hide = { '<C-,>', function(self) self:hide() end, mode = 't', desc = 'Hide Claude' },
+          claude_hide = {
+            '<C-,>',
+            function(self)
+              self:hide()
+            end,
+            mode = 't',
+            desc = 'Hide Claude',
+          },
         },
       },
     },
