@@ -28,3 +28,8 @@ function gwt() {
   local path=$(git worktree list | fzf | awk '{print $1}')
   [ -n "$path" ] && cd "$path"
 }
+
+# Set the name of the current terminal window
+function set-name() {
+  printf '\033]2;%s\007' "$1"
+}
