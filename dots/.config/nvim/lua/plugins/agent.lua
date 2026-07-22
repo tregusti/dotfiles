@@ -22,6 +22,10 @@ return {
     -- blank. Falls back to a new conversation when there is no history.
     -- Session picking is done inside Claude Code itself (/resume).
     terminal_cmd = 'claude --continue',
+    diff_opts = {
+      open_in_new_tab = true,
+      hide_terminal_in_new_tab = true,
+    },
     terminal = {
       split_width_percentage = 0.40, -- wider than the 0.30 default.
       snacks_win_opts = {
