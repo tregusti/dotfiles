@@ -22,6 +22,7 @@ return {
       { '<leader>h', group = 'Git [H]unk' },
       { '<leader>a', group = '[A]gent (Claude Code)' },
       { '<leader>b', group = '[B]uffer' },
+      { '<leader>t', group = '[T]erminal' },
     },
   },
 }
