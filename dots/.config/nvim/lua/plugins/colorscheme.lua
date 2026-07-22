@@ -8,26 +8,55 @@
 -- solarized.nvim docs: https://github.com/maxmx03/solarized.nvim
 -- auto-dark-mode docs: https://github.com/f-person/auto-dark-mode.nvim
 
--- Solarized's diff-related groups are `fg`-only (some also `reverse`), so
--- they render as a solid color block with no syntax highlighting underneath.
--- Redefine them `bg`-only, using the theme's own pre-mixed `mix_*` tones, so
--- syntax colors stay visible and only a background tint is added.
+-- Blends `fg_hex` toward `bg_hex` by `alpha` (0-1); used to make the number-
+-- column tint stronger than Solarized's own (too-subtle) `mix_*` colors.
+local function blend(fg_hex, bg_hex, alpha)
+  local function to_rgb(hex)
+    return tonumber(hex:sub(2, 3), 16), tonumber(hex:sub(4, 5), 16), tonumber(hex:sub(6, 7), 16)
+  end
+  local fr, fg, fb = to_rgb(fg_hex)
+  local br, bg, bb = to_rgb(bg_hex)
+  return string.format(
+    '#%02x%02x%02x',
+    math.floor(fr * alpha + br * (1 - alpha) + 0.5),
+    math.floor(fg * alpha + bg * (1 - alpha) + 0.5),
+    math.floor(fb * alpha + bb * (1 - alpha) + 0.5)
+  )
+end
+
+-- Change/diff indication lives in two places only: the number column (solid
+-- badge) and the changed word itself (subtle bg tint) — the line's own bg/fg
+-- stay untouched so syntax highlighting is never overridden.
 local function tint_diff_highlights()
   local palette_name = require('solarized').config.palette
   local colors = vim.o.background == 'dark' and require('solarized.palette')[palette_name]
     or require('solarized.palette.solarized-light')[palette_name]
 
-  -- git.lua `linehl`: whole changed line, in a normal buffer.
+  -- git.lua `numhl`: number column only (bold bg + sharp fg), line untouched.
+  -- 0.45 blend toward the editor bg — stronger than Solarized's own `mix_*`,
+  -- tune this number up/down if it's still too loud/subtle.
+  local numhl_bg_alpha = 0.20
+  local editor_bg = vim.o.background == 'dark' and colors.base03 or colors.base3
+  local add_bg = blend(colors.git_add, editor_bg, numhl_bg_alpha)
+  local change_bg = blend(colors.git_modify, editor_bg, numhl_bg_alpha)
+  vim.api.nvim_set_hl(0, 'GitSignsAddNr', { bg = add_bg, fg = colors.git_add })
+  vim.api.nvim_set_hl(0, 'GitSignsChangeNr', { bg = change_bg, fg = colors.git_modify })
+  vim.api.nvim_set_hl(0, 'GitSignsChangedeleteNr', { bg = change_bg, fg = colors.git_modify })
+  vim.api.nvim_set_hl(0, 'GitSignsUntrackedNr', { bg = add_bg, fg = colors.git_add })
+
+  -- git.lua `linehl`: added lines only get a full-line bg tint (GitSignsAddLn
+  -- also covers GitSignsUntrackedLn, which falls back to it). Changed lines
+  -- deliberately have no line-level group here, so they fall through to
+  -- DiffChange below (Normal) — word_diff/DiffText is their only indicator.
   vim.api.nvim_set_hl(0, 'GitSignsAddLn', { bg = colors.mix_green })
-  vim.api.nvim_set_hl(0, 'GitSignsChangeLn', { bg = colors.mix_yellow })
-  vim.api.nvim_set_hl(0, 'GitSignsChangedeleteLn', { bg = colors.mix_yellow })
-  vim.api.nvim_set_hl(0, 'GitSignsUntrackedLn', { bg = colors.mix_green })
 
   -- Native Neovim diff mode (`:diffthis` / `:Gitsigns diffthis` / agent.lua
-  -- Claude diff splits): whole line, plus the changed word via DiffText.
+  -- Claude diff splits) has no number-column groups, only whole-line ones.
+  -- DiffAdd mirrors GitSignsAddLn above; DiffChange/DiffDelete stay untouched
+  -- (Normal) so DiffText remains the only marker on changed lines.
   vim.api.nvim_set_hl(0, 'DiffAdd', { bg = colors.mix_green })
-  vim.api.nvim_set_hl(0, 'DiffChange', { bg = colors.mix_yellow })
-  vim.api.nvim_set_hl(0, 'DiffDelete', { bg = colors.mix_red })
+  vim.api.nvim_set_hl(0, 'DiffChange', { link = 'Normal' })
+  vim.api.nvim_set_hl(0, 'DiffDelete', { link = 'Normal' })
   vim.api.nvim_set_hl(0, 'DiffText', { bg = colors.mix_orange })
 
   -- git.lua `word_diff`: the changed word, in a normal buffer (separate

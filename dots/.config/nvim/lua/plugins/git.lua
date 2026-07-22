@@ -19,10 +19,10 @@ return {
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
       },
-      -- background color on the full changed line (falls back to DiffAdd/
-      -- DiffChange/DiffDelete, which Solarized already defines with a bg).
       linehl = true,
-      -- highlight actual diff on line
+      -- color the number column per change type (bg + fg; see colorscheme.lua).
+      numhl = true,
+      -- highlight the changed word itself, on the line (see colorscheme.lua).
       word_diff = true,
       -- PROVISIONAL keymaps (kickstart's ]c / [c hunk navigation + <leader>h* hunk
       -- ops) — revisit after /teach vim. :help gitsigns-functions
