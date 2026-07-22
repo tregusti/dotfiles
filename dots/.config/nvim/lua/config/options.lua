@@ -34,6 +34,9 @@ opt.inccommand = 'split'     -- live preview of :substitute in a split. :help 'i
 
 -- UI -----------------------------------------------------------------------------
 opt.termguicolors = true     -- 24-bit colour (required by modern colorschemes). :help 'termguicolors'
+opt.winborder = 'rounded'    -- default border for floating windows (LSP hover, signature
+                             -- help, diagnostics, :checkhealth, ...) that don't set their
+                             -- own. :help 'winborder'
 opt.guicursor = 'n-v-c-sm:block-Cursor/lCursor,i-ci-ve:ver25-Cursor/lCursor,'
   .. 'r-cr-o:hor20-Cursor/lCursor,t:block-blinkon500-blinkoff500-TermCursor'
   -- Named the terminal-mode cursor. Default guicursor omits a highlight group
