@@ -1,0 +1,52 @@
+{
+	"Test case": {
+		"prefix": "it",
+		"include": ["**/*.test.ts", "*.spec.ts"],
+		"body": [
+			"it('${1:should }$2', ${3:async }() => {",
+			"\t$0",
+			"});"
+		],
+		"description": "Insert test block"
+	},
+	"With block": {
+		"prefix": "with",
+		"include": ["**/*.test.ts", "*.spec.ts"],
+		"body": [
+			"describe('${1:with }$2', () => {",
+			"\t$0",
+			"});"
+		],
+		"description": "Insert with block"
+	},
+	"When block": {
+		"prefix": "when",
+		"include": ["**/*.test.ts", "*.spec.ts"],
+		"body": [
+			"describe('${1:when }$2', () => {",
+			"\t$0",
+			"});"
+		],
+		"description": "Insert when block"
+	},
+	"Before each block": {
+		"prefix": "be",
+		"include": ["**/*.test.ts", "*.spec.ts"],
+		"body": [
+			"beforeEach(() => {",
+			"\t$0",
+			"});"
+		],
+		"description": "Insert afterEach block"
+	},
+	"After each block": {
+		"prefix": "ae",
+		"include": ["**/*.test.ts", "*.spec.ts"],
+		"body": [
+			"afterEach(() => {",
+			"\t$0",
+			"});"
+		],
+		"description": "Insert afterEach block"
+	}
+}

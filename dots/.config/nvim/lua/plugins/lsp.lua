@@ -30,7 +30,7 @@ return {
     'williamboman/mason-lspconfig.nvim',          -- name-maps mason <-> lspconfig.
     'WhoIsSethDaniel/mason-tool-installer.nvim',  -- ensure_installed for tools.
     { 'j-hui/fidget.nvim', opts = {} },           -- small LSP progress UI (bottom-right).
-    'hrsh7th/cmp-nvim-lsp',                        -- advertise nvim-cmp completion capabilities.
+    'saghen/blink.cmp',                            -- advertise blink.cmp completion capabilities.
   },
   config = function()
     -- Keymaps get attached per-buffer only once a server attaches to it.
@@ -54,10 +54,10 @@ return {
       end,
     })
 
-    -- Advertise the extra completion capabilities nvim-cmp provides so servers
+    -- Advertise the extra completion capabilities blink.cmp provides so servers
     -- send richer results (snippets, etc.). Applied to all servers via the '*'
     -- config below. :help vim.lsp.config
-    local capabilities = require('cmp_nvim_lsp').default_capabilities()
+    local capabilities = require('blink.cmp').get_lsp_capabilities()
 
     -- Path to the mason-installed Vue language server, needed by ts_ls (hybrid mode).
     local vue_ls_path = vim.fn.stdpath('data')
