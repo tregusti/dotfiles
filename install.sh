@@ -33,4 +33,7 @@ link ~/.dotfiles/dots/.spaceshiprc.zsh ~/.spaceshiprc.zsh
 
 link ~/.dotfiles/dots/.nethackrc ~/.nethackrc
 
+# See code-snippets/README.md.
+link ~/.dotfiles/code-snippets ~/Library/Application\ Support/Code/User/snippets
+
 echo "Installation complete! Please restart your terminal to apply the changes."

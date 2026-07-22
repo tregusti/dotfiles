@@ -1,0 +1,19 @@
+{
+	"Script setup": {
+		"prefix": "v-setup",
+		"body": "<script setup lang=\"ts\">\n$0\n</script>",
+		"description": "Insert script setup block"
+	},
+	"Component template": {
+		"prefix": "v-component",
+		"body": [
+			"<script setup lang=\"ts\">",
+			"import { ref } from \"vue\"",
+			"</script>",
+			"<template>",
+			"\t$0",
+			"</template>"
+		],
+		"description": "Insert component block"
+	}
+}
