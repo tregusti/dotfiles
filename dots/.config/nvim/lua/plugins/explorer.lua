@@ -15,7 +15,8 @@ return {
       sources = {
         explorer = {
           hidden = true, -- always show dotfiles, no H toggle needed
-          fuzzy = true,
+          focus = 'input', -- default for explorer source is 'list'; we want typing to just work
+          matcher = { fuzzy = true }, -- explorer source defaults matcher.fuzzy to false
         },
       },
     },
