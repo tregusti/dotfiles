@@ -30,18 +30,15 @@ end
 
 local group = vim.api.nvim_create_augroup('lualine-dirty-count', {})
 
+-- WinEnter catches the git workflow this config actually uses: committing via
+-- `git commit` in the toggleable terminal (terminal.lua) changes no buffer
+-- (no BufWritePost) and never leaves the OS window (no FocusGained) — toggling
+-- the terminal closed re-enters the previous window instead, which WinEnter
+-- does catch.
 vim.api.nvim_create_autocmd(
-  { 'VimEnter', 'FocusGained', 'BufWritePost', 'DirChanged', 'TermClose' },
+  { 'VimEnter', 'FocusGained', 'WinEnter', 'BufWritePost', 'DirChanged', 'TermClose' },
   { group = group, callback = refresh_dirty_count }
 )
-
--- Committing inside Neogit changes no files and never drops focus, so listen
--- for its own refresh signal too.
-vim.api.nvim_create_autocmd('User', {
-  group = group,
-  pattern = 'NeogitStatusRefreshed',
-  callback = refresh_dirty_count,
-})
 
 local uncommitted = {
   function()
