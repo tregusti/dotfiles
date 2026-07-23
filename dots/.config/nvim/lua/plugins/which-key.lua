@@ -1,10 +1,6 @@
 -- which-key: pop-up that shows what keys are available after you start a mapping.
 --
--- Especially useful while relearning the leader key — press <leader> and pause, and
--- a menu shows every leader mapping. Pairs directly with the deferred keymap work.
---
--- PROVISIONAL (low-fluency, not yet formally chosen), but included now precisely
--- because it makes the teach-session leader practice easier.
+-- Press <leader> and pause, and a menu shows every leader mapping.
 --
 -- Docs: https://github.com/folke/which-key.nvim
 

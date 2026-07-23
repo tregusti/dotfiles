@@ -34,8 +34,7 @@ return {
   },
   config = function()
     -- Keymaps get attached per-buffer only once a server attaches to it.
-    -- PROVISIONAL bindings (kickstart's g* / <leader>* scheme) — revisit after
-    -- /teach vim. :help LspAttach , :help vim.lsp.buf
+    -- kickstart's g* / <leader>* scheme. :help LspAttach , :help vim.lsp.buf
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
       callback = function(event)

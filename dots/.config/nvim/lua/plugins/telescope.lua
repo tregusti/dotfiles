@@ -6,9 +6,7 @@
 -- External deps (see README): ripgrep (live_grep) and fd (find_files). Both are
 -- installed via Homebrew.
 --
--- PROVISIONAL keymaps: the <leader>s* mnemonic scheme below is kickstart's. It's a
--- sensible default to start from, but the exact bindings are part of the deferred
--- keymap design — revisit after /teach vim.
+-- Keymaps: the <leader>s* mnemonic scheme below is kickstart's.
 
 return {
   'nvim-telescope/telescope.nvim',

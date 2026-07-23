@@ -1,9 +1,9 @@
 -- Git: gitsigns (replaces the old vim-gitgutter).
 --
--- PROVISIONAL (low-fluency, not yet formally chosen): gitsigns shows added/changed/
--- removed lines in the sign column and offers hunk staging/preview. A heavier Git UI
--- (neogit / fugitive) was left open as a separate decision. This covers the gutter
--- + basic hunk ops the old config had.
+-- Shows added/changed/removed lines in the sign column and offers hunk
+-- staging/preview. Chosen over a heavier Git UI (neogit/fugitive) — terminal git +
+-- gitsigns + Snacks.explorer's git-status covers it (see teach/nvim learning
+-- record 0005).
 --
 -- Docs: https://github.com/lewis6991/gitsigns.nvim
 
@@ -29,8 +29,8 @@ return {
       preview_config = {
         border = 'rounded',
       },
-      -- PROVISIONAL keymaps (kickstart's ]c / [c hunk navigation + <leader>h* hunk
-      -- ops) — revisit after /teach vim. :help gitsigns-functions
+      -- Keymaps: kickstart's ]c / [c hunk navigation + <leader>h* hunk ops.
+      -- :help gitsigns-functions
       on_attach = function(bufnr)
         local gs = require('gitsigns')
         local function map(mode, l, r, desc)

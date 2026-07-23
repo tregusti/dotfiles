@@ -13,8 +13,7 @@ local opt = vim.opt
 -- Line numbers -------------------------------------------------------------------
 opt.number = true            -- absolute number on the current line. :help 'number'
 opt.relativenumber = true    -- relative numbers on the others, for quick j/k jumps.
-                             -- :help 'relativenumber'  (PROVISIONAL: relative numbers
-                             -- are a fluency preference — revisit after /teach vim.)
+                             -- :help 'relativenumber'
 
 -- Indentation (matches .editorconfig: 2 spaces) ----------------------------------
 opt.expandtab = true         -- tabs insert spaces. :help 'expandtab'

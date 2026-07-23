@@ -11,8 +11,6 @@
 --
 -- VERIFY AT FIRST RUN: this is the newest/most-moving plugin here. Confirm the repo
 -- name and command surface are current before relying on it (see README).
---
--- PROVISIONAL keymaps under <leader>a ([A]gent) — revisit after /teach vim.
 
 return {
   'coder/claudecode.nvim',

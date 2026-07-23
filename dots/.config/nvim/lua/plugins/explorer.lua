@@ -2,8 +2,6 @@
 -- terminal/Claude toggles — Snacks.explorer.open() already toggles closed
 -- if an explorer picker is open (see snacks/picker/init.lua: M.pick).
 -- Docs: https://github.com/folke/snacks.nvim/blob/main/docs/explorer.md
---
--- PROVISIONAL keymap — revisit with the rest of the keymap design.
 return {
   'folke/snacks.nvim',
   opts = {

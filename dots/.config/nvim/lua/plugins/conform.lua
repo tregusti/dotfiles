@@ -20,7 +20,7 @@ return {
   cmd = { 'ConformInfo' },
   keys = {
     {
-      -- Manual format (works even if format-on-save is disabled). PROVISIONAL key.
+      -- Manual format (works even if format-on-save is disabled).
       '<leader>f',
       function()
         require('conform').format({ async = true, lsp_format = 'fallback' })

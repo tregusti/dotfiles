@@ -76,18 +76,10 @@ Two areas are the most version-sensitive and worth verifying on the first launch
    diagnostics don't appear in a project that has `.oxlintrc.json`, verify the linter
    name/output format against [nvim-lint](https://github.com/mfussenegger/nvim-lint).
 
-## Provisional pieces (revisit after the Vim `/teach` session)
+## Keymaps and leader-key ergonomics
 
-Keymaps and leader-key ergonomics are deliberately deferred until after relearning
-Vim. What's here now is a minimal, safe default (kickstart's scheme) so the editor is
-usable meanwhile. Files/areas marked `PROVISIONAL` in comments: `keymaps.lua`, the
-LSP keymaps, `git.lua` (hunk navigation/staging keymaps), `which-key.lua`,
-`editing.lua`, and `relativenumber` in `options.lua`. A file explorer was
-intentionally left out pending that session (built-in `netrw` works via
-`:Explore`).
-
-Two items formerly on this list are resolved via grilling sessions and no longer
-marked `PROVISIONAL` in code: completion (`completion.lua`, blink.cmp over
-nvim-cmp) and the Git UI tool choice (gitsigns + terminal + Snacks.explorer over
-a dedicated panel like neogit/fugitive) — `git.lua`'s own header comment still
-needs updating to reflect that, tracked as a separate cleanup.
+Keymaps, leader-key groupings, and the mini.nvim/gitsigns/LSP/Telescope/agent
+mapping sets were deliberately left provisional until relearning Vim (tracked via
+a `/teach` session in `teach/nvim/`), then finalized through a grilling session.
+Nothing in the config is marked `PROVISIONAL` anymore. File explorer is
+`folke/snacks.nvim`'s picker-based explorer (`<C-e>`), not `netrw`.
