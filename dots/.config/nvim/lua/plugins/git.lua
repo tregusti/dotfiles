@@ -43,7 +43,7 @@ return {
           gs.nav_hunk('prev')
         end, 'Previous git hunk')
         map('n', '<leader>hp', gs.preview_hunk, 'Git: [P]review hunk')
-        map('n', '<leader>hs', gs.stage_hunk, 'Git: [S]tage hunk')
+        map('n', '<leader>hs', gs.stage_hunk, 'Git: (Un)[S]tage hunk')
         map('n', '<leader>hr', gs.reset_hunk, 'Git: [R]eset hunk')
         map('n', '<leader>hb', gs.blame_line, 'Git: [B]lame line')
       end,
