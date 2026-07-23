@@ -24,3 +24,10 @@ require('config.keymaps')
 require('config.buffers')
 require('config.window-dim')
 require('config.lazy')
+
+vim.filetype.add({
+  pattern = {
+    ['.*%.gitconfig'] = 'gitconfig', -- prefix variant: .common.gitconfig, .gitconfig
+    ['%.gitconfig%..*'] = 'gitconfig', -- suffix variant: .gitconfig.local, .gitconfig.local.example
+  },
+})

@@ -53,14 +53,14 @@
   serve = ! git daemon --enable=receive-pack --reuseaddr --informative-errors --verbose  --base-path=. --export-all ./.git
   showw = show --color-words
   showm = show --remerge-diff
-  whois = ! sh -c \"git log -i -1 --pretty=\\\"format:%an <%ae>\\\" --author=\\\"$1\\\"\" -
+  whois = "! sh -c \"git log -i -1 --pretty=\\\"format:%an <%ae>\\\" --author=\\\"$1\\\"\" -"
   # --force-with-lease: only overwrite the remote if it's still where we last saw it.
   # --force-if-includes: also require that we actually integrated those commits, not
   # just fetched them (guards against a background fetch making the lease pass falsely).
   puff = push --force-with-lease --force-if-includes
   db = ! git d $(git merge-base head $(git x-get-default-branch))
-  find-merge = ! git show-branch \"$1\" | cut -c 2-8
-  show-merge = ! git show `git find-merge $1`
+  find-merge = "! git show-branch \"$1\" | cut -c 2-8"
+  show-merge = "! git show `git find-merge $1`"
 
   # 1. Get explicit default branch name,
   # 2. or fall back to default branch on origin,
