@@ -11,19 +11,23 @@
 
 return {
   {
-    'echasnovski/mini.surround',   -- add/change/delete surrounding quotes/brackets/tags.
-    version = '*',                 -- replaces the old tpope/vim-surround.
-    opts = {},                     -- default mappings: sa (add), sd (delete), sr (replace).
-                                   -- :help MiniSurround
+    -- Add/change/delete surrounding quotes/brackets/tags. Replaces the old
+    -- tpope/vim-surround. Default mappings: sa (add), sd (delete), sr (replace).
+    -- :help MiniSurround
+    'echasnovski/mini.surround',
+    version = '*',
+    opts = {},
   },
   {
-    'echasnovski/mini.ai',         -- smarter text objects (e.g. `va)`, `ci"`, function args).
+    -- Smarter text objects (e.g. `va)`, `ci"`, function args). :help MiniAi
+    'echasnovski/mini.ai',
     version = '*',
-    opts = {},                     -- :help MiniAi
+    opts = {},
   },
   {
-    'echasnovski/mini.pairs',      -- auto-close brackets/quotes as you type.
+    -- Auto-close brackets/quotes as you type. :help MiniPairs
+    'echasnovski/mini.pairs',
     version = '*',
-    opts = {},                     -- :help MiniPairs
+    opts = {},
   },
 }

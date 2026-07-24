@@ -26,11 +26,16 @@
 return {
   'neovim/nvim-lspconfig',
   dependencies = {
-    { 'williamboman/mason.nvim', opts = {} },     -- installer for servers/tools.
-    'williamboman/mason-lspconfig.nvim',          -- name-maps mason <-> lspconfig.
-    'WhoIsSethDaniel/mason-tool-installer.nvim',  -- ensure_installed for tools.
-    { 'j-hui/fidget.nvim', opts = {} },           -- small LSP progress UI (bottom-right).
-    'saghen/blink.cmp',                            -- advertise blink.cmp completion capabilities.
+    -- Installer for servers/tools.
+    { 'williamboman/mason.nvim', opts = {} },
+    -- Name-maps mason <-> lspconfig.
+    'williamboman/mason-lspconfig.nvim',
+    -- ensure_installed for tools.
+    'WhoIsSethDaniel/mason-tool-installer.nvim',
+    -- Small LSP progress UI (bottom-right).
+    { 'j-hui/fidget.nvim', opts = {} },
+    -- Advertise blink.cmp completion capabilities.
+    'saghen/blink.cmp',
   },
   config = function()
     -- Keymaps get attached per-buffer only once a server attaches to it.
@@ -79,20 +84,25 @@ return {
           },
         },
       },
-      rust_analyzer = {},                       -- Rust. :help lspconfig-all rust_analyzer
-      ts_ls = {                                 -- TypeScript/JavaScript/JSX/TSX (+Vue script).
+      -- Rust. :help lspconfig-all rust_analyzer
+      rust_analyzer = {},
+      -- TypeScript/JavaScript/JSX/TSX (+Vue script).
+      ts_ls = {
         filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue' },
         init_options = { plugins = { vue_plugin } },
       },
-      vue_ls = {},                              -- Vue templates (Volar). Hybrid mode with ts_ls.
+      -- Vue templates (Volar). Hybrid mode with ts_ls.
+      vue_ls = {},
       html = {},
       cssls = {},
-      tailwindcss = {},                         -- class completion in JSX/HTML/Vue when a
-                                                -- tailwind config exists in the project.
+      -- Class completion in JSX/HTML/Vue when a tailwind config exists in the project.
+      tailwindcss = {},
       jsonls = {},
       bashls = {},
-      marksman = {},                            -- Markdown.
-      eslint = {                                -- Lint diagnostics + fix-on-... via LSP.
+      -- Markdown.
+      marksman = {},
+      -- Lint diagnostics + fix-on-... via LSP.
+      eslint = {
         -- Only active when the project has an ESLint config (config-gated by design).
         settings = { workingDirectories = { mode = 'auto' } },
       },
@@ -102,10 +112,10 @@ return {
     -- (used by conform.lua) and the oxlint binary (used by linting.lua).
     require('mason-tool-installer').setup({
       ensure_installed = vim.list_extend(vim.tbl_keys(servers), {
-        'stylua',       -- Lua formatter
-        'prettierd',    -- JS/TS/CSS/HTML/JSON/Markdown/Vue formatter (fast daemon)
-        'shfmt',        -- shell formatter
-        'oxlint',       -- fast linter (see linting.lua)
+        'stylua', -- Lua formatter
+        'prettierd', -- JS/TS/CSS/HTML/JSON/Markdown/Vue formatter (fast daemon)
+        'shfmt', -- shell formatter
+        'oxlint', -- fast linter (see linting.lua)
       }),
     })
 
@@ -113,7 +123,7 @@ return {
     -- names to mason package names. We don't use its auto-enable — we enable
     -- servers ourselves below.
     require('mason-lspconfig').setup({
-      ensure_installed = {},    -- handled by mason-tool-installer above.
+      ensure_installed = {}, -- handled by mason-tool-installer above.
       automatic_enable = false, -- we call vim.lsp.enable() ourselves.
     })
 

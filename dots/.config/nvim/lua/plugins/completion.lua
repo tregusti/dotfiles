@@ -23,12 +23,12 @@ return {
     -- https://cmp.saghen.dev/configuration/keymap
     keymap = {
       preset = 'none',
-      ['<C-n>'] = { 'select_next', 'fallback' },       -- next item
-      ['<C-p>'] = { 'select_prev', 'fallback' },       -- previous item
-      ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },   -- scroll docs up
+      ['<C-n>'] = { 'select_next', 'fallback' }, -- next item
+      ['<C-p>'] = { 'select_prev', 'fallback' }, -- previous item
+      ['<C-b>'] = { 'scroll_documentation_up', 'fallback' }, -- scroll docs up
       ['<C-f>'] = { 'scroll_documentation_down', 'fallback' }, -- scroll docs down
       ['<C-y>'] = { 'select_and_accept', 'fallback' }, -- accept
-      ['<C-space>'] = { 'show' },                      -- manually trigger the menu
+      ['<C-space>'] = { 'show' }, -- manually trigger the menu
       -- Jump through snippet placeholders (native vim.snippet, no LuaSnip).
       ['<C-l>'] = { 'snippet_forward', 'fallback' },
       ['<C-h>'] = { 'snippet_backward', 'fallback' },

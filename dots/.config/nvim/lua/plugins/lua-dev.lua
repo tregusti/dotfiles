@@ -8,7 +8,7 @@
 
 return {
   'folke/lazydev.nvim',
-  ft = 'lua',                       -- only load when editing Lua files.
+  ft = 'lua', -- only load when editing Lua files.
   opts = {
     library = {
       -- Load the Neovim types when the `vim.uv` word is found (i.e. real config).

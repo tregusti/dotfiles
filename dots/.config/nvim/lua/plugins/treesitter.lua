@@ -15,27 +15,56 @@
 return {
   'nvim-treesitter/nvim-treesitter',
   branch = 'main',
-  lazy = false,        -- required: this plugin does not support lazy-loading.
+  lazy = false, -- required: this plugin does not support lazy-loading.
   build = ':TSUpdate', -- compile/update parsers after install.
   config = function()
     local parsers = {
       -- Web / React stack
-      'javascript', 'typescript', 'tsx', 'jsdoc',
-      'html', 'css', 'vue',
+      'javascript',
+      'typescript',
+      'tsx',
+      'jsdoc',
+      'html',
+      'css',
+      'vue',
       -- Data / docs (jsonc has no separate parser — Neovim maps it to json)
-      'json', 'yaml', 'markdown', 'markdown_inline',
+      'json',
+      'yaml',
+      'markdown',
+      'markdown_inline',
       -- Systems / config / this config itself
-      'rust', 'lua', 'luadoc', 'bash', 'vim', 'vimdoc',
-      'git_config', 'gitcommit', 'diff',
+      'rust',
+      'lua',
+      'luadoc',
+      'bash',
+      'vim',
+      'vimdoc',
+      'git_config',
+      'gitcommit',
+      'diff',
     }
     require('nvim-treesitter').install(parsers)
 
     local filetypes = {
-      'javascript', 'typescript', 'typescriptreact',
-      'html', 'css', 'vue',
-      'json', 'jsonc', 'yaml', 'markdown',
-      'rust', 'lua', 'sh', 'bash', 'vim', 'help',
-      'gitconfig', 'gitcommit', 'diff',
+      'javascript',
+      'typescript',
+      'typescriptreact',
+      'html',
+      'css',
+      'vue',
+      'json',
+      'jsonc',
+      'yaml',
+      'markdown',
+      'rust',
+      'lua',
+      'sh',
+      'bash',
+      'vim',
+      'help',
+      'gitconfig',
+      'gitcommit',
+      'diff',
     }
     vim.api.nvim_create_autocmd('FileType', {
       pattern = filetypes,
