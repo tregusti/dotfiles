@@ -53,6 +53,23 @@ opt.showmode = false         -- mode is shown in lualine, so hide the default --
 opt.list = true              -- show otherwise-invisible whitespace... :help 'list'
 opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' } -- ...like this. :help 'listchars'
 
+-- Folding (source is wired per-filetype in plugins/treesitter.lua) --------------
+opt.foldlevel = 99           -- start with all folds open; nothing pre-collapsed on
+                             -- open. :help 'foldlevel'
+opt.foldlevelstart = 99      -- ...same, for the first window of a new buffer.
+                             -- :help 'foldlevelstart'
+opt.foldenable = true        -- folds are usable (za/zo/zc/zR/zM) even though none
+                             -- start closed. :help 'foldenable'
+opt.foldcolumn = 'auto:1'    -- fold gutter, chevrons below; collapses to width 0
+                             -- in buffers with no folds. :help 'foldcolumn'
+opt.fillchars:append(vim.g.have_nerd_font
+  and { foldopen = '', foldclose = '', foldsep = ' ', foldinner = ' ' } -- VS Code-style chevrons (glyphs verified against kevinhwang91/nvim-ufo README).
+  or { foldopen = '-', foldclose = '+', foldsep = '|', foldinner = ' ' } -- ASCII fallback.
+) -- :help 'fillchars'
+  -- foldinner: without this, a line inside an open fold but not itself a
+  -- fold-start shows the numeric fold level instead of blank, when
+  -- foldcolumn is too narrow to draw one symbol per nesting level.
+
 -- Splits (open where the eye expects) --------------------------------------------
 opt.splitright = true        -- vertical splits open to the right. :help 'splitright'
 opt.splitbelow = true        -- horizontal splits open below. :help 'splitbelow'

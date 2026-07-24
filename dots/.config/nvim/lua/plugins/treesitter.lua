@@ -43,6 +43,20 @@ return {
         vim.treesitter.start() -- highlighting. :help treesitter-highlight
         -- Treesitter-based '=' indentation; upstream still calls this experimental.
         vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+
+        -- Folds from the same parse tree driving highlighting/indent above.
+        -- foldmethod/foldexpr are window-scoped but the parser is buffer-scoped,
+        -- so setting them per-FileType (not once globally) is what makes this
+        -- reliable. :help 'foldexpr' , neovim/neovim discussion #34246
+        vim.wo.foldmethod = 'expr'
+        vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+        -- Treesitter's fold query has no comment capture, so multi-line JSDoc
+        -- blocks and `// #region` markers never fold under this alone. If that
+        -- starts to matter, vim.lsp.foldexpr() folds both (verified live on
+        -- ts_ls) but has no fallback for servers/filetypes without
+        -- foldingRange support — nvim-ufo (kevinhwang91/nvim-ufo) is what adds
+        -- a provider fallback chain (LSP preferred, treesitter fallback) plus
+        -- fold preview. Not installed; revisit only if this gap is felt.
       end,
     })
   end,
