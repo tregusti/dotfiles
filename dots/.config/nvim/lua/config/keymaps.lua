@@ -21,6 +21,9 @@ vim.keymap.set(
   { desc = 'Open diagnostic [L]ocation list' }
 )
 
+-- Open the quickfix list. Kept out of <leader>q (quit/session group). :help :copen
+vim.keymap.set('n', '<leader>xq', '<cmd>copen<CR>', { desc = 'Open [Q]uickfix list' })
+
 -- Move between windows with <C-h/j/k/l> (kept from the old config — this one is
 -- reflex, not something to relearn). :help CTRL-W_h
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Go to left window' })
