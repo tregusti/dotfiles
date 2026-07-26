@@ -11,18 +11,10 @@ vim.keymap.set('i', 'jk', '<Esc>', { desc = 'Exit insert mode' })
 -- Clear search highlight with <Esc> in normal mode. :help :nohlsearch
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear search highlight' })
 
--- Diagnostics: open the location list of problems in the buffer. <leader>q is
--- reserved for the quit/session group (session.lua), matching LazyVim's
--- convention. :help vim.diagnostic.setloclist
-vim.keymap.set(
-  'n',
-  '<leader>xl',
-  vim.diagnostic.setloclist,
-  { desc = 'Open diagnostic [L]ocation list' }
-)
-
--- Open the quickfix list. Kept out of <leader>q (quit/session group). :help :copen
-vim.keymap.set('n', '<leader>xq', '<cmd>copen<CR>', { desc = 'Open [Q]uickfix list' })
+-- <leader>xl / <leader>xq (loclist/quickfix toggles) and <leader>uw (wrap
+-- toggle) live in plugins/ui-toggles.lua, not here — they're built on
+-- Snacks.toggle, and this file loads before lazy.nvim sets up plugins
+-- (see init.lua), so `require('snacks')` isn't resolvable yet at this point.
 
 -- Move between windows with <C-h/j/k/l> (kept from the old config — this one is
 -- reflex, not something to relearn). :help CTRL-W_h
