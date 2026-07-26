@@ -67,5 +67,6 @@ return {
       end,
       desc = "[D]on't save on exit",
     },
+    { '<leader>qq', '<cmd>qa<CR>', desc = '[Q]uit all' },
   },
 }
