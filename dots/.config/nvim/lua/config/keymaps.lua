@@ -11,12 +11,14 @@ vim.keymap.set('i', 'jk', '<Esc>', { desc = 'Exit insert mode' })
 -- Clear search highlight with <Esc> in normal mode. :help :nohlsearch
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear search highlight' })
 
--- Diagnostics: open the location list of problems in the buffer. :help vim.diagnostic.setloclist
+-- Diagnostics: open the location list of problems in the buffer. <leader>q is
+-- reserved for the quit/session group (session.lua), matching LazyVim's
+-- convention. :help vim.diagnostic.setloclist
 vim.keymap.set(
   'n',
-  '<leader>q',
+  '<leader>xl',
   vim.diagnostic.setloclist,
-  { desc = 'Open diagnostic [Q]uickfix list' }
+  { desc = 'Open diagnostic [L]ocation list' }
 )
 
 -- Move between windows with <C-h/j/k/l> (kept from the old config — this one is
