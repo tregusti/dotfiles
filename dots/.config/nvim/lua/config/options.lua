@@ -110,8 +110,13 @@ opt.splitbelow = true
 -- Reload a buffer if its file changed on disk and the buffer has no unsaved
 -- changes. :help 'autoread'
 opt.autoread = true
--- No .swp files (matches old config). :help 'swapfile'
-opt.swapfile = false
+-- Crash recovery: .swp files, written periodically and on idle. Old config
+-- disabled this over stray .swp clutter, but Neovim's default 'directory'
+-- already tucks them into ~/.local/state/nvim/swap// (same pattern as
+-- undodir below), not next to the file -- so there's no clutter to avoid,
+-- and this is the only real recovery path for edits that were never saved.
+-- :help 'swapfile'
+opt.swapfile = true
 -- Persist undo history across sessions to disk. :help 'undofile'
 opt.undofile = true
 -- On :q with unsaved changes, prompt instead of hard-erroring. :help 'confirm'
