@@ -1,7 +1,7 @@
 -- Non-plugin key mappings.
 --
--- Plugin-specific keymaps live next to each plugin (e.g. Telescope's are in
--- lua/plugins/telescope.lua) so they're documented where the feature is defined.
+-- Plugin-specific keymaps live next to each plugin so they're documented where the
+-- feature is defined.
 --
 -- `vim.keymap.set(mode, lhs, rhs, opts)` — :help vim.keymap.set
 

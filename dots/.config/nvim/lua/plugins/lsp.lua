@@ -36,6 +36,8 @@ return {
     { 'j-hui/fidget.nvim', opts = {} },
     -- Advertise blink.cmp completion capabilities.
     'saghen/blink.cmp',
+    -- LSP picker keymaps below (grr/grd/gri/grt/gs/gS) use Snacks.picker.
+    'folke/snacks.nvim',
   },
   config = function()
     -- Keymaps get attached per-buffer only once a server attaches to it.
@@ -46,14 +48,15 @@ return {
         local map = function(keys, fn, desc)
           vim.keymap.set('n', keys, fn, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
-        local builtin = require('telescope.builtin')
+        local picker = require('snacks').picker
         map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
         map('gra', vim.lsp.buf.code_action, 'Code [A]ction')
-        map('grr', builtin.lsp_references, 'Goto [R]eferences')
-        map('grd', builtin.lsp_definitions, 'Goto [D]efinition')
-        map('gri', builtin.lsp_implementations, 'Goto [I]mplementation')
-        map('grt', builtin.lsp_type_definitions, 'Goto [T]ype definition')
-        map('gO', builtin.lsp_document_symbols, 'Document [S]ymbols')
+        map('grr', picker.lsp_references, 'Goto [R]eferences')
+        map('grd', picker.lsp_definitions, 'Goto [D]efinition')
+        map('gri', picker.lsp_implementations, 'Goto [I]mplementation')
+        map('grt', picker.lsp_type_definitions, 'Goto [T]ype definition')
+        map('gs', picker.lsp_symbols, 'Document [S]ymbols')
+        map('gS', picker.lsp_workspace_symbols, 'Workspace [S]ymbols')
         map('K', vim.lsp.buf.hover, 'Hover documentation')
       end,
     })
