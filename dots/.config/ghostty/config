@@ -1,0 +1,4 @@
+# Left Option sends Alt/Meta escape sequences (used by e.g. neovim's <a-*>
+# keymaps); right Option is left alone for macOS's special-character
+# composition (accents, ©, ™, etc). https://ghostty.org/docs/config/reference
+macos-option-as-alt = left

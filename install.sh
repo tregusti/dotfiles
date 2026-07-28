@@ -33,6 +33,8 @@ link ~/.dotfiles/dots/.spaceshiprc.zsh ~/.spaceshiprc.zsh
 
 link ~/.dotfiles/dots/.nethackrc ~/.nethackrc
 
+link ~/.dotfiles/dots/.config/ghostty ~/.config/ghostty
+
 # See code-snippets/README.md.
 link ~/.dotfiles/code-snippets ~/Library/Application\ Support/Code/User/snippets
 
