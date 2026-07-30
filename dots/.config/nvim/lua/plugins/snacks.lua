@@ -53,8 +53,6 @@ return {
   end,
   -- stylua: ignore
   keys = {
-    -- file explorer
-
     -- top pickers
     { '<leader><leader>', function() Snacks.picker.smart() end, desc = 'Smart find files', },
     { '<leader>e', function() Snacks.explorer.open() end, desc = 'Toggle file explorer', },
