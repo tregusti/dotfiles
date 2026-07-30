@@ -27,7 +27,7 @@ return {
       'html',
       'css',
       'vue',
-      -- Data / docs (jsonc has no separate parser — Neovim maps it to json)
+      -- Data / docs (jsonc maps to json via nvim-treesitter; jsonl we map ourselves below)
       'json',
       'yaml',
       'markdown',
@@ -45,6 +45,9 @@ return {
     }
     require('nvim-treesitter').install(parsers)
 
+    -- jsonl has no parser of its own; reuse json's.
+    vim.treesitter.language.register('json', 'jsonl')
+
     local filetypes = {
       'javascript',
       'typescript',
@@ -54,6 +57,7 @@ return {
       'vue',
       'json',
       'jsonc',
+      'jsonl',
       'yaml',
       'markdown',
       'rust',
