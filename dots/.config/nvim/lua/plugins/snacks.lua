@@ -22,6 +22,7 @@ return {
     Snacks.setup(opts)
 
     Snacks.toggle.option('wrap', { name = 'Wrap' }):map('<leader>uw')
+    Snacks.toggle.option('list', { name = 'Whitespace chars' }):map('<leader>uW')
 
     Snacks.toggle
       .new({
