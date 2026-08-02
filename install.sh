@@ -23,8 +23,7 @@ link ~/.dotfiles/dots/.config/nvim ~/.config/nvim
 # Minimal bare-Vim fallback for servers that have vim but not nvim.
 link ~/.dotfiles/dots/.vimrc ~/.vimrc
 
-link ~/.dotfiles/dots/.gitconfig ~/.gitconfig
-link ~/.dotfiles/dots/.gitignore ~/.gitignore
+link ~/.dotfiles/dots/.config/git ~/.config/git
 
 link ~/.dotfiles/dots/.zshrc ~/.zshrc
 link ~/.dotfiles/dots/.zsh ~/.zsh

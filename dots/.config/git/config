@@ -1,0 +1,16 @@
+[include]
+  path = ~/.config/git/config-base
+
+# Machine-local overrides (untracked; ignored via .gitignore, absent until created).
+# Included after base so anything here — e.g. a per-machine user.email — wins over
+# base's defaults.
+[include]
+  path = ~/.config/git/config-machine
+
+# Personal-tree override: repos under this dir use personal identity/settings.
+[includeIf "gitdir:~/Dropbox/code/personal/"]
+  path = ~/.config/git/config-personal
+
+# Work-tree override: repos under this dir use work identity/settings.
+[includeIf "gitdir:~/Dropbox/code/work/"]
+  path = ~/.config/git/config-work

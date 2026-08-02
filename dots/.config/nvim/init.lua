@@ -27,7 +27,7 @@ require('config.lazy')
 
 vim.filetype.add({
   pattern = {
-    ['.*%.gitconfig'] = 'gitconfig', -- prefix variant: .common.gitconfig, .gitconfig
-    ['%.gitconfig%..*'] = 'gitconfig', -- suffix variant: .gitconfig.local, .gitconfig.local.example
+    -- config-base, config-machine, config-personal, config-work (and -example variants)
+    ['.*/%.config/git/config%-[%a%-]+'] = 'gitconfig',
   },
 })

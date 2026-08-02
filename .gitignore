@@ -1,2 +1,6 @@
 dots/.zsh/completions
 /teach
+
+dots/.config/git/config-*
+!dots/.config/git/config-base
+!dots/.config/git/config-*-example

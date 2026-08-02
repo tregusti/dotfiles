@@ -1,8 +1,9 @@
-# Example ~/.gitconfig.local — copy to ~/.gitconfig.local and edit per machine.
+# Example ~/.config/git/config-machine — copy to ~/.config/git/config-machine and
+# edit per machine.
 #
-# This file is machine-local (untracked). It's included after .common.gitconfig, so
-# anything here overrides common. Keep machine/app-specific settings HERE, not in
-# .common.gitconfig, which also runs on headless agents and servers without 1Password.
+# This file is machine-local (untracked). It's included after config-base, so
+# anything here overrides base. Keep machine/app-specific settings HERE, not in
+# config-base, which also runs on headless agents and servers without 1Password.
 
 # --- Per-machine identity override (optional) ---
 [user]
