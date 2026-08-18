@@ -25,6 +25,8 @@ link ~/.dotfiles/dots/.vimrc ~/.vimrc
 
 link ~/.dotfiles/dots/.config/git ~/.config/git
 
+link ~/.dotfiles/dots/.config/tmux ~/.config/tmux
+
 link ~/.dotfiles/dots/.zshrc ~/.zshrc
 link ~/.dotfiles/dots/.zsh ~/.zsh
 
