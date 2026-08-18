@@ -11,7 +11,36 @@ for dir in ~/Dropbox/code/personal/*(/); do
   projects+=("$(basename "$dir"):$dir")
 done
 
-selection=$(printf '%s\n' "${projects[@]}" | sed 's/:/: /' | fzf --reverse) || exit
+# Running sessions float to the top, in the order above; everything else
+# follows in that same order underneath.
+sessions=(${(f)"$(tmux list-sessions -F '#S' 2>/dev/null)"})
+active=()
+inactive=()
+for entry in "${projects[@]}"; do
+  if (( ${sessions[(Ie)${entry%%:*}]} )); then
+    active+=("$entry")
+  else
+    inactive+=("$entry")
+  fi
+done
+projects=("${active[@]}" "${inactive[@]}")
+
+# Color active entries green so running sessions stand out, not just sort
+# to the top. --ansi tells fzf to render the color codes instead of
+# matching/displaying them literally.
+green=$'\033[32m'
+dim=$'\033[2m'
+reset=$'\033[0m'
+lines=()
+for entry in "${active[@]}"; do
+  lines+=("${green}${entry%%:*}${reset}: ${dim}${entry#*:}${reset}")
+done
+for entry in "${inactive[@]}"; do
+  lines+=("${entry%%:*}: ${dim}${entry#*:}${reset}")
+done
+
+selection=$(printf '%s\n' "${lines[@]}" | fzf --ansi --reverse) || exit
+selection=$(print -r -- "$selection" | sed $'s/\033\[[0-9;]*m//g')
 name=${selection%%:*}
 dir=${selection#*: }
 # has-session + plain new-session, not `-A -d`: `-A` only stays detached
