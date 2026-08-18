@@ -4,14 +4,12 @@
 # display-popup doesn't have to bootstrap the whole interactive rc
 # (zplug, spaceship prompt, fzf-tab, ...) just to get this one command.
 
-# name:path pairs, same shape as tmux.sh's loop (not shared source yet).
-projects=(
-  dotfiles:~/.dotfiles
-  politik:~/Dropbox/code/personal/politik
-  clikkbrikk:~/Dropbox/code/personal/clikkbrikk
-  startpage:~/Dropbox/code/personal/startpage
-  game-rules:~/Dropbox/code/personal/game-rules
-)
+# name:path pairs: dotfiles first, then every directory under
+# ~/Dropbox/code/personal (picked up automatically, no hand-maintained list).
+projects=(dotfiles:~/.dotfiles)
+for dir in ~/Dropbox/code/personal/*(/); do
+  projects+=("$(basename "$dir"):$dir")
+done
 
 selection=$(printf '%s\n' "${projects[@]}" | sed 's/:/: /' | fzf --reverse) || exit
 name=${selection%%:*}
