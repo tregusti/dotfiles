@@ -1,6 +1,11 @@
 dots/.zsh/completions
 /teach
 
+# tpm-installed plugin source trees (each its own git repo) — analogous to
+# nvim's lazy.nvim data dir, just installed inside the config dir this time
+# since tmux.conf lives at the XDG path.
+dots/.config/tmux/plugins/
+
 dots/.config/git/config-*
 !dots/.config/git/config-base
 !dots/.config/git/config-*-example
