@@ -13,7 +13,9 @@ done
 
 # Running sessions float to the top, in the order above; everything else
 # follows in that same order underneath.
-sessions=(${(f)"$(tmux list-sessions -F '#S' 2>/dev/null)"})
+project_names=("${projects[@]%%:*}")
+session_pairs=(${(f)"$(tmux list-sessions -F '#S:#{session_path}' 2>/dev/null)"})
+sessions=("${(@)session_pairs%%:*}")
 active=()
 inactive=()
 for entry in "${projects[@]}"; do
@@ -23,17 +25,31 @@ for entry in "${projects[@]}"; do
     inactive+=("$entry")
   fi
 done
-projects=("${active[@]}" "${inactive[@]}")
+# Open sessions with no matching project entry (e.g. attached outside the
+# known project dirs) still get a picker row, using tmux's own record of
+# their working directory.
+extra=()
+for pair in "${session_pairs[@]}"; do
+  if (( ! ${project_names[(Ie)${pair%%:*}]} )); then
+    extra+=("$pair")
+  fi
+done
+projects=("${active[@]}" "${extra[@]}" "${inactive[@]}")
 
 # Color active entries green so running sessions stand out, not just sort
-# to the top. --ansi tells fzf to render the color codes instead of
-# matching/displaying them literally.
+# to the top; extra (unmatched) sessions get yellow instead, to mark them
+# as running but outside the known project list. --ansi tells fzf to
+# render the color codes instead of matching/displaying them literally.
 green=$'\033[32m'
+yellow=$'\033[33m'
 dim=$'\033[2m'
 reset=$'\033[0m'
 lines=()
 for entry in "${active[@]}"; do
   lines+=("${green}${entry%%:*}${reset}: ${dim}${entry#*:}${reset}")
+done
+for entry in "${extra[@]}"; do
+  lines+=("${yellow}${entry%%:*}${reset}: ${dim}${entry#*:}${reset}")
 done
 for entry in "${inactive[@]}"; do
   lines+=("${entry%%:*}: ${dim}${entry#*:}${reset}")
