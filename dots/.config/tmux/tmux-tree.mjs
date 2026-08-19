@@ -4,8 +4,8 @@
 // replace native `choose-tree` on prefix W once it's good enough — prefix w
 // still runs the native tree in parallel until then.
 
-import { spawnSync } from "node:child_process";
 import { describeNodePane, nodeChildArgs } from "./lib/node-command.mjs";
+import { paneTree } from "./lib/pane-tree.mjs";
 import { paneConnector, windowConnector } from "./lib/tree-render.mjs";
 import {
   COLOR,
@@ -14,58 +14,6 @@ import {
   knownProjects,
   pickFromLines,
 } from "./lib/tmux-picker.mjs";
-
-const FIELDS = [
-  "#{session_name}",
-  "#{session_attached}",
-  "#{window_index}",
-  "#{window_name}",
-  "#{window_active}",
-  "#{pane_index}",
-  "#{pane_current_command}",
-  "#{pane_active}",
-  "#{pane_pid}",
-].join("\t");
-
-function paneTree() {
-  const result = spawnSync("tmux", ["list-panes", "-a", "-F", FIELDS], {
-    encoding: "utf8",
-  });
-  if (result.status !== 0) return new Map();
-
-  const sessions = new Map();
-  for (const line of result.stdout.trim().split("\n").filter(Boolean)) {
-    const [
-      session,
-      attached,
-      winIdx,
-      winName,
-      winActive,
-      paneIdx,
-      command,
-      paneActive,
-      pid,
-    ] = line.split("\t");
-    if (!sessions.has(session)) {
-      sessions.set(session, { attached: attached === "1", windows: new Map() });
-    }
-    const { windows } = sessions.get(session);
-    if (!windows.has(winIdx)) {
-      windows.set(winIdx, {
-        name: winName,
-        active: winActive === "1",
-        panes: [],
-      });
-    }
-    windows.get(winIdx).panes.push({
-      index: paneIdx,
-      command,
-      active: paneActive === "1",
-      pid,
-    });
-  }
-  return sessions;
-}
 
 // Session lines reuse the tmux-sessions.mjs color language (green = known project,
 // yellow = unmatched) so the two popups read consistently; window/pane
