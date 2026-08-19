@@ -148,11 +148,3 @@ export function ensureSession(name, dir) {
     ]);
   }
 }
-
-export function attachOrSwitch(name) {
-  if (process.env.TMUX) {
-    execFileSync("tmux", ["switch-client", "-t", name], { stdio: "inherit" });
-  } else {
-    spawnSync("tmux", ["attach", "-t", name], { stdio: "inherit" });
-  }
-}

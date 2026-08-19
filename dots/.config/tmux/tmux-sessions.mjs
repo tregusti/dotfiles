@@ -5,9 +5,9 @@
 
 import {
   COLOR,
-  attachOrSwitch,
   classify,
   ensureSession,
+  gotoTarget,
   knownProjects,
   pickWithFzf,
   renderLine,
@@ -31,7 +31,7 @@ function main() {
   if (!picked) return;
 
   ensureSession(picked.name, picked.dir);
-  attachOrSwitch(picked.name);
+  gotoTarget(picked.name);
 }
 
 main();
