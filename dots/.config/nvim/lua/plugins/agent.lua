@@ -25,7 +25,7 @@ return {
       hide_terminal_in_new_tab = true,
     },
     terminal = {
-      split_width_percentage = 0.40, -- wider than the 0.30 default.
+      split_width_percentage = 0.50, -- wider than the 0.30 default.
       snacks_win_opts = {
         keys = {
           -- <leader>ac only works in Normal mode; inside the terminal every
