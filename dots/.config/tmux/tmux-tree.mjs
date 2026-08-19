@@ -6,6 +6,7 @@
 
 import { spawnSync } from "node:child_process";
 import { describeNodePane, nodeChildArgs } from "./lib/node-command.mjs";
+import { paneConnector, windowConnector } from "./lib/tree-render.mjs";
 import {
   COLOR,
   classify,
@@ -101,7 +102,6 @@ function renderTree(sessions) {
     windowEntries.forEach(([winIdx, win], wi) => {
       const winTarget = `${session}:${winIdx}`;
       const isLastWindow = wi === windowEntries.length - 1;
-      const winBranch = isLastWindow ? "└─" : "├─";
       const paneCount = win.panes.length;
       const windowNotes = [`${paneCount} pane${paneCount === 1 ? "" : "s"}`];
       if (win.active) windowNotes.push("current");
@@ -114,17 +114,15 @@ function renderTree(sessions) {
           ? winIdx
           : `${winIdx}:${win.name}`;
       lines.push(
-        `${COLOR.dim}  ${winBranch} ${COLOR.reset}${winLabel}${paren("window", ...windowNotes)}\t${winTarget}`,
+        `${COLOR.dim}  ${windowConnector(isLastWindow)} ${COLOR.reset}${winLabel}${paren("window", ...windowNotes)}\t${winTarget}`,
       );
 
       win.panes.forEach((pane, pi) => {
         const paneTarget = `${winTarget}.${pane.index}`;
         const isLastPane = pi === win.panes.length - 1;
-        const trunk = isLastWindow ? " " : "│";
-        const paneBranch = isLastPane ? "└─" : "├─";
         const paneNotes = pane.active ? ["current"] : [];
         lines.push(
-          `${COLOR.dim}  ${trunk}  ${paneBranch} ${COLOR.reset}${describeNodePane(pane, childArgs)}${paren("pane", ...paneNotes)}\t${paneTarget}`,
+          `${COLOR.dim}  ${paneConnector(isLastWindow, isLastPane)} ${COLOR.reset}${describeNodePane(pane, childArgs)}${paren("pane", ...paneNotes)}\t${paneTarget}`,
         );
       });
     });
