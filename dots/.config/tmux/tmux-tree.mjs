@@ -5,6 +5,7 @@
 // still runs the native tree in parallel until then.
 
 import { spawnSync } from "node:child_process";
+import { describeNodePane, nodeChildArgs } from "./lib/node-command.mjs";
 import {
   COLOR,
   classify,
@@ -22,6 +23,7 @@ const FIELDS = [
   "#{pane_index}",
   "#{pane_current_command}",
   "#{pane_active}",
+  "#{pane_pid}",
 ].join("\t");
 
 function paneTree() {
@@ -41,6 +43,7 @@ function paneTree() {
       paneIdx,
       command,
       paneActive,
+      pid,
     ] = line.split("\t");
     if (!sessions.has(session)) {
       sessions.set(session, { attached: attached === "1", windows: new Map() });
@@ -57,6 +60,7 @@ function paneTree() {
       index: paneIdx,
       command,
       active: paneActive === "1",
+      pid,
     });
   }
   return sessions;
@@ -76,6 +80,7 @@ function renderTree(sessions) {
     ...active.map((p) => [p.name, COLOR.green]),
     ...extra.map((s) => [s.name, COLOR.yellow]),
   ]);
+  const childArgs = nodeChildArgs();
 
   const paren = (label, ...notes) =>
     `${COLOR.dim} (${label}${notes.length ? `: ${notes.join(", ")}` : ""})${COLOR.reset}`;
@@ -119,7 +124,7 @@ function renderTree(sessions) {
         const paneBranch = isLastPane ? "└─" : "├─";
         const paneNotes = pane.active ? ["current"] : [];
         lines.push(
-          `${COLOR.dim}  ${trunk}  ${paneBranch} ${COLOR.reset}${pane.command}${paren("pane", ...paneNotes)}\t${paneTarget}`,
+          `${COLOR.dim}  ${trunk}  ${paneBranch} ${COLOR.reset}${describeNodePane(pane, childArgs)}${paren("pane", ...paneNotes)}\t${paneTarget}`,
         );
       });
     });
