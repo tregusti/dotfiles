@@ -15,10 +15,13 @@ import {
 
 const FIELDS = [
   "#{session_name}",
+  "#{session_attached}",
   "#{window_index}",
   "#{window_name}",
+  "#{window_active}",
   "#{pane_index}",
   "#{pane_current_command}",
+  "#{pane_active}",
 ].join("\t");
 
 function paneTree() {
@@ -29,11 +32,32 @@ function paneTree() {
 
   const sessions = new Map();
   for (const line of result.stdout.trim().split("\n").filter(Boolean)) {
-    const [session, winIdx, winName, paneIdx, command] = line.split("\t");
-    if (!sessions.has(session)) sessions.set(session, new Map());
-    const windows = sessions.get(session);
-    if (!windows.has(winIdx)) windows.set(winIdx, { name: winName, panes: [] });
-    windows.get(winIdx).panes.push({ index: paneIdx, command });
+    const [
+      session,
+      attached,
+      winIdx,
+      winName,
+      winActive,
+      paneIdx,
+      command,
+      paneActive,
+    ] = line.split("\t");
+    if (!sessions.has(session)) {
+      sessions.set(session, { attached: attached === "1", windows: new Map() });
+    }
+    const { windows } = sessions.get(session);
+    if (!windows.has(winIdx)) {
+      windows.set(winIdx, {
+        name: winName,
+        active: winActive === "1",
+        panes: [],
+      });
+    }
+    windows.get(winIdx).panes.push({
+      index: paneIdx,
+      command,
+      active: paneActive === "1",
+    });
   }
   return sessions;
 }
@@ -41,7 +65,8 @@ function paneTree() {
 // Session lines reuse the tms.mjs color language (green = known project,
 // yellow = unmatched) so the two popups read consistently; window/pane
 // lines are dim and indented to show the tree, with box-drawing connectors.
-// A dim `:session`/`:window`/`:pane` suffix spells out what each row is.
+// Each row ends with a dim `(kind: notes)` parenthetical — counts and
+// current/attached markers, the richer context native choose-tree shows.
 function renderTree(sessions) {
   const { active, extra } = classify(
     knownProjects(),
@@ -52,20 +77,39 @@ function renderTree(sessions) {
     ...extra.map((s) => [s.name, COLOR.yellow]),
   ]);
 
-  const kind = (label) => `${COLOR.dim} :${label}${COLOR.reset}`;
+  const paren = (label, ...notes) =>
+    `${COLOR.dim} (${label}${notes.length ? `: ${notes.join(", ")}` : ""})${COLOR.reset}`;
 
   const lines = [];
-  for (const [session, windows] of sessions) {
+  for (const [session, { attached, windows }] of sessions) {
     const color = sessionColor.get(session) ?? "";
-    lines.push(`${color}${session}${COLOR.reset}${kind("session")}\t${session}`);
+    const windowCount = windows.size;
+    const sessionNotes = [
+      `${windowCount} window${windowCount === 1 ? "" : "s"}`,
+    ];
+    if (attached) sessionNotes.push(COLOR.reset + "attached" + COLOR.dim);
+    lines.push(
+      `${color}${session}${COLOR.reset}${paren("session", ...sessionNotes)}\t${session}`,
+    );
 
     const windowEntries = [...windows.entries()];
     windowEntries.forEach(([winIdx, win], wi) => {
       const winTarget = `${session}:${winIdx}`;
       const isLastWindow = wi === windowEntries.length - 1;
       const winBranch = isLastWindow ? "└─" : "├─";
+      const paneCount = win.panes.length;
+      const windowNotes = [`${paneCount} pane${paneCount === 1 ? "" : "s"}`];
+      if (win.active) windowNotes.push("current");
+      // automatic-rename keeps an unrenamed window's name in sync with its
+      // active pane's command, so showing both is redundant unless someone
+      // (or tmux-resurrect) has actually pinned a distinct name.
+      const activeCommand = win.panes.find((p) => p.active)?.command;
+      const winLabel =
+        !win.name || win.name === activeCommand
+          ? winIdx
+          : `${winIdx}:${win.name}`;
       lines.push(
-        `${COLOR.dim}  ${winBranch} ${winIdx}:${win.name}${COLOR.reset}${kind("window")}\t${winTarget}`,
+        `${COLOR.dim}  ${winBranch} ${COLOR.reset}${winLabel}${paren("window", ...windowNotes)}\t${winTarget}`,
       );
 
       win.panes.forEach((pane, pi) => {
@@ -73,8 +117,9 @@ function renderTree(sessions) {
         const isLastPane = pi === win.panes.length - 1;
         const trunk = isLastWindow ? " " : "│";
         const paneBranch = isLastPane ? "└─" : "├─";
+        const paneNotes = pane.active ? ["current"] : [];
         lines.push(
-          `${COLOR.dim}  ${trunk}  ${paneBranch} ${pane.command}${COLOR.reset}${kind("pane")}\t${paneTarget}`,
+          `${COLOR.dim}  ${trunk}  ${paneBranch} ${COLOR.reset}${pane.command}${paren("pane", ...paneNotes)}\t${paneTarget}`,
         );
       });
     });
