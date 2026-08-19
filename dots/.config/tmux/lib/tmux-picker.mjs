@@ -71,32 +71,22 @@ export function classify(projects, sessions) {
 
 // namepart is padded to `width` before color codes are added, so the ANSI
 // escapes (invisible on screen) don't get counted against the padding.
+// name/dir are also appended as hidden tab-delimited fields (see
+// pickFromLines) so picking a line back out never depends on parsing the
+// display text — long names that blow past `width` won't corrupt dir.
 export function renderLine(color, dot, name, dir, width = 19) {
   const paddedName = `${dot} ${name}: `.padEnd(width);
   const namepart = `${color}${paddedName}${COLOR.reset}`;
   const pathpart = `${COLOR.dim}${dir}${COLOR.reset}`;
-  return `${namepart} ${pathpart}`;
+  return `${namepart} ${pathpart}\t${name}\t${dir}`;
 }
 
-// --ansi tells fzf to render the color codes instead of matching/displaying
-// them literally.
-export function pickWithFzf(lines) {
-  const fzf = spawnSync("fzf", ["--ansi", "--reverse"], {
-    input: lines.join("\n") + "\n",
-    encoding: "utf8",
-  });
-  if (fzf.status !== 0 || !fzf.stdout.trim()) return null;
-
-  const selection = fzf.stdout.replace(/\x1b\[[0-9;]*m/g, "").trim();
-  const [namepart, dir] = selection.split(": ");
-  const name = namepart.replace(/^[●○] /, "");
-  return { name, dir };
-}
-
-// Like pickWithFzf, but for lines carrying a hidden tab-delimited target —
-// `${display}\t${target}` — so a line can show one thing (indented tree
-// text) while selecting it returns something else (a precise tmux target
-// like "session:2.1"). fzf only shows/searches the first column.
+// Lines carry hidden tab-delimited fields after the display column —
+// `${display}\t${field1}\t${field2}...` — so a line can show one thing
+// (padded/colored text, indented tree text) while selecting it returns
+// exact values (a project name + dir, a precise tmux target like
+// "session:2.1") unaffected by padding or display formatting. fzf only
+// shows/searches the first column.
 export function pickFromLines(lines) {
   const fzf = spawnSync(
     "fzf",
@@ -105,8 +95,8 @@ export function pickFromLines(lines) {
   );
   if (fzf.status !== 0 || !fzf.stdout.trim()) return null;
 
-  const [, target] = fzf.stdout.trim().split("\t");
-  return target;
+  const [, ...fields] = fzf.stdout.trim().split("\t");
+  return fields;
 }
 
 // Switches (or attaches, outside tmux) to a target that may be a bare

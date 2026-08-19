@@ -9,7 +9,7 @@ import {
   ensureSession,
   gotoTarget,
   knownProjects,
-  pickWithFzf,
+  pickFromLines,
   renderLine,
   runningSessions,
 } from "./lib/tmux-picker.mjs";
@@ -27,11 +27,12 @@ function renderLines({ active, extra, inactive }) {
 
 function main() {
   const groups = classify(knownProjects(), runningSessions());
-  const picked = pickWithFzf(renderLines(groups));
+  const picked = pickFromLines(renderLines(groups));
   if (!picked) return;
 
-  ensureSession(picked.name, picked.dir);
-  gotoTarget(picked.name);
+  const [name, dir] = picked;
+  ensureSession(name, dir);
+  gotoTarget(name);
 }
 
 main();

@@ -67,7 +67,7 @@ function paneTree() {
   return sessions;
 }
 
-// Session lines reuse the tms.mjs color language (green = known project,
+// Session lines reuse the tmux-sessions.mjs color language (green = known project,
 // yellow = unmatched) so the two popups read consistently; window/pane
 // lines are dim and indented to show the tree, with box-drawing connectors.
 // Each row ends with a dim `(kind: notes)` parenthetical — counts and
@@ -134,9 +134,10 @@ function main() {
   const sessions = paneTree();
   if (sessions.size === 0) return;
 
-  const target = pickFromLines(renderTree(sessions));
-  if (!target) return;
+  const picked = pickFromLines(renderTree(sessions));
+  if (!picked) return;
 
+  const [target] = picked;
   gotoTarget(target);
 }
 
