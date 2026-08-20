@@ -40,6 +40,23 @@ return {
     'folke/snacks.nvim',
   },
   config = function()
+    -- Global native default (:help lsp-defaults).
+
+    -- superseded by <leader>ca below.
+    vim.keymap.del('n', 'gra')
+    -- superseded by <leader>cc below.
+    vim.keymap.del('n', 'grx')
+
+    -- Global: diagnostics (e.g. oxlint via linting.lua) can exist without any LSP client attached to the buffer.
+    vim.keymap.set('n', '<leader>cd', vim.diagnostic.open_float, { desc = 'Line Diagnostics' })
+    -- Global: renaming a file and checking LSP status don't need a client attached.
+    vim.keymap.set('n', '<leader>cl', function()
+      require('snacks').picker.lsp_config()
+    end, { desc = 'Lsp Info' })
+    vim.keymap.set('n', '<leader>cR', function()
+      require('snacks').rename.rename_file()
+    end, { desc = 'Rename File' })
+
     -- Keymaps get attached per-buffer only once a server attaches to it.
     -- kickstart's g* / <leader>* scheme. :help LspAttach , :help vim.lsp.buf
     vim.api.nvim_create_autocmd('LspAttach', {
@@ -48,16 +65,27 @@ return {
         local map = function(keys, fn, desc)
           vim.keymap.set('n', keys, fn, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
-        local picker = require('snacks').picker
-        map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
-        map('gra', vim.lsp.buf.code_action, 'Code [A]ction')
-        map('grr', picker.lsp_references, 'Goto [R]eferences')
+        local Snacks = require('snacks')
+        local picker = Snacks.picker
+        map('K', vim.lsp.buf.hover, 'Hover documentation')
+        map('gK', vim.lsp.buf.signature_help, 'Signature help')
         map('grd', picker.lsp_definitions, 'Goto [D]efinition')
+        map('grD', picker.lsp_declarations, 'Goto [D]eclaration')
         map('gri', picker.lsp_implementations, 'Goto [I]mplementation')
+        map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
+        map('grr', picker.lsp_references, 'Goto [R]eferences')
         map('grt', picker.lsp_type_definitions, 'Goto [T]ype definition')
         map('gs', picker.lsp_symbols, 'Document [s]ymbols')
         map('gS', picker.lsp_workspace_symbols, 'Workspace [S]ymbols')
-        map('K', vim.lsp.buf.hover, 'Hover documentation')
+        map('<leader>cr', vim.lsp.buf.rename, '[R]ename')
+        map('<leader>cc', vim.lsp.codelens.run, 'Run [C]odelens')
+        map('<leader>cC', function()
+          vim.lsp.codelens.enable(true, { bufnr = 0 })
+        end, 'Refresh & Display Codelens')
+        map('<leader>ca', vim.lsp.buf.code_action, 'Code [A]ction')
+        map('<leader>cA', function()
+          vim.lsp.buf.code_action({ context = { only = { 'source' } } })
+        end, 'Source [A]ction')
       end,
     })
 

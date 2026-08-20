@@ -16,6 +16,7 @@ return {
     spec = {
       { '<leader>a', group = '[A]gent (Claude Code)' },
       { '<leader>b', group = '[B]uffer' },
+      { '<leader>c', group = '[Code' },
       { '<leader>h', group = 'Git [H]unk' },
       { '<leader>q', group = '[Q]uit/Session' },
       { '<leader>s', group = '[S]earch' },

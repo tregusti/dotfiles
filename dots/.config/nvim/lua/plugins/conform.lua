@@ -21,7 +21,7 @@ return {
   keys = {
     {
       -- Manual format (works even if format-on-save is disabled).
-      '<leader>f',
+      '<leader>cf',
       function()
         require('conform').format({ async = true, lsp_format = 'fallback' })
       end,
