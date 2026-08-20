@@ -55,7 +55,7 @@ return {
         map('grd', picker.lsp_definitions, 'Goto [D]efinition')
         map('gri', picker.lsp_implementations, 'Goto [I]mplementation')
         map('grt', picker.lsp_type_definitions, 'Goto [T]ype definition')
-        map('gs', picker.lsp_symbols, 'Document [S]ymbols')
+        map('gs', picker.lsp_symbols, 'Document [s]ymbols')
         map('gS', picker.lsp_workspace_symbols, 'Workspace [S]ymbols')
         map('K', vim.lsp.buf.hover, 'Hover documentation')
       end,
