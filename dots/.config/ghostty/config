@@ -2,3 +2,10 @@
 # keymaps); right Option is left alone for macOS's special-character
 # composition (accents, ©, ™, etc). https://ghostty.org/docs/config/reference
 macos-option-as-alt = left
+
+# Split light/dark pair, matching tmux's hand-rolled Selenized theme.
+# Without this, Ghostty has no light/dark state to report at all — it
+# never sends the DEC mode 2031 change notification tmux's
+# client-dark-theme / client-light-theme hooks depend on, so tmux's
+# palette silently stops tracking macOS's appearance.
+theme = dark:Selenized Dark,light:Selenized Light
