@@ -1,4 +1,4 @@
-Status: ready-for-human
+Status: done
 
 # Switch nvim's solarized.nvim palette to selenized
 

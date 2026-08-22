@@ -1,4 +1,4 @@
-Status: ready-for-human
+Status: done
 
 # Step 1 — scoped truecolor override
 

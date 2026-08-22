@@ -1,4 +1,4 @@
-Status: ready-for-human
+Status: done
 
 # Step 3 — session name segment (status-left)
 

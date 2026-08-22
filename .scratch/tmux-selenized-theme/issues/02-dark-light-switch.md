@@ -1,4 +1,4 @@
-Status: ready-for-human
+Status: done
 
 # Step 2 — the tracer bullet: end-to-end dark/light switch
 

@@ -1,4 +1,4 @@
-Status: ready-for-human
+Status: done
 
 # Step 4 — window list styling (active vs inactive)
 
