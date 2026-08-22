@@ -1,9 +1,10 @@
--- Colorscheme: Solarized, following the OS light/dark setting.
+-- Colorscheme: Solarized (selenized palette), following the OS light/dark setting.
 --
 -- Chosen for the warm Solarized feel (tokyonight's dark palette read as too cold/
 -- blue). maxmx03/solarized.nvim is a modern Lua port with Treesitter + LSP semantic
--- highlighting and a lualine integration. It switches on `vim.o.background`, so the
--- auto-dark-mode plugin below flips it between Solarized dark and Solarized light.
+-- highlighting and a lualine integration; its bundled `selenized` palette is used
+-- to match the selenized variant picked for tmux. It switches on `vim.o.background`,
+-- so the auto-dark-mode plugin below flips it between dark and light.
 --
 -- solarized.nvim docs: https://github.com/maxmx03/solarized.nvim
 -- auto-dark-mode docs: https://github.com/f-person/auto-dark-mode.nvim
@@ -93,7 +94,7 @@ return {
     lazy = false, -- load during startup (it's the UI). :help lazy.nvim-uiplugins
     priority = 1000, -- load before other plugins so highlights exist first.
     ---@type solarized.config
-    opts = {}, -- defaults; palette follows vim.o.background. :help solarized.nvim
+    opts = { palette = 'selenized' }, -- follows vim.o.background. :help solarized.nvim
     config = function(_, opts)
       require('solarized').setup(opts)
       vim.cmd.colorscheme('solarized')

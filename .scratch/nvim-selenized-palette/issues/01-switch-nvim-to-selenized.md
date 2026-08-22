@@ -1,4 +1,4 @@
-Status: ready-for-agent
+Status: ready-for-human
 
 # Switch nvim's solarized.nvim palette to selenized
 
@@ -33,3 +33,20 @@ opts = { palette = 'selenized' },
   flips `vim.o.background` on OS appearance change).
 
 ## Comments
+
+Made the one-line change in `dots/.config/nvim/lua/plugins/colorscheme.lua`
+(`opts = { palette = 'selenized' }`) and updated the top comment to mention
+the selenized variant.
+
+Verified before calling it done:
+- `M.selenized` in both `solarized/palette/init.lua` (dark) and
+  `solarized/palette/solarized-light.lua` (light) define all the keys
+  `tint_diff_highlights()` reads: `base3`, `git_add`, `git_modify`,
+  `mix_green`, `mix_orange`, `mix_red`.
+- `lualine.lua`'s `uncommitted` component keys (`base3`, `diag_warning`)
+  are present too.
+- Headless nvim loads `colorscheme solarized` cleanly with
+  `vim.o.background` set to both `dark` and `light` — no errors.
+
+Not done: actually eyeballing light/dark mode in a real terminal for visual
+quality — that's a human judgment call, left for you to check.

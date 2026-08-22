@@ -64,7 +64,12 @@ return {
   dependencies = { 'nvim-tree/nvim-web-devicons' }, -- filetype glyphs (needs a Nerd Font).
   opts = {
     options = {
-      theme = 'auto', -- derive colours from the active colorscheme.
+      -- Not 'auto': lualine's auto-theme keys off `vim.g.colors_name`, which
+      -- solarized.nvim always sets to 'solarized' regardless of the chosen
+      -- `palette` option — so 'auto' would load solarized.nvim's bundled
+      -- lualine/themes/solarized.lua (hardcoded to classic Solarized blue)
+      -- instead of themes/selenized.lua, mismatching tmux's Selenized blue.
+      theme = 'selenized',
       icons_enabled = vim.g.have_nerd_font,
       globalstatus = true, -- one statusline for all splits. :help 'laststatus'
       component_separators = '|',
