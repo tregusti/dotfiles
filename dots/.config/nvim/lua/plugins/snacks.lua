@@ -6,6 +6,10 @@ return {
   -- Only fragment with opts/config for this plugin — keeps setup() single-owner.
   opts = {
     explorer = {}, -- defaults: replace_netrw = true, trash = true
+    notifier = {
+      -- routes vim.notify through Snacks so notification history/picker works
+      top_down = false, -- stack from bottom-right instead of top-right (avoids clashing with macOS notifications)
+    },
     picker = {
       sources = {
         explorer = {
