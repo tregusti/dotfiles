@@ -14,6 +14,8 @@
 -- statusline redraw would lag, so the component itself only reads the cache.
 local dirty_count = nil
 
+local in_tmux = vim.env.TMUX ~= nil
+
 local function refresh_dirty_count()
   vim.system({ 'git', 'status', '--porcelain' }, { text = true }, function(out)
     if out.code == 0 then
@@ -74,8 +76,16 @@ return {
     -- the surface those colours are designed against, so the colour-coded
     -- components live there instead. :help lualine-Default-configuration
     sections = {
-      lualine_b = { 'branch' },
-      lualine_c = { uncommitted, 'diff', 'diagnostics', { 'filename', path = 1 } },
+      lualine_b = in_tmux and {} or { 'branch' },
+      lualine_c = in_tmux and {
+        'diagnostics',
+        { 'filename', path = 1 },
+      } or {
+        uncommitted,
+        'diff',
+        'diagnostics',
+        { 'filename', path = 1 },
+      },
     },
   },
 }
