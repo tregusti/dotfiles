@@ -1,6 +1,6 @@
 # Hand-rolled Selenized tmux theme
 
-Status: in-progress
+Status: done — all 7 steps implemented and verified (2026-08-22)
 
 ## Problem
 
