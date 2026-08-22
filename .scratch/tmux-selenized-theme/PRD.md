@@ -82,6 +82,20 @@ step at a time (not all at once — see Process below), delivering:
 | cyan | `#41c7b9` | `#009c8f` |
 | orange | `#ed8649` | `#c25d1e` |
 | violet | `#af88eb` | `#8762c6` |
+| br_red | `#ff665c` | `#ff4b49` |
+| br_green | `#84c747` | `#78be2e` |
+| br_yellow | `#ebc13d` | `#e4b424` |
+| br_blue | `#58a3ff` | `#4a91ff` |
+| br_magenta | `#ff84cd` | `#fb69c4` |
+| br_cyan | `#53d6c7` | `#50cfba` |
+| br_orange | `#fd9456` | `#f67e41` |
+| br_violet | `#bd96fa` | `#ab80fc` |
+
+`br_*` rows added after step 3, front-loading the full palette (all
+`@color_*` vars now defined in both mode files) rather than adding roles
+incrementally per step. They're Selenized's brighter/higher-emphasis
+counterpart of each base hue — not yet used by any step as of this
+writing, added for later steps to draw on directly.
 
 Note: unlike classic Solarized (one fixed 16-tone table, dark/light just
 swaps which extreme plays bg vs fg), real Selenized genuinely shifts

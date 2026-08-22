@@ -27,3 +27,11 @@ vs inactive are visually distinct and the current window is unambiguous
 at a glance.
 
 ## Comments
+
+Implemented 2026-08-22. Active window: `@color_green`, bold, marked with a
+`●` glyph; inactive: `@color_fg_0`, marked with a `○` glyph. Both use
+`bg=#{@color_bg_0}` explicitly (matching status-style) rather than relying
+on inheriting the default. Palette was front-loaded across all steps
+first (all 13 base + 8 `br_*` roles added to both mode files in one pass,
+per user request, rather than incrementally per step) — see PRD's palette
+table and the "front-loaded" note under it.
