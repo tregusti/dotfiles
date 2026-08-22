@@ -1,4 +1,4 @@
-Status: ready-for-human
+Status: done
 
 # Step 6 — battery segment (status-right)
 
@@ -33,3 +33,16 @@ than blocking — confirm behavior degrades sensibly (e.g. segment blank or
 omitted) rather than erroring.
 
 ## Comments
+
+Implemented 2026-08-22. `tmux-plugins/tmux-battery` declared and installed
+via `prefix I`. Uses the plugin's threshold-based `@{battery_color_charge_bg}`
+rather than one static Selenized accent — surfaced a plugin quirk along
+the way: `battery.tmux` only textually interpolates `#{battery_*}` tokens
+that appear literally inside the `status-right`/`status-left` option
+strings (per `@plugin_interpolated_options`, default
+`"status-right status-left"`). Since the theme composes `status-right`
+indirectly via `#{E:@theme_battery}`, the token inside `@theme_battery`
+was never touched and rendered blank. Fixed by adding
+`@theme_battery` to `@plugin_interpolated_options` in `tmux.conf`.
+Segment also got a `@theme_sep` separator (`|`) added between the zoom
+indicator and battery.
