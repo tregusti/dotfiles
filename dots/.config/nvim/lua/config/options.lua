@@ -15,7 +15,7 @@ local opt = vim.opt
 -- Absolute number on the current line. :help 'number'
 opt.number = true
 -- Relative numbers on the others, for quick j/k jumps. :help 'relativenumber'
-opt.relativenumber = true
+-- opt.relativenumber = true
 
 -- Indentation (matches .editorconfig: 2 spaces) ----------------------------------
 
