@@ -42,6 +42,58 @@ vim.api.nvim_create_autocmd(
   { group = group, callback = refresh_dirty_count }
 )
 
+-- Winbar highlight, active vs inactive. Every component below (including the
+-- '%=' centering markers) is painted with the SAME highlight so the strip
+-- reads as one solid-colour bar rather than just the filename text having a
+-- background — an unterminated %#hl# span fills the gap vim inserts at a
+-- '%=' split point with whatever highlight preceded it, so colouring the
+-- fillers too is what makes the color cover the full window width.
+local function winbar_hl(which)
+  return function()
+    local c = require('solarized.utils').get_colors()
+    local dark = vim.o.background == 'dark'
+    if which == 'active' then
+      return {
+        fg = dark and c.base03 or c.base3,
+        -- Red instead of blue inside tmux: blue is already tmux's own
+        -- status-bar accent (see tmux.conf), so the active winbar needs a
+        -- different color there to still read as a distinct signal.
+        bg = in_tmux and c.red or c.blue,
+      }
+    else
+      return {
+        fg = dark and c.base1 or c.base01,
+        bg = dark and c.base02 or c.base2,
+      }
+    end
+  end
+end
+
+-- Builds one winbar's component list (active or inactive), sharing one
+-- highlight across all four entries so the whole row is a single colour.
+local function winbar_components(which)
+  local hl = winbar_hl(which)
+  return {
+    { '%=', color = hl, separator = '' },
+    {
+      'filetype',
+      icon_only = true,
+      colored = false, -- keep the icon on the shared bar colour, not devicons' per-language colour
+      padding = { left = 0, right = 1 },
+      color = hl,
+      separator = '',
+    },
+    {
+      'filename',
+      path = 0,
+      symbols = { modified = ' ●', readonly = ' ', unnamed = '' },
+      color = hl,
+      separator = '',
+    },
+    { '%=', color = hl, separator = '' },
+  }
+end
+
 local uncommitted = {
   function()
     return '±' .. dirty_count .. ' files'
@@ -91,6 +143,20 @@ return {
         'diagnostics',
         { 'filename', path = 1 },
       },
+    },
+    -- Per-window filename, pinned to the top of each split. Needed because
+    -- globalstatus above collapses the statusline itself to one shared bar,
+    -- which otherwise leaves no per-window indication of which file is where.
+    --
+    -- Centered via literal '%=' components either side: lualine builds the
+    -- winbar as a plain statusline-format string under the hood, so '%='
+    -- works here the same way it does in 'statusline' — an even split point,
+    -- one on each side, centers whatever sits between them.
+    winbar = {
+      lualine_c = winbar_components('active'),
+    },
+    inactive_winbar = {
+      lualine_c = winbar_components('inactive'),
     },
   },
 }
