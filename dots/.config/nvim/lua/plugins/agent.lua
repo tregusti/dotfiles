@@ -1,16 +1,30 @@
 -- Claude Code companion.
 --
--- Decision: docs/adr/0003 — terminal workflow + a companion plugin that speaks
--- Claude Code's IDE-integration protocol (the same WebSocket protocol the VS Code /
--- JetBrains extensions use). Proposed edits open as native Neovim diff splits to
--- accept/reject, and the current selection/buffer is shared as context. The agent
--- reads/writes files and shows diffs — it does NOT autonomously drive the editor.
---
 -- Requires the `claude` CLI on PATH (installed separately; see README).
 -- Docs: https://github.com/coder/claudecode.nvim
 --
--- VERIFY AT FIRST RUN: this is the newest/most-moving plugin here. Confirm the repo
--- name and command surface are current before relying on it (see README).
+-- Per-project spellcheck language override. terminal_cmd is a plain string
+-- fixed at startup (claudecode.nvim asserts this), so this only reacts to the
+-- cwd Neovim was launched with, not later :cd calls.
+--
+-- Claude Code itself ignores `spellcheck` in any project settings file, so we
+-- read it ourselves and re-inject it via `claude --settings`. This keeps which
+-- projects use which language out of this (checked-in) config entirely — it
+-- lives in each project's own .claude/settings.spellcheck.json instead, kept
+-- separate from settings.local.json so it can be committed (it's just a
+-- language choice, not personal permissions).
+local function terminal_cmd()
+  local settings_path = vim.fn.getcwd() .. '/.claude/settings.spellcheck.json'
+  if vim.fn.filereadable(settings_path) == 0 then
+    return 'claude --continue'
+  end
+  local ok, decoded = pcall(vim.json.decode, table.concat(vim.fn.readfile(settings_path), '\n'))
+  if not ok or not decoded.spellcheck then
+    return 'claude --continue'
+  end
+  return 'claude --continue --settings '
+    .. vim.fn.shellescape(vim.json.encode({ spellcheck = decoded.spellcheck }))
+end
 
 return {
   'coder/claudecode.nvim',
@@ -19,7 +33,7 @@ return {
     -- Resume the project's last conversation on launch instead of starting
     -- blank. Falls back to a new conversation when there is no history.
     -- Session picking is done inside Claude Code itself (/resume).
-    terminal_cmd = 'claude --continue',
+    terminal_cmd = terminal_cmd(),
     diff_opts = {
       open_in_new_tab = true,
       hide_terminal_in_new_tab = true,
