@@ -5,7 +5,7 @@ Neovim (`blink.cmp`'s built-in snippets provider reads this same format).
 
 ## Wiring
 
-- **Neovim**: `dots/.config/nvim/snippets` is an in-repo symlink to `../code-snippets`.
+- **Neovim**: `dots/config/nvim/snippets` is an in-repo symlink to `../code-snippets`.
   `blink.cmp` scans `~/.config/nvim/snippets` by default, so no plugin config
   is needed beyond what's already in `completion.lua`.
 - **VS Code**: `install.sh` symlinks this whole directory to

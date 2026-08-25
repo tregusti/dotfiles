@@ -19,22 +19,22 @@ link() {
 }
 
 # Neovim (XDG). The old classic-Vim config now lives in ../legacy and is not linked.
-link ~/.dotfiles/dots/.config/nvim ~/.config/nvim
+link ~/.dotfiles/dots/config/nvim ~/.config/nvim
 # Minimal bare-Vim fallback for servers that have vim but not nvim.
-link ~/.dotfiles/dots/.vimrc ~/.vimrc
+link ~/.dotfiles/dots/vimrc ~/.vimrc
 
-link ~/.dotfiles/dots/.config/git ~/.config/git
+link ~/.dotfiles/dots/config/git ~/.config/git
 
-link ~/.dotfiles/dots/.config/tmux ~/.config/tmux
+link ~/.dotfiles/dots/config/tmux ~/.config/tmux
 
-link ~/.dotfiles/dots/.zshrc ~/.zshrc
-link ~/.dotfiles/dots/.zsh ~/.zsh
+link ~/.dotfiles/dots/zshrc ~/.zshrc
+link ~/.dotfiles/dots/zsh ~/.zsh
 
-link ~/.dotfiles/dots/.spaceshiprc.zsh ~/.spaceshiprc.zsh
+link ~/.dotfiles/dots/spaceshiprc.zsh ~/.spaceshiprc.zsh
 
-link ~/.dotfiles/dots/.nethackrc ~/.nethackrc
+link ~/.dotfiles/dots/nethackrc ~/.nethackrc
 
-link ~/.dotfiles/dots/.config/ghostty ~/.config/ghostty
+link ~/.dotfiles/dots/config/ghostty ~/.config/ghostty
 
 # See code-snippets/README.md.
 link ~/.dotfiles/code-snippets ~/Library/Application\ Support/Code/User/snippets

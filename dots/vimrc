@@ -1,6 +1,6 @@
 " Minimal bare-Vim fallback.
 "
-" This is NOT the main editor config — that's Neovim, under dots/.config/nvim/.
+" This is NOT the main editor config — that's Neovim, under dots/config/nvim/.
 " This file exists only so that a plain `vim` on a server that lacks Neovim is
 " tolerable. No plugins, nothing fancy. Neovim does not read this file.
 "
