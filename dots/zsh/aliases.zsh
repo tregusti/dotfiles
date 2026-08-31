@@ -2,7 +2,17 @@ alias ls='ls -FG'
 alias ll='ls -lp'  # long list
 alias l='ll -h'    # long list, human size
 alias la='ll -A'   # long list, show almost all
-alias lt='ll -t'   # long list, sorted by date, show type, human readable
+
+if command -v eza &> /dev/null; then
+  alias eza='eza --time-style=long-iso'
+  alias e='eza -1'
+  alias l='e --long --header --no-permissions --no-user'
+  alias ll='e --long'
+  alias la='e --long --all'
+  alias lg='e --long --git'
+  alias lt='e --long --tree --level=2'
+  alias lc='e --code'
+fi
 
 alias cdc='cd ~/Dropbox/code/personal'
 
