@@ -50,7 +50,7 @@ alias grep='grep --color=auto'
 export LESS='--quit-if-one-screen --no-init --ignore-case --chop-long-lines --raw-control-chars'
 export PAGER='less'
 
-export EDITOR=vim
+export EDITOR=$(command -v nvim > /dev/null && echo nvim || echo vim)
 
 # SET LANGUAGES
 export LANG="en_US.UTF-8"
