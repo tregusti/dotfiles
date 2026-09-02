@@ -33,3 +33,10 @@ function gwt() {
 function set-name() {
   printf '\033]2;%s\007' "$1"
 }
+
+# Unquarantine any files sent to this function
+unquarantine() {
+  for f in "$@"; do
+    xattr -dr com.apple.quarantine -- "$f"
+  done
+}
