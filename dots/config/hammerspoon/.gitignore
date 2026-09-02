@@ -1,0 +1,7 @@
+# SpoonInstall fetches these on demand; only SpoonInstall.spoon itself is
+# committed, since it's the bootstrap SpoonInstall can't fetch for itself.
+Spoons/*
+!Spoons/SpoonInstall.spoon
+
+# Dropbox API app key/secret + refresh token. See dropbox/secrets.lua.example.
+dropbox/secrets.lua

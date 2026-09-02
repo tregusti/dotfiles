@@ -36,6 +36,8 @@ link ~/.dotfiles/dots/nethackrc ~/.nethackrc
 
 link ~/.dotfiles/dots/config/ghostty ~/.config/ghostty
 
+link ~/.dotfiles/dots/config/hammerspoon ~/.hammerspoon
+
 # See code-snippets/README.md.
 link ~/.dotfiles/code-snippets ~/Library/Application\ Support/Code/User/snippets
 

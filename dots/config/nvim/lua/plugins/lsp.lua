@@ -110,8 +110,8 @@ return {
         settings = {
           Lua = {
             completion = { callSnippet = 'Replace' },
-            -- Silence "undefined global vim" when editing this config. :help lua_ls
-            diagnostics = { globals = { 'vim' } },
+            -- Silence "undefined global" for vim (this config) and hs/spoon (Hammerspoon config). :help lua_ls
+            diagnostics = { globals = { 'vim', 'hs', 'spoon' } },
           },
         },
       },
