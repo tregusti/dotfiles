@@ -29,3 +29,7 @@ esac
 
 # Add local bin executables to path
 export PATH="$HOME/.local/bin:$PATH"
+
+# Initialize zoxide, after compinit
+eval "$(zoxide init --cmd z zsh)"
+
