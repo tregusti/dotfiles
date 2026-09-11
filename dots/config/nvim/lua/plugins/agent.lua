@@ -16,13 +16,13 @@
 local function terminal_cmd()
   local settings_path = vim.fn.getcwd() .. '/.claude/settings.spellcheck.json'
   if vim.fn.filereadable(settings_path) == 0 then
-    return 'claude --continue'
+    return 'claude --chrome --continue'
   end
   local ok, decoded = pcall(vim.json.decode, table.concat(vim.fn.readfile(settings_path), '\n'))
   if not ok or not decoded.spellcheck then
-    return 'claude --continue'
+    return 'claude --chrome --continue'
   end
-  return 'claude --continue --settings '
+  return 'claude --chrome --continue --settings '
     .. vim.fn.shellescape(vim.json.encode({ spellcheck = decoded.spellcheck }))
 end
 
